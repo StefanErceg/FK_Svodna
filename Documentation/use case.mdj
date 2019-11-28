@@ -24607,7 +24607,7 @@
 													"top": 92,
 													"width": 132.93896484375,
 													"height": 13,
-													"text": "Podaci o utakmicama"
+													"text": "Utakmice"
 												},
 												{
 													"_type": "LabelView",
@@ -27375,7 +27375,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFusb/eiDUQpns="
 									},
-									"name": "Podaci o utakmicama",
+									"name": "Utakmice",
 									"ordering": "FIFO"
 								},
 								{
