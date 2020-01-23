@@ -1,0 +1,20 @@
+insert into korisnickinalog values (null, 'Marina', 'Krneta', 'marinak', '97C1B2425112BE6676A52D66A11ECF55DD9FEA89E39EF1B6F936C0B869094AAD', 0);
+insert into korisnickinalog values (null, 'Marko', 'Jankovic', 'markoj', 'E3C4A8E68C23890091F9B9531EF3E0F805CE0A9378D6FB4BBCB6EED403C91342', 1);
+insert into rukovodilac values (null, 'Jovan', 'Aksic', '065/725-111', 'jovana@gmail.com', 'direktor');
+insert into rukovodilac values (null, 'Tamara', 'Jovanovic', '066/125-287', 'tamaratasa@gmail.com', 'sekretar');
+insert into sponzor values (null, 'Aura osiguranje', null, null, '051/490-490', '');
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+insert into values ();
+
