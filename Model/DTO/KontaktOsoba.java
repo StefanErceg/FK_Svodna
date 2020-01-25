@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class KontaktOsoba {
+    protected int id;
     protected String ime;
     protected String prezime;
     protected String brojTelefona;
@@ -13,11 +14,20 @@ public class KontaktOsoba {
         super();
     }
 
-    public KontaktOsoba(String ime, String prezime, String brojTelefona, List<Sponzor> sponzori) {
+    public KontaktOsoba(int id, String ime, String prezime, String brojTelefona, List<Sponzor> sponzori) {
+        this.id = id;
         this.ime = ime;
         this.prezime = prezime;
         this.brojTelefona = brojTelefona;
         this.sponzori = sponzori;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getIme() {
@@ -57,7 +67,8 @@ public class KontaktOsoba {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KontaktOsoba that = (KontaktOsoba) o;
-        return Objects.equals(ime, that.ime) &&
+        return id == that.id &&
+                Objects.equals(ime, that.ime) &&
                 Objects.equals(prezime, that.prezime) &&
                 Objects.equals(brojTelefona, that.brojTelefona) &&
                 Objects.equals(sponzori, that.sponzori);
@@ -65,13 +76,14 @@ public class KontaktOsoba {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ime, prezime, brojTelefona, sponzori);
+        return Objects.hash(id, ime, prezime, brojTelefona, sponzori);
     }
 
     @Override
     public String toString() {
         return "KontaktOsoba{" +
-                "ime='" + ime + '\'' +
+                "id=" + id +
+                ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +
                 ", brojTelefona='" + brojTelefona + '\'' +
                 ", sponzori=" + sponzori +

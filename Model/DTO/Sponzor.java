@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Sponzor {
-
+    protected int id;
     protected String brojTelefona;
     protected String email;
     protected String adresa;
@@ -18,15 +18,24 @@ public class Sponzor {
         super();
     }
 
-    public Sponzor(String brojTelefona, String email, String adresa, String ime, String vrsta, String jmbjib, List<KontaktOsoba> kontaktOsobe, List<Uplata> uplate) {
+    public Sponzor(int id, String brojTelefona, String email, String adresa, String ime, String vrsta, String jmbjib, List<KontaktOsoba> kontaktOsobe, List<Uplata> uplate) {
+        this.id = id;
         this.brojTelefona = brojTelefona;
         this.email = email;
         this.adresa = adresa;
         this.ime = ime;
         this.vrsta = vrsta;
         this.jmbjib = jmbjib;
-        this.kontaktOsobe=kontaktOsobe;
-        this.uplate=uplate;
+        this.kontaktOsobe = kontaktOsobe;
+        this.uplate = uplate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBrojTelefona() {
@@ -98,7 +107,8 @@ public class Sponzor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sponzor sponzor = (Sponzor) o;
-        return Objects.equals(brojTelefona, sponzor.brojTelefona) &&
+        return id == sponzor.id &&
+                Objects.equals(brojTelefona, sponzor.brojTelefona) &&
                 Objects.equals(email, sponzor.email) &&
                 Objects.equals(adresa, sponzor.adresa) &&
                 Objects.equals(ime, sponzor.ime) &&
@@ -110,13 +120,14 @@ public class Sponzor {
 
     @Override
     public int hashCode() {
-        return Objects.hash(brojTelefona, email, adresa, ime, vrsta, jmbjib, kontaktOsobe, uplate);
+        return Objects.hash(id, brojTelefona, email, adresa, ime, vrsta, jmbjib, kontaktOsobe, uplate);
     }
 
     @Override
     public String toString() {
         return "Sponzor{" +
-                "brojTelefona='" + brojTelefona + '\'' +
+                "id=" + id +
+                ", brojTelefona='" + brojTelefona + '\'' +
                 ", email='" + email + '\'' +
                 ", adresa='" + adresa + '\'' +
                 ", ime='" + ime + '\'' +

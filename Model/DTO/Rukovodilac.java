@@ -1,7 +1,9 @@
 package Model.DTO;
 
-public class Rukovodilac {
+import java.util.Objects;
 
+public class Rukovodilac {
+    protected int id;
     protected String ime;
     protected String prezime;
     protected String pozicija;
@@ -13,12 +15,21 @@ public class Rukovodilac {
         super();
     }
 
-    public Rukovodilac(String ime, String prezime, String pozicija, String brojTelefona, String email) {
+    public Rukovodilac(int id, String ime, String prezime, String pozicija, String brojTelefona, String email) {
+        this.id = id;
         this.ime = ime;
         this.prezime = prezime;
         this.pozicija = pozicija;
         this.brojTelefona = brojTelefona;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getIme() {
@@ -62,19 +73,28 @@ public class Rukovodilac {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rukovodilac that = (Rukovodilac) o;
+        return id == that.id &&
+                Objects.equals(ime, that.ime) &&
+                Objects.equals(prezime, that.prezime) &&
+                Objects.equals(pozicija, that.pozicija) &&
+                Objects.equals(brojTelefona, that.brojTelefona) &&
+                Objects.equals(email, that.email);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(id, ime, prezime, pozicija, brojTelefona, email);
     }
 
     @Override
     public String toString() {
         return "Rukovodilac{" +
-                "ime='" + ime + '\'' +
+                "id=" + id +
+                ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +
                 ", pozicija='" + pozicija + '\'' +
                 ", brojTelefona='" + brojTelefona + '\'' +

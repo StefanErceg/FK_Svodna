@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class Kazna {
+    protected int id;
     protected Date datumKazne;
     protected double iznosKazne;
     protected int brojMecevaSuspenzije;
@@ -14,13 +15,21 @@ public class Kazna {
     public Kazna() {
         super();
     }
-
-    public Kazna(Date datumKazne, double iznosKazne, int brojMecevaSuspenzije, String opis, Karton karton) {
+    public Kazna(int id, Date datumKazne, double iznosKazne, int brojMecevaSuspenzije, String opis, Karton karton) {
+        this.id = id;
         this.datumKazne = datumKazne;
         this.iznosKazne = iznosKazne;
         this.brojMecevaSuspenzije = brojMecevaSuspenzije;
         Opis = opis;
         this.karton = karton;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDatumKazne() {
@@ -68,22 +77,24 @@ public class Kazna {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Kazna kazna = (Kazna) o;
-        return brojMecevaSuspenzije == kazna.brojMecevaSuspenzije &&
+        return id == kazna.id &&
+                Double.compare(kazna.iznosKazne, iznosKazne) == 0 &&
+                brojMecevaSuspenzije == kazna.brojMecevaSuspenzije &&
                 Objects.equals(datumKazne, kazna.datumKazne) &&
-                Objects.equals(iznosKazne, kazna.iznosKazne) &&
                 Objects.equals(Opis, kazna.Opis) &&
                 karton == kazna.karton;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(datumKazne, iznosKazne, brojMecevaSuspenzije, Opis, karton);
+        return Objects.hash(id, datumKazne, iznosKazne, brojMecevaSuspenzije, Opis, karton);
     }
 
     @Override
     public String toString() {
         return "Kazna{" +
-                "datumKazne=" + datumKazne +
+                "id=" + id +
+                ", datumKazne=" + datumKazne +
                 ", iznosKazne=" + iznosKazne +
                 ", brojMecevaSuspenzije=" + brojMecevaSuspenzije +
                 ", Opis='" + Opis + '\'' +
@@ -91,3 +102,4 @@ public class Kazna {
                 '}';
     }
 }
+

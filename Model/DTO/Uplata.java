@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class Uplata{
-
+    protected int id;
     protected double iznos;
     protected Date datumIsteka;
     protected Date datumUplate;
@@ -14,15 +14,19 @@ public class Uplata{
     super();
     }
 
-    public Uplata(double iznos, Date datumUplate) {
-        this.iznos = iznos;
-        this.datumUplate = datumUplate;
-    }
-
-    public Uplata(double iznos, Date datumIsteka, Date datumUplate) {
+    public Uplata(int id, double iznos, Date datumIsteka, Date datumUplate) {
+        this.id = id;
         this.iznos = iznos;
         this.datumIsteka = datumIsteka;
         this.datumUplate = datumUplate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getIznos() {
@@ -54,20 +58,22 @@ public class Uplata{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Uplata uplata = (Uplata) o;
-        return Objects.equals(iznos, uplata.iznos) &&
+        return id == uplata.id &&
+                Double.compare(uplata.iznos, iznos) == 0 &&
                 Objects.equals(datumIsteka, uplata.datumIsteka) &&
                 Objects.equals(datumUplate, uplata.datumUplate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(iznos, datumIsteka, datumUplate);
+        return Objects.hash(id, iznos, datumIsteka, datumUplate);
     }
 
     @Override
     public String toString() {
         return "Uplata{" +
-                "iznos=" + iznos +
+                "id=" + id +
+                ", iznos=" + iznos +
                 ", datumIsteka=" + datumIsteka +
                 ", datumUplate=" + datumUplate +
                 '}';

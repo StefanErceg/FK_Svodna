@@ -3,7 +3,7 @@ package Model.DTO;
 import java.util.Objects;
 
 public class Zaduzenje {
-
+    protected int id;
     protected String opis;
     protected boolean odradjeno;
 
@@ -11,9 +11,18 @@ public class Zaduzenje {
         super();
     }
 
-    public Zaduzenje(String opis, boolean odradjeno) {
+    public Zaduzenje(int id, String opis, boolean odradjeno) {
+        this.id = id;
         this.opis = opis;
         this.odradjeno = odradjeno;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getOpis() {
@@ -37,19 +46,21 @@ public class Zaduzenje {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Zaduzenje zaduzenje = (Zaduzenje) o;
-        return odradjeno == zaduzenje.odradjeno &&
+        return id == zaduzenje.id &&
+                odradjeno == zaduzenje.odradjeno &&
                 Objects.equals(opis, zaduzenje.opis);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(opis, odradjeno);
+        return Objects.hash(id, opis, odradjeno);
     }
 
     @Override
     public String toString() {
         return "Zaduzenje{" +
-                "opis='" + opis + '\'' +
+                "id=" + id +
+                ", opis='" + opis + '\'' +
                 ", odradjeno=" + odradjeno +
                 '}';
     }

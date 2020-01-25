@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Utakmica {
-
+    protected int id;
     protected String protivnickiTim;
     protected Date datum;
     protected String rezultat;
@@ -16,13 +16,21 @@ public class Utakmica {
         super();
     }
 
-    public Utakmica(String protivnickiTim, Date datum, String rezultat, List<Zaduzenje> zaduzenja, List<OsobaTim> postava) {
-
+    public Utakmica(int id, String protivnickiTim, Date datum, String rezultat, List<Zaduzenje> zaduzenja, List<OsobaTim> postava) {
+        this.id = id;
         this.protivnickiTim = protivnickiTim;
         this.datum = datum;
         this.rezultat = rezultat;
         this.zaduzenja = zaduzenja;
         this.postava = postava;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getProtivnickiTim() {
@@ -70,7 +78,8 @@ public class Utakmica {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Utakmica utakmica = (Utakmica) o;
-        return Objects.equals(protivnickiTim, utakmica.protivnickiTim) &&
+        return id == utakmica.id &&
+                Objects.equals(protivnickiTim, utakmica.protivnickiTim) &&
                 Objects.equals(datum, utakmica.datum) &&
                 Objects.equals(rezultat, utakmica.rezultat) &&
                 Objects.equals(zaduzenja, utakmica.zaduzenja) &&
@@ -79,13 +88,14 @@ public class Utakmica {
 
     @Override
     public int hashCode() {
-        return Objects.hash(protivnickiTim, datum, rezultat, zaduzenja, postava);
+        return Objects.hash(id, protivnickiTim, datum, rezultat, zaduzenja, postava);
     }
 
     @Override
     public String toString() {
         return "Utakmica{" +
-                "protivnickiTim='" + protivnickiTim + '\'' +
+                "id=" + id +
+                ", protivnickiTim='" + protivnickiTim + '\'' +
                 ", datum=" + datum +
                 ", rezultat='" + rezultat + '\'' +
                 ", zaduzenja=" + zaduzenja +

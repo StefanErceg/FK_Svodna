@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Osoba {
-
+    protected int id;
     protected String ime;
     protected String prezime;
     protected String brojTelefona;
@@ -16,11 +16,13 @@ public class Osoba {
     protected List<Kazna> kazne;
     protected List<Oprema> zaduzenaOprema;
 
+
     public Osoba() {
         super();
     }
 
-    public Osoba(String ime, String prezime, String brojTelefona, String email, String adresa, String jmb, String brojLicence, List<LjekarskiPregled> ljekarskiPregledi, List<Kazna> kazne, List<Oprema> zaduzenaOprema) {
+    public Osoba(int id, String ime, String prezime, String brojTelefona, String email, String adresa, String jmb, String brojLicence, List<LjekarskiPregled> ljekarskiPregledi, List<Kazna> kazne, List<Oprema> zaduzenaOprema) {
+        this.id = id;
         this.ime = ime;
         this.prezime = prezime;
         this.brojTelefona = brojTelefona;
@@ -31,6 +33,14 @@ public class Osoba {
         this.ljekarskiPregledi = ljekarskiPregledi;
         this.kazne = kazne;
         this.zaduzenaOprema = zaduzenaOprema;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getIme() {
@@ -118,7 +128,8 @@ public class Osoba {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Osoba osoba = (Osoba) o;
-        return Objects.equals(ime, osoba.ime) &&
+        return id == osoba.id &&
+                Objects.equals(ime, osoba.ime) &&
                 Objects.equals(prezime, osoba.prezime) &&
                 Objects.equals(brojTelefona, osoba.brojTelefona) &&
                 Objects.equals(email, osoba.email) &&
@@ -130,15 +141,17 @@ public class Osoba {
                 Objects.equals(zaduzenaOprema, osoba.zaduzenaOprema);
     }
 
+    
     @Override
     public int hashCode() {
-        return Objects.hash(ime, prezime, brojTelefona, email, adresa, jmb, brojLicence, ljekarskiPregledi, kazne, zaduzenaOprema);
+        return Objects.hash(id, ime, prezime, brojTelefona, email, adresa, jmb, brojLicence, ljekarskiPregledi, kazne, zaduzenaOprema);
     }
 
     @Override
     public String toString() {
         return "Osoba{" +
-                "ime='" + ime + '\'' +
+                "id=" + id +
+                ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +
                 ", brojTelefona='" + brojTelefona + '\'' +
                 ", email='" + email + '\'' +

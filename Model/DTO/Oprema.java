@@ -3,7 +3,7 @@ package Model.DTO;
 import java.util.Objects;
 
 public class Oprema {
-
+    protected int id;
     protected String tipOpreme;
     protected Integer sifraOpreme;
     protected Integer brojDresa;
@@ -12,10 +12,19 @@ public class Oprema {
         super();
     }
 
-    public Oprema(String tipOpreme, Integer sifraOpreme, Integer brojDresa) {
+    public Oprema(int id, String tipOpreme, Integer sifraOpreme, Integer brojDresa) {
+        this.id = id;
         this.tipOpreme = tipOpreme;
         this.sifraOpreme = sifraOpreme;
         this.brojDresa = brojDresa;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTipOpreme() {
@@ -47,20 +56,22 @@ public class Oprema {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Oprema oprema = (Oprema) o;
-        return Objects.equals(tipOpreme, oprema.tipOpreme) &&
+        return id == oprema.id &&
+                Objects.equals(tipOpreme, oprema.tipOpreme) &&
                 Objects.equals(sifraOpreme, oprema.sifraOpreme) &&
                 Objects.equals(brojDresa, oprema.brojDresa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tipOpreme, sifraOpreme, brojDresa);
+        return Objects.hash(id, tipOpreme, sifraOpreme, brojDresa);
     }
 
     @Override
     public String toString() {
         return "Oprema{" +
-                "tipOpreme='" + tipOpreme + '\'' +
+                "id=" + id +
+                ", tipOpreme='" + tipOpreme + '\'' +
                 ", sifraOpreme=" + sifraOpreme +
                 ", brojDresa=" + brojDresa +
                 '}';
