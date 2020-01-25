@@ -225,8 +225,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FKSvodna`.`Utakmica` (
   `Id` INT NOT NULL AUTO_INCREMENT,
-  `Datum` DATETIME NOT NULL,
-  `VrijemePocetka` TIME NOT NULL,
+  `DatumIVrijeme` DATETIME NOT NULL,
+  `ProtivnickiTim` VARCHAR(50) NOT NULL,
   `Rezultat` VARCHAR(15) NULL,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
@@ -238,7 +238,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `FKSvodna`.`Zaduzenje` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Opis` VARCHAR(100) NOT NULL,
-  `odradjeno` TINYINT NOT NULL,
+  `Odradjeno` TINYINT NOT NULL,
   `UtakmicaId` INT NOT NULL,
   PRIMARY KEY (`Id`, `UtakmicaId`),
   INDEX `8_idx` (`UtakmicaId` ASC) VISIBLE,
