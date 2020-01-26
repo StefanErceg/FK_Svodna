@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`KorisnickiNalog` (
   `KorisnickoIme` VARCHAR(45) NOT NULL,
   `Lozinka` VARCHAR(255) NOT NULL,
   `Admin` TINYINT NOT NULL,
+  `Obrisan` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
@@ -38,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`Rukovodilac` (
   `BrojTelefona` VARCHAR(45) NOT NULL,
   `Email` VARCHAR(100) NOT NULL,
   `Pozicija` VARCHAR(50) NOT NULL,
+  `Obrisan` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
@@ -53,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`Sponzor` (
   `BrojTelefona` VARCHAR(45) NOT NULL,
   `Vrsta` VARCHAR(45) NOT NULL,
   `JmbJib` VARCHAR(13) NOT NULL,
+  `Obrisan` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
@@ -84,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`KontaktOsoba` (
   `Ime` VARCHAR(45) NOT NULL,
   `Prezime` VARCHAR(45) NOT NULL,
   `BrojTelefona` VARCHAR(45) NOT NULL,
+  `Obrisana` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
@@ -122,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`Osoba` (
   `Email` VARCHAR(45) NULL,
   `Adresa` VARCHAR(100) NOT NULL,
   `BrojLicence` VARCHAR(45) NULL,
+  `Obrisana` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
@@ -171,9 +176,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `FKSvodna`.`Oprema` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `OsobaId` INT NULL,
-  `TipOpreme` VARCHAR(45) NOT NULL,
-  `BrojDresa` VARCHAR(45) NULL,
-  `SifraOpreme` VARCHAR(45) NOT NULL,
+  `Tip` VARCHAR(45) NOT NULL,
+  `BrojDresa` INT NULL,
+  `Sifra` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Id`),
   INDEX `5_idx` (`OsobaId` ASC) VISIBLE,
   CONSTRAINT `5`
@@ -190,6 +195,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `FKSvodna`.`Tim` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Naziv` VARCHAR(45) NOT NULL,
+  `Obrisan` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 
@@ -240,6 +246,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`Zaduzenje` (
   `Opis` VARCHAR(100) NOT NULL,
   `Odradjeno` TINYINT NOT NULL,
   `UtakmicaId` INT NOT NULL,
+  `Obrisano` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`, `UtakmicaId`),
   INDEX `8_idx` (`UtakmicaId` ASC) VISIBLE,
   CONSTRAINT `8`
