@@ -2,17 +2,17 @@ package model.DTO;
 
 import java.util.Objects;
 
-public class Tim {
+public class Team {
     protected int id;
-    protected String naziv;
+    protected String name;
 
-    public Tim() {
+    public Team() {
         super();
     }
 
-    public Tim(int id, String naziv) {
+    public Team(int id, String name) {
         this.id = id;
-        this.naziv = naziv;
+        this.name = name;
     }
 
     public int getId() {
@@ -23,33 +23,32 @@ public class Tim {
         this.id = id;
     }
 
-    public String getNaziv() {
-        return naziv;
+    public String getName() {
+        return name;
     }
 
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tim tim = (Tim) o;
-        return id == tim.id &&
-                Objects.equals(naziv, tim.naziv);
+        Team team = (Team) o;
+        return id == team.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, naziv);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
-        return "Tim{" +
+        return "Team{" +
                 "id=" + id +
-                ", naziv='" + naziv + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
