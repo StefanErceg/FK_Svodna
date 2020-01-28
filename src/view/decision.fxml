@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" spacing="10.0">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="70.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/soccer.png" />
+               </image>
+            </ImageView>
+            <Label text="FK Svodna" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Italic" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Region prefHeight="100.0" prefWidth="200.0" />
+      <Label text="Dummy pitanje za koje ocekujemo odgovor" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Region prefHeight="80.0" prefWidth="200.0" />
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #009930;" text="Da" textAlignment="JUSTIFY">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button minWidth="-Infinity" mnemonicParsing="false" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #990a00;" text="Ne">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
