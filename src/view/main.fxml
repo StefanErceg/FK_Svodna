@@ -7,11 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <fx:include source="players.fxml" />
-   </center>
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" spacing="12.0" BorderPane.alignment="CENTER">
          <children>
@@ -173,7 +169,10 @@
          </padding>
       </HBox>
    </top>
+   <center>
+      <fx:include source="sponsors.fxml" />
+   </center>
    <right>
-      <fx:include source="players_sidebar.fxml" />
+      <fx:include source="sponsors_sidebar.fxml" />
    </right>
 </BorderPane>
