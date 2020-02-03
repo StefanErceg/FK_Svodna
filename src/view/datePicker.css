@@ -1,0 +1,8 @@
+.date-picker .text-field {
+    -fx-control-inner-background:  #01323d;
+}
+
+.date-picker-popup {
+    -fx-control-inner-background:  #01323d;
+    -fx-background-color: #01323d;
+}
