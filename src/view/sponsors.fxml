@@ -20,7 +20,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <GridPane layoutX="60.0" layoutY="140.0" maxWidth="800.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="140.0">
+      <GridPane layoutX="60.0" layoutY="140.0" maxWidth="800.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="200.0">
          <children>
             <TableView layoutX="60.0" layoutY="100.0" maxHeight="1.7976931348623157E308" maxWidth="700.0" prefWidth="600.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@tableView.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="140.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <columnResizePolicy>
@@ -41,5 +41,19 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="320.0" spacing="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="140.0">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/search.png" />
+               </image>
+            </ImageView>
+            <TextField prefWidth="300.0" promptText="Unesite ime za pretragu" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
