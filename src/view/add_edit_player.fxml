@@ -37,9 +37,10 @@
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
                <children>
                   <Label text="Ime" textFill="WHITE" GridPane.halignment="LEFT">
@@ -159,6 +160,15 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
+                  <Label text="Tim" textFill="WHITE" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <ComboBox prefWidth="150.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                </children>
             </GridPane>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">
