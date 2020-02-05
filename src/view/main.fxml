@@ -158,7 +158,10 @@
          </padding>
       </HBox>
    </top>
+   <right>
+      <fx:include source="players_sidebar.fxml" />
+   </right>
    <center>
-      <fx:include source="executives.fxml" />
+      <fx:include source="players.fxml" />
    </center>
 </BorderPane>
