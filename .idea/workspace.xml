@@ -2,36 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FK_Svodna.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/class diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/class diagram.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/use case.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/use case.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Karton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Kazna.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/KontaktOsoba.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/KorisnickiNalog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/LjekarskiPregled.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Oprema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Osoba.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/OsobaTim.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Rukovodilac.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Sponzor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Tim.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Uplata.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Utakmica.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DTO/Zaduzenje.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/LogInController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/MatchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/SponsorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/TeamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dokumentacija/class diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/dokumentacija/class diagram.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TODO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/accounts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_accounts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_executives.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_executives.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_player.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_player.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/comboBox.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/comboBox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/datePicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/datePicker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/equipment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/equipment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/executives.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/executives.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/fines.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/fines.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/matches.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/matches.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/menuButton.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/menuButton.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/payments.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/players.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/players_sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players_sidebar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/radioButton.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/radioButton.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/sponsors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/sponsors_sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/sponsors_sidebar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/teams.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/teams.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaFXApplication" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1XDBULIInA6f9swseeqUL0S6tlm" />
   <component name="ProjectViewState">
@@ -41,6 +66,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579971428395" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -48,6 +74,23 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Milica\Documents\GitHub\FK_Svodna\src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="FK_Svodna" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SQLPlugin.ProjectConfiguration">
+    <queries />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -79,10 +122,61 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="811" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570836202" />
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1580570804368">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1581262020504">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581262020504" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1581262020503">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581262020503" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1581262020503">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581262020503" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1581262020503">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581262020503" />
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1581255493905">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581255493905" />
+    <state width="1323" height="227" key="GridCell.Tab.1.center" timestamp="1581255493904">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1581255493904" />
+    <state width="1323" height="227" key="GridCell.Tab.1.left" timestamp="1581255493903">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1581255493903" />
+    <state width="1323" height="227" key="GridCell.Tab.1.right" timestamp="1581255493905">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1581255493905" />
+    <state x="470" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1581261268157">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="470" y="253" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1581261268157" />
     <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570804368" />
+    <state width="451" height="286" key="javadoc.popup.new" timestamp="1581198559466">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="451" height="286" key="javadoc.popup.new/0.0.1366.738@0.0.1366.738" timestamp="1581198559466" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/controllers/MainController.java</url>
+          <line>77</line>
+          <properties class="controllers.MainController" method="loadTeamsUi">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>
