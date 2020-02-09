@@ -81,6 +81,39 @@ public class MySQLMedicalExaminationDAO implements MedicalExaminationDAO {
     }
 
     @Override
+    public List<MedicalExamination> getAlerts() {
+        ArrayList<MedicalExamination> medicalExaminations = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select r.Id, DatumPregleda, DatumIsteka, OsobaId, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+                "from razlikadatuma r " +
+                "inner join osoba o on o.Id=r.OsobaId " +
+                "where o.Obrisana=0 and r.Razlika<=14";
+
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                medicalExaminations.add(new MedicalExamination(rs.getInt("Id"), rs.getTimestamp("DatumPregleda"), rs.getTimestamp("DatumIsteka"),
+                        new Person(rs.getInt("OsobaId"), rs.getString("Ime"), rs.getString("Prezime"),
+                                rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
+                                rs.getString("Adresa"), rs.getString("BrojLicence"))));
+            }
+
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+        return medicalExaminations;
+    }
+
+    @Override
     public boolean insert(MedicalExamination medicalExamination) {
         boolean retVal = false;
 

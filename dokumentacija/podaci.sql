@@ -39,9 +39,9 @@ insert into osobatim values (2, 1, '2019-02-18 10:30:02', null, 'igrac', 'trener
 insert into osobatim values (3, 2, '2019-05-17 12:15:15', null, 'igrac', 'lijevo krilo');
 insert into osobatim values (2, 2, '2019-06-25 14:23:02', null, 'igrac', 'golman');
 
-insert into ljekarskipregled values (null, '2019-11-08 13:11:03', '2019-05-08 13:11:03', 1);
-insert into ljekarskipregled values (null, '2019-10-15 09:20:03', '2019-04-15 09:20:03', 2);
-insert into ljekarskipregled values (null, '2019-08-08 10:15:08', '2019-02-08 10:15:08', 3);
+insert into ljekarskipregled values (null, '2019-11-08 13:11:03', '2020-05-08 13:11:03', 1);
+insert into ljekarskipregled values (null, '2019-10-15 09:20:03', '2020-04-15 09:20:03', 2);
+insert into ljekarskipregled values (null, '2019-08-08 10:15:08', '2020-02-08 10:15:08', 3);
 
 insert into oprema values (null, 1, 'dres', '1', 'A52871');
 insert into oprema values (null, 2, 'dres', '12', 'A74120');
@@ -69,6 +69,10 @@ insert into zaduzenje values (null, 'sitne pare za rad', 1, 1, 0);
 insert into zaduzenje values (null, 'ispomoc za organizaciju', 1, 1, 0);
 insert into zaduzenje values (null, 'voda za igrace', 1, 1, 0);
 insert into zaduzenje values (null, 'provjera terena', 1, 1, 0);
+
+drop view if exists razlikadatuma;
+create view razlikadatuma as
+select ljekarskipregled.*, TIMESTAMPDIFF(DAY, DatumPregleda, DatumIsteka) as Razlika from ljekarskipregled;
 
 
 

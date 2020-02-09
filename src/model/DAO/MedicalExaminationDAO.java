@@ -8,6 +8,7 @@ public interface MedicalExaminationDAO {
 
     List<MedicalExamination> medicalExaminations();
     MedicalExamination getMedicalExaminationById(int id);
+    List<MedicalExamination> getAlerts();
     boolean insert(MedicalExamination medicalExamination);
     boolean update(MedicalExamination medicalExamination);
 }

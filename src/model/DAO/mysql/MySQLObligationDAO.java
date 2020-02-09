@@ -55,7 +55,7 @@ public class MySQLObligationDAO implements ObligationDAO {
         String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat " +
                 "from zaduzenje z " +
                 "inner join utakmica u on u.Id=z.UtakmicaId " +
-                "where z.Obrisano=0 and Id=?";
+                "where z.Obrisano=0 and z.Id=?";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -76,6 +76,39 @@ public class MySQLObligationDAO implements ObligationDAO {
         }
 
         return obligation;
+    }
+
+    @Override
+    public List<Obligation> getObligationsForMatch(int matchId) {
+        ArrayList<Obligation> obligations = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat " +
+                "from zaduzenje z " +
+                "inner join utakmica u on u.Id=z.UtakmicaId " +
+                "where z.Obrisano=0 and z.UtakmicaId=?";
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, matchId);
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                obligations.add(new Obligation(rs.getInt("Id"), rs.getString("Opis"),
+                        rs.getBoolean("Odradjeno"), new Match(rs.getInt("uId"),
+                        rs.getTimestamp("DatumIVrijeme"), rs.getString("ProtivnickiTim"),
+                        rs.getString("Rezultat"))));
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+
+        return obligations;
     }
 
     @Override
