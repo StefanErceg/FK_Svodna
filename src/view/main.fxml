@@ -18,9 +18,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="650.0" maxWidth="1.7976931348623157E308" prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<BorderPane maxWidth="1.7976931348623157E308" prefWidth="1100.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <left>
-      <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" minWidth="-Infinity" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
             <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadHomeUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Početna">
                <font>
@@ -101,7 +101,7 @@
       </VBox>
    </left>
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
