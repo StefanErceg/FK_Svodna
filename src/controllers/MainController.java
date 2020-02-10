@@ -40,6 +40,7 @@ public class MainController {
     }
     @FXML
     void loadAdministrationUI(ActionEvent event) {
+
         homeUI.setVisible(false);
         matchesUI.setVisible(false);
         teamsUI.setVisible(false);
