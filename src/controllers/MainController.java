@@ -29,6 +29,10 @@ public class MainController {
     private AnchorPane sponsorsUI;
     @FXML
     private SponsorController sponsorsUIController;
+    @FXML
+    private AnchorPane executivesUI;
+    @FXML
+    private ExecutivesController executivesController;
 
     @FXML
     void loadHomeUI(ActionEvent event){
@@ -40,7 +44,7 @@ public class MainController {
     }
     @FXML
     void loadAdministrationUI(ActionEvent event) {
-
+        executivesUI.setVisible(true);
         homeUI.setVisible(false);
         matchesUI.setVisible(false);
         teamsUI.setVisible(false);

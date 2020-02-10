@@ -46,7 +46,7 @@ public class ConnectionPool {
 
     private void readConfiguration() {
         ResourceBundle bundle = PropertyResourceBundle
-                .getBundle("data.dao.mysql.ConnectionPool");
+                .getBundle("model.DAO.mysql.ConnectionPool");
         jdbcURL = bundle.getString("jdbcURL");
         username = bundle.getString("username");
         password = bundle.getString("password");

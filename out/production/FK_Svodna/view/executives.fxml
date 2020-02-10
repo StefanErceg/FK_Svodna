@@ -7,12 +7,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExecutivesController">
    <children>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj">
+            <Button mnemonicParsing="false" onAction="#addExecutive" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -24,7 +23,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni">
+            <Button mnemonicParsing="false" onAction="#editExecutive" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -36,7 +35,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši">
+            <Button mnemonicParsing="false" onAction="#deleteExecutive" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,7 +56,7 @@
                   <Image url="@icons/search.png" />
                </image>
             </ImageView>
-            <TextField prefWidth="300.0" promptText="Unesite ime za pretragu" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+            <TextField fx:id="searchTextField" prefWidth="300.0" promptText="Unesite ime za pretragu" style="-fx-background-color: #01323d; -fx-text-fill: white;">
                <font>
                   <Font size="14.0" />
                </font>
@@ -72,7 +71,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TableView maxHeight="600.0" maxWidth="700.0" style="-fx-background-color: #01323d;" stylesheets="@tableView.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0">
+            <TableView fx:id="executivesTableView" maxHeight="600.0" maxWidth="700.0" style="-fx-background-color: #01323d;" stylesheets="@tableView.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Ime" />
                 <TableColumn prefWidth="75.0" text="Prezime" />
