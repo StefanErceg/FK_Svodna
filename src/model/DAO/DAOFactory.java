@@ -1,5 +1,7 @@
 package model.DAO;
 
+import model.DAO.mysql.MySQLDAOFactory;
+
 public abstract class DAOFactory {
 
     public abstract ContactPersonDAO getContactPersonDAO();
@@ -17,5 +19,8 @@ public abstract class DAOFactory {
     public abstract SponsorDAO getSponsorDAO();
     public abstract TeamDAO getTeamDAO();
     public abstract UserAccountDAO getUserAccountDAO();
+    public static DAOFactory getDAOFactory() {
+        return new MySQLDAOFactory();
+    }
 
 }
