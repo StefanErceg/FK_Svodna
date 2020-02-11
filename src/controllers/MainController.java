@@ -33,6 +33,10 @@ public class MainController {
     private AnchorPane executivesUI;
     @FXML
     private ExecutivesController executivesController;
+    @FXML
+    private AnchorPane sponsorsSidebarUI;
+    @FXML
+    private SponsorSidebarController sponsorsSidebarUIController;
 
     @FXML
     void loadHomeUI(ActionEvent event){
@@ -41,6 +45,8 @@ public class MainController {
         teamsUI.setVisible(false);
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
+        sponsorsSidebarUI.setVisible(false);
+
     }
     @FXML
     void loadAdministrationUI(ActionEvent event) {
@@ -50,6 +56,8 @@ public class MainController {
         teamsUI.setVisible(false);
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
+        sponsorsSidebarUI.setVisible(false);
+
     }
 
     @FXML
@@ -59,6 +67,8 @@ public class MainController {
         homeUI.setVisible(false);
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
+        sponsorsSidebarUI.setVisible(false);
+
     }
 
     @FXML
@@ -68,11 +78,14 @@ public class MainController {
         homeUI.setVisible(false);
         matchesUI.setVisible(false);
         sponsorsUI.setVisible(false);
+        sponsorsSidebarUI.setVisible(false);
+
     }
 
     @FXML
     void loadSponsorsUI(ActionEvent event) {
         sponsorsUI.setVisible(true);
+        sponsorsSidebarUI.setVisible(true);
         matchesUI.setVisible(false);
         teamsUI.setVisible(false);
         homeUI.setVisible(false);
@@ -86,6 +99,8 @@ public class MainController {
         matchesUI.setVisible(false);
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
+        sponsorsSidebarUI.setVisible(false);
+
     }
 
     @FXML
