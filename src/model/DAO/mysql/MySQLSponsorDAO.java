@@ -145,8 +145,8 @@ public class MySQLSponsorDAO implements SponsorDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "update sponzor set " +
-                "Obrisan=1, " +
-                "where Id=?";
+                "obrisan=1 " +
+                "where Id=?;";
 
         try {
             conn = ConnectionPool.getInstance().checkOut();ps = conn.prepareStatement(query);

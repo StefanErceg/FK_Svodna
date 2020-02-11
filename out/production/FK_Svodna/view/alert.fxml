@@ -7,8 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlertController">
    <children>
       <VBox alignment="TOP_CENTER" spacing="10.0">
          <children>
@@ -25,13 +24,13 @@
          </children>
       </VBox>
       <Region prefHeight="50.0" prefWidth="200.0" VBox.vgrow="NEVER" />
-      <Label text="Dummy obavjestenje" textFill="WHITE">
+      <Label fx:id="alertLabel" text="Dummy obavjestenje" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <Region prefHeight="50.0" prefWidth="200.0" VBox.vgrow="NEVER" />
-      <Button mnemonicParsing="false" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="OK">
+      <Button mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="OK">
          <font>
             <Font size="16.0" />
          </font>
