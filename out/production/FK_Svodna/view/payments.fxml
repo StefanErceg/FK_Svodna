@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PaymentController">
+<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaymentController">
    <children>
       <VBox alignment="TOP_CENTER" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
          <children>
@@ -32,7 +32,7 @@
       </VBox>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="380.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="130.0">
          <children>
-            <Label fx:id="sponsorlabel" text="Sponzor: Nestro Petrol" textFill="WHITE">
+            <Label fx:id="sponsorNameLabel" text="Sponzor: Nestro Petrol" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -48,7 +48,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="paymentDate" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" />
+                              <DatePicker fx:id="paymentDatePicker" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" />
                            </children>
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -61,7 +61,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="expirationDate" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" />
+                              <DatePicker fx:id="expirationDatePicker" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" />
                            </children>
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -74,7 +74,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="amount" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+                              <TextField fx:id="paymentAmountField" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
                                  <VBox.margin>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                  </VBox.margin>
@@ -84,7 +84,7 @@
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
                         </VBox>
-                        <Button mnemonicParsing="false" onAction="#addPayment" style="-fx-background-color: #01323d;" text="Dodaj uplatu" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#addPayment" style="-fx-background-color: #01323d;" text="Dodaj" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -116,7 +116,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </TableView>
-            <Button fx:id="deletePayment" mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Obriši uplatu" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#deletePayment" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Obriši" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -137,7 +137,7 @@
          <children>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Button fx:id="close" mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Zatvori" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+                  <Button mnemonicParsing="false" onAction="#close" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Zatvori" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
                      <font>
                         <Font size="14.0" />
                      </font>
