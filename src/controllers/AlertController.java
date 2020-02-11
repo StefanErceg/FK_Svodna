@@ -23,4 +23,8 @@ public class AlertController {
     public void setText(String str){
         alertLabel.setText(str);
     }
+
+    public void showAlert(){
+        ((Stage)alertLabel.getScene().getWindow()).show();
+    }
 }
