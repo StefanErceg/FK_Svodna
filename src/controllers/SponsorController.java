@@ -2,6 +2,9 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.Event;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.DAO.DAOFactory;
@@ -25,18 +28,20 @@ import java.util.List;
 public class SponsorController {
 
     @FXML
-    private TextField sponsorFirstNameField;
+    private TextField sponsorNameField;
 
-    @FXML
-    private TextField sponsorLastNameField;
 
     @FXML
     private TableView<Sponsor> sponsorTable;
 
     private ObservableList<Sponsor> sponsorList;
 
-    AddEditSponsorController addEditSponsorController;
-    Stage addEditSponsorStage;
+
+
+    @FXML
+    private SponsorSidebarController sponsorSidebarController;
+    private AddEditSponsorController addEditSponsorController;
+    private Stage addEditSponsorStage;
 
     @FXML
     void addSponsor(ActionEvent event) throws Exception {
@@ -59,7 +64,7 @@ public class SponsorController {
             FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
             VBox alert=loader.load();
             AlertController alertController=loader.getController();
-            alertController.setText("Eureka");
+            alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
             Stage alertStage=new Stage();
             alertStage.setScene(new Scene(alert));
             alertStage.show();
@@ -69,8 +74,22 @@ public class SponsorController {
     }
 
     @FXML
-    void sponsorSearch(ActionEvent event) {
+    void sponsorSearch(Event event) {
+       ObservableList<Sponsor> filtered=sponsorList.filtered( e->e.getName().toLowerCase().matches(".*"+sponsorNameField.getText().toLowerCase()+".*"));
+       sponsorTable.setItems(filtered);
+       if(filtered.size()==1){
+           sponsorSidebarController.setSponsor(filtered.get(0));
+       }
+    }
 
+    @FXML
+    void selectionChange(MouseEvent event) {
+        if(sponsorTable.getSelectionModel().getSelectedItem()!=null){
+            sponsorSidebarController.setSponsor(sponsorTable.getSelectionModel().getSelectedItem());
+        }
+    }
+    public void setSponsorSidebarController(SponsorSidebarController sponsorSidebarController) {
+        this.sponsorSidebarController = sponsorSidebarController;
     }
 
     @FXML

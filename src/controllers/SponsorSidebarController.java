@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.DTO.Sponsor;
 
 public class SponsorSidebarController {
 
@@ -28,6 +29,8 @@ public class SponsorSidebarController {
 
     @FXML
     private Label jibLabel;
+
+    Sponsor sponsor;
 
     @FXML
     void showContactPersons(ActionEvent event) throws Exception {
@@ -52,4 +55,17 @@ public class SponsorSidebarController {
 
 
     }
+
+    public void setSponsor(Sponsor sponsor) {
+        this.sponsor = sponsor;
+        nameLabel.setText(sponsor.getName());
+        adressLabel.setText(sponsor.getAddress());
+        emailLabel.setText(sponsor.getEmail());
+        jibLabel.setText(sponsor.getJmbjib());
+        phoneNumberLabel.setText(sponsor.getPhoneNumber());
+        typeLabel.setText(sponsor.getKind());
+    }
+//    public Sponsor getSponsor(){
+//
+//    }
 }

@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AlertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AlertController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/SponsorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLSponsorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLSponsorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/equipment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/equipment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/sponsors.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,26 +108,30 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="488" y="53" key="#com.intellij.ide.util.MemberChooser" timestamp="1581434254062">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="488" y="53" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1581434254062" />
     <state x="811" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1580570836202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="811" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570836202" />
-    <state width="1323" height="118" key="GridCell.Tab.0.bottom" timestamp="1581419444860">
+    <state width="1323" height="119" key="GridCell.Tab.0.bottom" timestamp="1581436265113">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="118" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581419444860" />
-    <state width="1323" height="118" key="GridCell.Tab.0.center" timestamp="1581419444859">
+    <state width="1323" height="119" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581436265113" />
+    <state width="1323" height="119" key="GridCell.Tab.0.center" timestamp="1581436265111">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="118" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581419444859" />
-    <state width="1323" height="118" key="GridCell.Tab.0.left" timestamp="1581419444858">
+    <state width="1323" height="119" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581436265111" />
+    <state width="1323" height="119" key="GridCell.Tab.0.left" timestamp="1581436265110">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="118" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581419444858" />
-    <state width="1323" height="118" key="GridCell.Tab.0.right" timestamp="1581419444859">
+    <state width="1323" height="119" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581436265110" />
+    <state width="1323" height="119" key="GridCell.Tab.0.right" timestamp="1581436265111">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="118" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581419444859" />
+    <state width="1323" height="119" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581436265111" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1581255493905">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -144,10 +153,10 @@
     </state>
     <state x="470" y="253" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1581409011454" />
     <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570804368" />
-    <state width="447" height="260" key="javadoc.popup.new" timestamp="1581418432605">
+    <state width="429" height="260" key="javadoc.popup.new" timestamp="1581435445812">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="447" height="260" key="javadoc.popup.new/0.0.1366.738@0.0.1366.738" timestamp="1581418432605" />
+    <state width="429" height="260" key="javadoc.popup.new/0.0.1366.738@0.0.1366.738" timestamp="1581435445812" />
   </component>
   <component name="masterDetails">
     <states>

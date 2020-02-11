@@ -105,6 +105,6 @@ public class MainController {
 
     @FXML
     void initialize() {
-
+        sponsorsUIController.setSponsorSidebarController(sponsorsSidebarUIController);
     }
 }
