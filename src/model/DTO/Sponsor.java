@@ -14,7 +14,15 @@ public class Sponsor {
     public Sponsor() {
         super();
     }
-
+    public Sponsor(String name, String address, String email, String phoneNumber, String kind, String jmbJib) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.kind = kind;
+        this.jmbJib = jmbJib;
+    }
     public Sponsor(int id, String name, String address, String email, String phoneNumber, String kind, String jmbJib) {
         this.id = id;
         this.name = name;

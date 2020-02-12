@@ -33,12 +33,17 @@ public class SponsorSidebarController {
     Sponsor sponsor;
 
     @FXML
-    void showContactPersons(ActionEvent event) throws Exception {
-        Parent root=FXMLLoader.load(this.getClass().getResource("../view/contact_persons.fxml"));
+    void showContactPersons(ActionEvent event){
+        try{
+        FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/contact_persons.fxml"));
+        Parent root=loader.load();
+        ContactPersonController contactPersonController=loader.getController();
+        contactPersonController.setSponsor(sponsor);
         Stage secondaryStage=new Stage();
         secondaryStage.initModality(Modality.APPLICATION_MODAL);
         secondaryStage.setScene(new Scene(root));
         secondaryStage.show();
+        }catch (Exception e){e.printStackTrace();}
     }
 
     @FXML
@@ -65,7 +70,5 @@ public class SponsorSidebarController {
         phoneNumberLabel.setText(sponsor.getPhoneNumber());
         typeLabel.setText(sponsor.getKind());
     }
-//    public Sponsor getSponsor(){
-//
-//    }
+
 }

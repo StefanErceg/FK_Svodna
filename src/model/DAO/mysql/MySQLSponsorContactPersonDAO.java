@@ -25,7 +25,7 @@ public class MySQLSponsorContactPersonDAO implements SponsorContactPersonDAO {
                        "from sponzorkontaktosoba sko " +
                        "inner join sponzor s on s.Id=sko.SponzorId " +
                        "inner join kontaktosoba ko on ko.Id=sko.KontaktOsobaId " +
-                       "where s.Obrisan=0 and ko.Obrisana=0";
+                       "where s.Obrisan=0 and ko.Obrisana=0;";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
