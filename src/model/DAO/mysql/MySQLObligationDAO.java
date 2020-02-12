@@ -62,7 +62,7 @@ public class MySQLObligationDAO implements ObligationDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
 
-            while(rs.next()) {
+            if(rs.next()) {
                 obligation = new Obligation(rs.getInt("Id"), rs.getString("Opis"),
                         rs.getBoolean("Odradjeno"), new Match(rs.getInt("uId"),
                         rs.getTimestamp("DatumIVrijeme"), rs.getString("ProtivnickiTim"),
@@ -117,7 +117,7 @@ public class MySQLObligationDAO implements ObligationDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into zaduzenje(Opis, Odradjeno, UtakmicaId, Obrisano) values (?, ?, ?, ?)";
+        String query = "insert into zaduzenje (Opis, Odradjeno, UtakmicaId, Obrisano) values (?, ?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);

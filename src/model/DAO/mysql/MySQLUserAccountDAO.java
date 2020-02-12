@@ -46,13 +46,14 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select * from korisnickinalog where Obrisan=0";
+        String query = "select * from korisnickinalog where Obrisan=0 and Id=?";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
-            while(rs.next()) {
+            if(rs.next()) {
                 userAccount = new UserAccount(rs.getInt("Id"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getNString("KorisnickoIme"), rs.getString("Lozinka"),
                         rs.getBoolean("Admin"));

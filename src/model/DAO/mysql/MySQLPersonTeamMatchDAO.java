@@ -19,13 +19,13 @@ public class MySQLPersonTeamMatchDAO implements PersonTeamMatchDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select OsobaId, TimId, UtakmicaId, Naziv, Od, Do, Uloga, PozicijaIgraca, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, " +
+        String query = "select otu.OsobaId, otu.TimId, otu.UtakmicaId, Naziv, Od, Do, Uloga, PozicijaIgraca, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, " +
                        "DatumIVrijeme, ProtivnickiTim, Rezultat " +
                        "from osobatimutakmica otu " +
                        "inner join osobatim ot on ot.OsobaId=otu.OsobaId and ot.TimId=otu.TimId " +
                        "inner join osoba o on o.Id=ot.OsobaId " +
                        "inner join tim t on t.Id=ot.TimId " +
-                       "inner join utakmica u on u.Id=ot.UtakmicaId " +
+                       "inner join utakmica u on u.Id=otu.UtakmicaId " +
                        "where t.Obrisan=0 and o.Obrisana=0";
         try {
             conn = ConnectionPool.getInstance().checkOut();
@@ -64,8 +64,8 @@ public class MySQLPersonTeamMatchDAO implements PersonTeamMatchDAO {
                 "inner join osobatim ot on ot.OsobaId=otu.OsobaId and ot.TimId=otu.TimId " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
                 "inner join tim t on t.Id=ot.TimId " +
-                "inner join utakmica u on u.Id=ot.UtakmicaId " +
-                "where t.Obrisan=0 and o.Obrisana=0 and otu.OsobaId=? and otu.TimId=? and otu.matchId=?";
+                "inner join utakmica u on u.Id=otu.UtakmicaId " +
+                "where t.Obrisan=0 and o.Obrisana=0 and otu.OsobaId=? and otu.TimId=? and otu.UtakmicaId=?";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -99,12 +99,13 @@ public class MySQLPersonTeamMatchDAO implements PersonTeamMatchDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into osobatimutakmica values (?, ?)";
+        String query = "insert into osobatimutakmica values (?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
             ps.setInt(1, personTeamMatch.getPersonTeam().getPerson().getId());
-            ps.setInt(2, personTeamMatch.getMatch().getId());
+            ps.setInt(2, personTeamMatch.getPersonTeam().getTeam().getId());
+            ps.setInt(3, personTeamMatch.getMatch().getId());
 
             retVal = ps.executeUpdate() == 1;
         } catch(SQLException ex) {

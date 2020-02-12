@@ -21,7 +21,7 @@ public class MySQLPunishmentDAO implements PunishmentDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select k.Id, DatumKazne, NovcaniIznos, BrojMecevaSuspenzije, Opis, OsobaId, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, Karton " +
+        String query = "select k.Id, Datum, NovcaniIznos, BrojMecevaSuspenzije, Opis, OsobaId, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, Karton " +
                        "from kazna k " +
                        "inner join osoba o on o.Id=k.OsobaId " +
                        "where o.Obrisana=0";
@@ -31,7 +31,7 @@ public class MySQLPunishmentDAO implements PunishmentDAO {
             rs = ps.executeQuery();
 
             while(rs.next()) {
-                panishments.add(new Punishment(rs.getInt("Id"), rs.getTimestamp("DatumKazne"), rs.getDouble("Iznos"),
+                panishments.add(new Punishment(rs.getInt("Id"), rs.getTimestamp("Datum"), rs.getDouble("Iznos"),
                         rs.getInt("BrojMecevaSuspenzije"), rs.getString("Opis"), new Person(rs.getInt("OsobaId"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getString("BrojTelefona"),rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), Card.valueOf(rs.getString("Karton"))));
@@ -53,7 +53,7 @@ public class MySQLPunishmentDAO implements PunishmentDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select k.Id, DatumKazne, NovcaniIznos, BrojMecevaSuspenzije, Opis, OsobaId, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, Karton " +
+        String query = "select k.Id, Datum, NovcaniIznos, BrojMecevaSuspenzije, Opis, OsobaId, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, Karton " +
                 "from kazna k " +
                 "inner join osoba o on o.Id=k.OsobaId " +
                 "where o.Obrisana=0 and k.OsobaId=?";
@@ -64,7 +64,7 @@ public class MySQLPunishmentDAO implements PunishmentDAO {
             rs = ps.executeQuery();
 
             while(rs.next()) {
-                panishments.add(new Punishment(rs.getInt("Id"), rs.getTimestamp("DatumKazne"), rs.getDouble("Iznos"),
+                panishments.add(new Punishment(rs.getInt("Id"), rs.getTimestamp("Datum"), rs.getDouble("Iznos"),
                         rs.getInt("BrojMecevaSuspenzije"), rs.getString("Opis"), new Person(rs.getInt("OsobaId"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getString("BrojTelefona"),rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), Card.valueOf(rs.getString("Karton"))));
@@ -90,11 +90,11 @@ public class MySQLPunishmentDAO implements PunishmentDAO {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
             ps.setInt(1, panishment.getId());
-            ps.setInt(2, panishment.getPerson().getId());
-            ps.setTimestamp(3, panishment.getDate());
-            ps.setDouble(4, panishment.getMonetaryAmount());
-            ps.setInt(5, panishment.getSuspensionMatchesNumber());
-            ps.setString(6, panishment.getDescription());
+            ps.setTimestamp(2, panishment.getDate());
+            ps.setDouble(3, panishment.getMonetaryAmount());
+            ps.setInt(4, panishment.getSuspensionMatchesNumber());
+            ps.setString(5, panishment.getDescription());
+            ps.setInt(6, panishment.getPerson().getId());
             ps.setString(7, panishment.getCard().toString());
 
             retVal = ps.executeUpdate() == 1;
@@ -114,7 +114,7 @@ public class MySQLPunishmentDAO implements PunishmentDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "update kazna set " +
-                       "DatumKazne=?, " +
+                       "Datum=?, " +
                        "NovcaniIznos=?, " +
                        "BrojMecevaSuspenzije=?, " +
                        "Opis=?, " +
