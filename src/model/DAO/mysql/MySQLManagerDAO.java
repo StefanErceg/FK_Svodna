@@ -71,7 +71,7 @@ public class MySQLManagerDAO implements ManagerDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into rukovodilac(Ime, Prezime, BrojTelefona, Email, Pozicija) values (?, ?, ?, ?, ?)";
+        String query = "insert into rukovodilac(Ime, Prezime, BrojTelefona, Email, Pozicija, Obrisan) values (?, ?, ?, ?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -80,6 +80,7 @@ public class MySQLManagerDAO implements ManagerDAO {
             ps.setString(3, manager.getPhoneNumber());
             ps.setString(4, manager.getEmail());
             ps.setString(5, manager.getPosition());
+            ps.setInt(6,0);
 
             retVal = ps.executeUpdate() == 1;
 
