@@ -19,7 +19,7 @@ public class MySQLContactPersonDAO implements ContactPersonDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select * from kontaktosoba";
+        String query = "select * from kontaktosoba where Obrisana=0";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -47,11 +47,11 @@ public class MySQLContactPersonDAO implements ContactPersonDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select * from kontaktosoba as ko where ko.id=?";
+        String query = "select * from kontaktosoba where Obrisana=0 and Id=?";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
-            ps.setInt(1,id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
 
             if(rs.next()) {

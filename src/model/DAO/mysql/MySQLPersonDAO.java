@@ -56,7 +56,7 @@ public class MySQLPersonDAO implements PersonDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
 
-            while(rs.next()) {
+            if(rs.next()) {
                 person = new Person(rs.getInt("Id"), rs.getString("Ime"), rs.getString("Prezime"),
                         rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence"));
@@ -77,7 +77,7 @@ public class MySQLPersonDAO implements PersonDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into osoba(Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, Obrisana) values (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into osoba (Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, Obrisana) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = ConnectionPool.getInstance().checkOut();

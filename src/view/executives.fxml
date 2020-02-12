@@ -56,7 +56,7 @@
                   <Image url="@icons/search.png" />
                </image>
             </ImageView>
-            <TextField fx:id="searchTextField" prefWidth="300.0" promptText="Unesite ime za pretragu" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+            <TextField fx:id="searchTextField" onKeyTyped="#search" prefWidth="300.0" promptText="Unesite ime za pretragu" style="-fx-background-color: #01323d; -fx-text-fill: white;">
                <font>
                   <Font size="14.0" />
                </font>

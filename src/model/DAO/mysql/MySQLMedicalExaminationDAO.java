@@ -119,7 +119,7 @@ public class MySQLMedicalExaminationDAO implements MedicalExaminationDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into ljekarskipregled(DatumPregleda, DatumIsteka, OsobaId) values (?, ?, ?)";
+        String query = "insert into ljekarskipregled (DatumPregleda, DatumIsteka, OsobaId) values (?, ?, ?)";
 
         try {
             conn = ConnectionPool.getInstance().checkOut();

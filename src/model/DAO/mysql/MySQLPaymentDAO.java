@@ -54,7 +54,7 @@ public class MySQLPaymentDAO implements PaymentDAO {
         String query = "select u.Id, s.Id as sId, s.Ime, s.Adresa, s.BrojTelefona, s.Email, s.Vrsta, s.Jmbjib, u.Iznos, u.DatumUplate, u.DatumIsteka " +
                 "from uplata u " +
                 "inner join sponzor s on s.Id=u.SponzorId " +
-                "where s.Obrisan=0 and Id=? ";
+                "where s.Obrisan=0 and u.Id=? ";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -82,7 +82,7 @@ public class MySQLPaymentDAO implements PaymentDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into uplata(SponzorId, Iznos, DatumUplate, DatumIsteka) values (?, ?, ?, ?)";
+        String query = "insert into uplata (SponzorId, Iznos, DatumUplate, DatumIsteka) values (?, ?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);

@@ -82,7 +82,7 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into oprema(OsobaId, Tip, BrojDresa, Sifra) values (?, ?, ?, ?)";
+        String query = "insert into oprema (OsobaId, Tip, BrojDresa, Sifra) values (?, ?, ?, ?)";
 
         try {
             conn = ConnectionPool.getInstance().checkOut();

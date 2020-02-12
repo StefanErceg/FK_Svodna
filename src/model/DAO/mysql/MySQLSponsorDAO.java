@@ -77,7 +77,7 @@ public class MySQLSponsorDAO implements SponsorDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into sponzor(Ime, Adresa, Email, BrojTelefona, Vrsta, JmbJib, Obrisan) values (?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into sponzor (Ime, Adresa, Email, BrojTelefona, Vrsta, JmbJib, Obrisan) values (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = ConnectionPool.getInstance().checkOut();
@@ -145,11 +145,12 @@ public class MySQLSponsorDAO implements SponsorDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         String query = "update sponzor set " +
-                "obrisan=1 " +
+                "Obrisan=1 " +
                 "where Id=?;";
 
         try {
-            conn = ConnectionPool.getInstance().checkOut();ps = conn.prepareStatement(query);
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
             ps.setInt(1, sponsor.getId());
 
             retVal = ps.executeUpdate() == 1;

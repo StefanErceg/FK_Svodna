@@ -100,7 +100,7 @@ public class MySQLMatchDAO implements MatchDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into utakmica(DatumIVrijeme, ProtivnickiTim, Rezultat) values (?, ?, ?)";
+        String query = "insert into utakmica (DatumIVrijeme, ProtivnickiTim, Rezultat) values (?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);

@@ -154,7 +154,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `FKSvodna`.`Kazna` (
   `Id` INT NOT NULL AUTO_INCREMENT,
-  `DatumKazne` DATETIME NOT NULL,
+  `Datum` DATETIME NOT NULL,
   `NovcaniIznos` DECIMAL NULL,
   `BrojMecevaSuspenzije` INT NOT NULL,
   `Opis` VARCHAR(255) NULL,

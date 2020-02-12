@@ -69,7 +69,7 @@ public class MySQLTeamDAO implements TeamDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into tim(Naziv, Obrisan) values (?, ?)";
+        String query = "insert into tim (Naziv, Obrisan) values (?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
