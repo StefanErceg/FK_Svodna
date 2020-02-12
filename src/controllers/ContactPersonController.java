@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.DTO.ContactPerson;
 import model.DTO.Sponsor;
 import model.DTO.SponsorContactPerson;
@@ -49,16 +50,20 @@ public class ContactPersonController {
     }
     @FXML
     void initialize() {
-
+        contactTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
+        contactTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("surname"));
+        contactTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
     }
 
     public void setSponsor(Sponsor sponsor){
         this.sponsor=sponsor;
         List<SponsorContactPerson> sponsorContactPersonList= DAOFactory.getDAOFactory().getsponsorContractPersonDAO().sponsorContactPersons();
+        System.out.println("before filter"+sponsorContactPersonList);
         List<ContactPerson> contactPersonList =sponsorContactPersonList.stream()
                                                             .filter(e->e.getSponsor().equals(sponsor))
                                                             .map(e->e.getContactPerson()).collect(Collectors.toList());
         contactPersonObservableList= FXCollections.observableList(contactPersonList);
+        System.out.println("after filter"+contactPersonList);
         contactTable.setItems(contactPersonObservableList);
     }
 }
