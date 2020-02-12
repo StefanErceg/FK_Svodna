@@ -3,10 +3,7 @@ package model.DAO.mysql;
 import model.DAO.ContactPersonDAO;
 import model.DTO.ContactPerson;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,14 +74,16 @@ public class MySQLContactPersonDAO implements ContactPersonDAO {
         String query = "insert into kontaktosoba(Ime, Prezime, BrojTelefona, Obrisana) values (?, ?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
-            ps = conn.prepareStatement(query);
+            ps = conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, contactPerson.getName());
             ps.setString(2, contactPerson.getSurname());
             ps.setString(3, contactPerson.getPhoneNumber());
             ps.setInt(4, 0);
-
             retVal = ps.executeUpdate() == 1;
-
+            ResultSet generatedKey=ps.getGeneratedKeys();
+            generatedKey.next();
+            contactPerson.setId(generatedKey.getInt(1));
+            generatedKey.close();
         } catch(SQLException ex) {
             ex.printStackTrace();
         } finally {

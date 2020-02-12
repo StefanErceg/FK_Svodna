@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,7 +40,15 @@ public class ContactPersonController {
 
     @FXML
     void addContactPerson(ActionEvent event) {
+        if(!nameLabel.getText().isEmpty() && !lastNameLabel.getText().isEmpty() && !phoneNumberLabel.getText().isEmpty()){
+            ContactPerson contactPerson=new ContactPerson();
+            contactPerson.setName(nameLabel.getText());
+            contactPerson.setSurname(lastNameLabel.getText());
+            contactPerson.setPhoneNumber(phoneNumberLabel.getText());
+            DAOFactory.getDAOFactory().getContactPersonDAO().insert(contactPerson);
+            DAOFactory.getDAOFactory().getsponsorContractPersonDAO().insert(new SponsorContactPerson(sponsor,contactPerson));
 
+        }
     }
 
     @FXML
@@ -57,13 +65,16 @@ public class ContactPersonController {
 
     public void setSponsor(Sponsor sponsor){
         this.sponsor=sponsor;
+        System.out.println(sponsor);
+        sponsorlabel.setText(sponsor.getName());
+        l 
+    }
+    private void reloadTable(){
         List<SponsorContactPerson> sponsorContactPersonList= DAOFactory.getDAOFactory().getsponsorContractPersonDAO().sponsorContactPersons();
-        System.out.println("before filter"+sponsorContactPersonList);
         List<ContactPerson> contactPersonList =sponsorContactPersonList.stream()
-                                                            .filter(e->e.getSponsor().equals(sponsor))
-                                                            .map(e->e.getContactPerson()).collect(Collectors.toList());
+                .filter(e->e.getSponsor().equals(sponsor))
+                .map(e->e.getContactPerson()).collect(Collectors.toList());
         contactPersonObservableList= FXCollections.observableList(contactPersonList);
-        System.out.println("after filter"+contactPersonList);
         contactTable.setItems(contactPersonObservableList);
     }
 }
