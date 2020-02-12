@@ -3,15 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AlertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AlertController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/SponsorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/contact_persons.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/contact_persons.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/equipment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/equipment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/sponsors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/contact_persons.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/contact_persons.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/payments.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,11 +25,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>sponsorsUI</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581359768847" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files/SceneBuilder/SceneBuilder.exe" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25172412" />
@@ -116,22 +108,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="811" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570836202" />
-    <state width="1323" height="119" key="GridCell.Tab.0.bottom" timestamp="1581436265113">
+    <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581454232259">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="119" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581436265113" />
-    <state width="1323" height="119" key="GridCell.Tab.0.center" timestamp="1581436265111">
+    <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1581454232259" />
+    <state x="463" y="111" key="FileChooserDialogImpl" timestamp="1581520045615">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="119" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581436265111" />
-    <state width="1323" height="119" key="GridCell.Tab.0.left" timestamp="1581436265110">
+    <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1581520045615" />
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom" timestamp="1581538936107">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="119" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581436265110" />
-    <state width="1323" height="119" key="GridCell.Tab.0.right" timestamp="1581436265111">
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581538936107" />
+    <state width="1323" height="140" key="GridCell.Tab.0.center" timestamp="1581538936107">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="119" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581436265111" />
+    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581538936107" />
+    <state width="1323" height="140" key="GridCell.Tab.0.left" timestamp="1581538936107">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581538936107" />
+    <state width="1323" height="140" key="GridCell.Tab.0.right" timestamp="1581538936107">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581538936107" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1581255493905">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -148,15 +148,19 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1581255493905" />
-    <state x="470" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1581409011454">
+    <state x="470" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1581536163238">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="470" y="253" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1581409011454" />
+    <state x="470" y="253" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1581536163238" />
     <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570804368" />
-    <state width="429" height="260" key="javadoc.popup.new" timestamp="1581435445812">
+    <state width="429" height="260" key="javadoc.popup.new" timestamp="1581537531142">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="429" height="260" key="javadoc.popup.new/0.0.1366.738@0.0.1366.738" timestamp="1581435445812" />
+    <state width="429" height="260" key="javadoc.popup.new/0.0.1366.738@0.0.1366.738" timestamp="1581537531142" />
+    <state x="339" y="165" key="run.anything.popup" timestamp="1581523031773">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1581523031773" />
   </component>
   <component name="masterDetails">
     <states>

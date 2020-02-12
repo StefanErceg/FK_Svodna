@@ -33,21 +33,31 @@ public class SponsorSidebarController {
     Sponsor sponsor;
 
     @FXML
-    void showContactPersons(ActionEvent event) throws Exception {
-        Parent root=FXMLLoader.load(this.getClass().getResource("../view/contact_persons.fxml"));
+    void showContactPersons(ActionEvent event){
+        try{
+        FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/contact_persons.fxml"));
+        Parent root=loader.load();
+        ContactPersonController contactPersonController=loader.getController();
+        contactPersonController.setSponsor(sponsor);
         Stage secondaryStage=new Stage();
         secondaryStage.initModality(Modality.APPLICATION_MODAL);
         secondaryStage.setScene(new Scene(root));
         secondaryStage.show();
+        }catch (Exception e){e.printStackTrace();}
     }
 
     @FXML
-    void showPayments(ActionEvent event) throws Exception {
-        Parent root=FXMLLoader.load(this.getClass().getResource("../view/payments.fxml"));
-        Stage secondaryStage=new Stage();
-        secondaryStage.initModality(Modality.APPLICATION_MODAL);
-        secondaryStage.setScene(new Scene(root));
-        secondaryStage.show();
+    void showPayments(ActionEvent event)  {
+        try{
+            FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/payments.fxml"));
+            Parent root=loader.load();
+            PaymentController paymentController=loader.getController();
+            paymentController.setSponsor(sponsor);
+            Stage secondaryStage=new Stage();
+            secondaryStage.initModality(Modality.APPLICATION_MODAL);
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.show();
+        }catch (Exception e){e.printStackTrace();}
     }
 
     @FXML
@@ -65,7 +75,5 @@ public class SponsorSidebarController {
         phoneNumberLabel.setText(sponsor.getPhoneNumber());
         typeLabel.setText(sponsor.getKind());
     }
-//    public Sponsor getSponsor(){
-//
-//    }
+
 }

@@ -123,7 +123,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </TableView>
-            <Button fx:id="deleteContact" mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Obriši" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#deleteContact" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Obriši" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -144,7 +144,7 @@
          <children>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Button fx:id="close" mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Zatvori" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+                  <Button mnemonicParsing="false" onAction="#close" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Zatvori" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
                      <font>
                         <Font size="14.0" />
                      </font>

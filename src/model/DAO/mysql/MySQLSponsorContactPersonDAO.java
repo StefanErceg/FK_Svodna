@@ -1,5 +1,6 @@
 package model.DAO.mysql;
 
+import model.DAO.DAOFactory;
 import model.DAO.SponsorContactPersonDAO;
 import model.DTO.ContactPerson;
 import model.DTO.Sponsor;
@@ -21,21 +22,18 @@ public class MySQLSponsorContactPersonDAO implements SponsorContactPersonDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select sko.SponzorId, sko.KontaktOsobaId, s.Ime, s.Adresa, s.BrojTelefona, s.Email, s.Vrsta, s.JmbJib, ko.Ime as koIme, ko.Prezime, ko.BrojTelefona as koBrojTelefona" +
-                       "from sponzorkontaktosoba sko " +
-                       "inner join sponzor s on s.Id=sko.SponzorId " +
-                       "inner join kontaktosoba ko on ko.Id=sko.KontaktOsobaId " +
-                       "where s.Obrisan=0 and ko.Obrisana=0";
+        String query = "select sko.SponzorId,sko.KontaktOsobaId from sponzorkontaktosoba sko " +
+                "where sko.KontaktOsobaId in (select id from kontaktosoba where kontaktosoba.Obrisana=0) " +
+                "and sko.SponzorId in (select id from sponzor where sponzor.Obrisan=0);";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
 
             while(rs.next()) {
-                sponsorContactPersons.add(new SponsorContactPerson(new Sponsor(rs.getInt("SpozorId"), rs.getString("Ime"),
-                        rs.getString("Adresa"), rs.getString("BrojTelefona"), rs.getString("Email"),
-                        rs.getString("Vrsta"), rs.getString("JmbJib")), new ContactPerson(rs.getInt("KontaktOsobaId"),
-                        rs.getString("koIme"), rs.getString("Prezime"), rs.getString("koBrojTelefona"))));
+                Sponsor sponsor=DAOFactory.getDAOFactory().getSponsorDAO().getSponsorById(rs.getInt(1));
+                ContactPerson contactPerson=DAOFactory.getDAOFactory().getContactPersonDAO().getContactPersonById(rs.getInt(2));
+                sponsorContactPersons.add(new SponsorContactPerson(sponsor,contactPerson));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();

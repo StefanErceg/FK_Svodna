@@ -95,7 +95,7 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="20.0" prefWidth="142.0" text="Pretraga sponzora:" textAlignment="RIGHT">
+                  <Label prefHeight="20.0" prefWidth="142.0" text="Pretraga sponzora:" textAlignment="RIGHT" textFill="#f8f8f8">
                      <font>
                         <Font size="16.0" />
                      </font>
