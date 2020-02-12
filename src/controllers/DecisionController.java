@@ -30,4 +30,12 @@ public class DecisionController {
     public boolean returnResult(){
         return  result;
     }
+
+    public Label getDecisionLabel() {
+        return decisionLabel;
+    }
+
+    public void setDecisionLabel(Label decisionLabel) {
+        this.decisionLabel = decisionLabel;
+    }
 }
