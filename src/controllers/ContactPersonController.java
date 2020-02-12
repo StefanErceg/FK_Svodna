@@ -47,8 +47,17 @@ public class ContactPersonController {
             contactPerson.setPhoneNumber(phoneNumberLabel.getText());
             DAOFactory.getDAOFactory().getContactPersonDAO().insert(contactPerson);
             DAOFactory.getDAOFactory().getsponsorContractPersonDAO().insert(new SponsorContactPerson(sponsor,contactPerson));
-
+            reloadTable();
         }
+    }
+    @FXML
+    void deleteContact(ActionEvent event) {
+       if(!contactTable.getSelectionModel().isEmpty()){
+           ContactPerson contactPerson=contactTable.getSelectionModel().getSelectedItem();
+           DAOFactory.getDAOFactory().getContactPersonDAO().delete(contactPerson);
+           reloadTable();
+       }
+
     }
 
     @FXML
@@ -67,7 +76,7 @@ public class ContactPersonController {
         this.sponsor=sponsor;
         System.out.println(sponsor);
         sponsorlabel.setText(sponsor.getName());
-        l 
+        reloadTable();
     }
     private void reloadTable(){
         List<SponsorContactPerson> sponsorContactPersonList= DAOFactory.getDAOFactory().getsponsorContractPersonDAO().sponsorContactPersons();

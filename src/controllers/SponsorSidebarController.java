@@ -47,12 +47,17 @@ public class SponsorSidebarController {
     }
 
     @FXML
-    void showPayments(ActionEvent event) throws Exception {
-        Parent root=FXMLLoader.load(this.getClass().getResource("../view/payments.fxml"));
-        Stage secondaryStage=new Stage();
-        secondaryStage.initModality(Modality.APPLICATION_MODAL);
-        secondaryStage.setScene(new Scene(root));
-        secondaryStage.show();
+    void showPayments(ActionEvent event)  {
+        try{
+            FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/payments.fxml"));
+            Parent root=loader.load();
+            PaymentController paymentController=loader.getController();
+            paymentController.setSponsor(sponsor);
+            Stage secondaryStage=new Stage();
+            secondaryStage.initModality(Modality.APPLICATION_MODAL);
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.show();
+        }catch (Exception e){e.printStackTrace();}
     }
 
     @FXML
