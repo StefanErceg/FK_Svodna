@@ -74,7 +74,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="paymentAmountField" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+                              <TextField fx:id="paymentAmountField" maxWidth="200.0" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
                                  <VBox.margin>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                  </VBox.margin>
@@ -99,11 +99,26 @@
                               <Insets left="15.0" top="20.0" />
                            </HBox.margin>
                         </Button>
+                        <Button mnemonicParsing="false" onAction="#updatePayment" style="-fx-background-color: #01323d;" text="Izmjeni" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #01323d;">
+                                 <image>
+                                    <Image url="@icons/edit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="10.0" top="20.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <TableView fx:id="paymentTable" maxHeight="400.0" maxWidth="650.0" prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@tableView.css" VBox.vgrow="ALWAYS">
+            <TableView fx:id="paymentTable" maxHeight="400.0" maxWidth="739.0" onMouseClicked="#selectionChange" prefHeight="266.0" prefWidth="739.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@tableView.css" VBox.vgrow="ALWAYS">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
