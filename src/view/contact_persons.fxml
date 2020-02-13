@@ -47,7 +47,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="nameLabel" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+                              <TextField fx:id="nameTextField" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>
@@ -64,7 +64,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="lastNameLabel" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+                              <TextField fx:id="lastNameTextField" prefHeight="25.0" prefWidth="199.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>
@@ -81,7 +81,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="phoneNumberLabel" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
+                              <TextField fx:id="phoneNumberTextField" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;">
                                  <VBox.margin>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                  </VBox.margin>
