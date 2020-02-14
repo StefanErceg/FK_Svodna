@@ -21,61 +21,49 @@ public class AddEditSponsorController {
 
     @FXML
     private TextField nameField;
-
     @FXML
     private TextField addresField;
-
     @FXML
     private TextField phonenumberField;
-
     @FXML
     private TextField emailField;
-
     @FXML
     private TextField jibField;
-
     @FXML
     private TextField typeTextField;
     @FXML
     private Button editSponsorButton;
-
+    AlertController alertController;
+    Stage alertStage;
     Sponsor sponsor;
 
     @FXML
     void addSponsor(ActionEvent event) {
+        if(nameField.getText().equals("") || (emailField.getText().equals("") && phonenumberField.getText().equals("") ) ){
+            alertController.setText("Nisu uneseni svi potrebni podatci, sponzor mora imati ime i bar email ili broj telefona.");
+            alertStage.showAndWait();
+            return;
+        }
+
         if(sponsor.getName()==null){
-            sponsor=new Sponsor(nameField.getText(),addresField.getText(),
-                emailField.getText(),phonenumberField.getText(),typeTextField.getText(),jibField.getText());
+            sponsor=new Sponsor(nameField.getText().trim(),addresField.getText().trim(),
+                emailField.getText().trim(),phonenumberField.getText().trim(),typeTextField.getText().trim(),jibField.getText().trim());
         if(!DAOFactory.getDAOFactory().getSponsorDAO().insert(sponsor)){
-        try {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
-            VBox alert = loader.load();
-            AlertController alertController = loader.getController();
-            alertController.setText("Desila se greska pri dodavanju, dodavanje nije izvrseno.");
-            Stage alertStage = new Stage();
-            alertStage.setScene(new Scene(alert));
-            alertStage.show();
-        }catch (IOException e){e.printStackTrace();}
+            alertController.setText("Desila se greska pri upisu, promjena nije upisana.");
+            alertStage.showAndWait();
+
         }
     }else{
-            sponsor.setName(nameField.getText());
-            sponsor.setAddress(addresField.getText());
-            sponsor.setEmail(emailField.getText());
-            sponsor.setJmbjib(jibField.getText());
-            sponsor.setPhoneNumber(phonenumberField.getText());
-            sponsor.setKind(typeTextField.getText());
+            sponsor.setName(nameField.getText().trim());
+            sponsor.setAddress(addresField.getText().trim());
+            sponsor.setEmail(emailField.getText().trim());
+            sponsor.setJmbjib(jibField.getText().trim());
+            sponsor.setPhoneNumber(phonenumberField.getText().trim());
+            sponsor.setKind(typeTextField.getText().trim());
             if(!DAOFactory.getDAOFactory().getSponsorDAO().update(sponsor)) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
-                    VBox alert = loader.load();
-                    AlertController alertController = loader.getController();
-                    alertController.setText("Desila se greska pri promjeni sponzora, promjene nisu izvrsene");
-                    Stage alertStage = new Stage();
-                    alertStage.setScene(new Scene(alert));
-                    alertStage.show();
-                }catch (IOException e){e.printStackTrace();}
+                alertController.setText("Desila se greska pri uspisu, promjena nije upisana.");
+                alertStage.showAndWait();
             }
-
         }
         ((Stage)jibField.getScene().getWindow()).hide();
         editSponsorButton.setText("Dodaj");
@@ -89,19 +77,25 @@ public class AddEditSponsorController {
 
     public void setSponsor(Sponsor sponsor){
         this.sponsor=sponsor;
-        if(sponsor.getName()!=null) {
-            nameField.setText(sponsor.getName());
-            addresField.setText(sponsor.getAddress());
-            emailField.setText(sponsor.getEmail());
-            jibField.setText(sponsor.getJmbjib());
-            editSponsorButton.setText("Izmjeni");
-        }
+        nameField.setText(sponsor.getName()!=null?sponsor.getName():"");
+        addresField.setText(sponsor.getAddress()!=null?sponsor.getAddress():"");
+        typeTextField.setText(sponsor.getKind()!=null?sponsor.getKind():"");
+        phonenumberField.setText(sponsor.getPhoneNumber()!=null?sponsor.getPhoneNumber():"");
+        emailField.setText(sponsor.getEmail()!=null?sponsor.getEmail():"");
+        jibField.setText(sponsor.getJmbjib()!=null?sponsor.getJmbjib():"");
+        if(sponsor.getName()!=null)
+            editSponsorButton.setText("Izmijeni");
+        else
+            editSponsorButton.setText("Dodaj");
     }
 
-
     @FXML
-    void initialize() {
-
+    void initialize() throws Exception {
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
+            VBox alert = loader.load();
+            alertController = loader.getController();
+            alertStage = new Stage();
+            alertStage.setScene(new Scene(alert));
     }
 
 }
