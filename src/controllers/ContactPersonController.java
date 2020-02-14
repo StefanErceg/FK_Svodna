@@ -5,11 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.FormatStringConverter;
@@ -39,27 +44,49 @@ public class ContactPersonController {
     private TableView<ContactPerson> contactTable;
     private Sponsor sponsor;
     private ObservableList<ContactPerson> contactPersonObservableList;
+    DecisionController decisionController;
+    Stage decisionStage;
+    private Stage alertStage;
+    private AlertController alertController;
 
 
     @FXML
     void addContactPerson(ActionEvent event) {
         if(!nameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phoneNumberTextField.getText().isEmpty()){
             ContactPerson contactPerson=new ContactPerson();
-            contactPerson.setName(nameTextField.getText());
-            contactPerson.setSurname(lastNameTextField.getText());
-            contactPerson.setPhoneNumber(phoneNumberTextField.getText());
-            DAOFactory.getDAOFactory().getContactPersonDAO().insert(contactPerson);
-            DAOFactory.getDAOFactory().getsponsorContractPersonDAO().insert(new SponsorContactPerson(sponsor,contactPerson));
+            contactPerson.setName(nameTextField.getText().trim());
+            contactPerson.setSurname(lastNameTextField.getText().trim());
+            contactPerson.setPhoneNumber(phoneNumberTextField.getText().trim());
+            if(!DAOFactory.getDAOFactory().getContactPersonDAO().insert(contactPerson) ||
+            !DAOFactory.getDAOFactory().getsponsorContractPersonDAO().insert(new SponsorContactPerson(sponsor,contactPerson))){
+                alertController.setText("Desila se greska pri upisu, kontakt nije dodan.");
+                alertStage.showAndWait();
+                DAOFactory.getDAOFactory().getContactPersonDAO().delete(contactPerson);
+            }
             reloadTable();
         }
+        contactTable.getSelectionModel().clearSelection();
     }
+
     @FXML
     void deleteContact(ActionEvent event) { //brise kontakt osobu iz tabele i baze
-       if(!contactTable.getSelectionModel().isEmpty()){
-           ContactPerson contactPerson=contactTable.getSelectionModel().getSelectedItem();
-           DAOFactory.getDAOFactory().getContactPersonDAO().delete(contactPerson);
-           reloadTable();
+
+       if(!contactTable.getSelectionModel().isEmpty() ){
+           decisionController.getDecisionLabel().setText("Jeste li sigurni da zelite izbrisati kontakt osobu.");
+           decisionStage.showAndWait();
+           if(decisionController.returnResult()){
+               ContactPerson contactPerson=contactTable.getSelectionModel().getSelectedItem();
+               if(!DAOFactory.getDAOFactory().getContactPersonDAO().delete(contactPerson)) {
+                   alertController.setText("Desila se greska pri brisanju, kontakt nije izbrisan.");
+                   alertStage.showAndWait();
+               }
+               reloadTable();
+           }
+       }else{
+           alertController.setText("Nije izabrana kontakt osoba za brisanje.");
+           alertStage.showAndWait();
        }
+       contactTable.getSelectionModel().clearSelection();
 
     }
 
@@ -69,10 +96,22 @@ public class ContactPersonController {
         contactTable.getScene().getWindow().hide();
     }
     @FXML
-    void initialize() {
+    void initialize() throws Exception {
         contactTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
         contactTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("surname"));
         contactTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
+        Parent root=loader.load();
+        alertController=loader.getController();
+        alertStage=new Stage();
+        alertStage.setScene(new Scene(root));
+        loader = new FXMLLoader(this.getClass().getResource("../view/decision.fxml"));
+        root = loader.load();
+        decisionController = loader.getController();
+
+        decisionStage = new Stage();
+        decisionStage.initModality(Modality.APPLICATION_MODAL);
+        decisionStage.setScene(new Scene(root));
 
     }
 

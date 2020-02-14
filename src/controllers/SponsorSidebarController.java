@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Sponsor;
@@ -31,23 +32,36 @@ public class SponsorSidebarController {
     private Label jibLabel;
 
     Sponsor sponsor;
+    private Stage alertStage;
+    private AlertController alertController;
+
 
     @FXML
     void showContactPersons(ActionEvent event){
+        if(sponsor==null){
+            alertController.setText("Nije izabran sponzor za pregled kontak osoba.");
+            alertStage.showAndWait();
+            return;
+        }
         try{
-        FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/contact_persons.fxml"));
-        Parent root=loader.load();
-        ContactPersonController contactPersonController=loader.getController();
-        contactPersonController.setSponsor(sponsor);
-        Stage secondaryStage=new Stage();
-        secondaryStage.initModality(Modality.APPLICATION_MODAL);
-        secondaryStage.setScene(new Scene(root));
-        secondaryStage.show();
+            FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/contact_persons.fxml"));
+            Parent root=loader.load();
+            ContactPersonController contactPersonController=loader.getController();
+            contactPersonController.setSponsor(sponsor);
+            Stage secondaryStage=new Stage();
+            secondaryStage.initModality(Modality.APPLICATION_MODAL);
+            secondaryStage.setScene(new Scene(root));
+            secondaryStage.show();
         }catch (Exception e){e.printStackTrace();}
     }
 
     @FXML
     void showPayments(ActionEvent event)  {
+        if(sponsor==null){
+            alertController.setText("Nije izabran sponzor za pregled uplata.");
+            alertStage.showAndWait();
+            return;
+        }
         try{
             FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/payments.fxml"));
             Parent root=loader.load();
@@ -61,7 +75,15 @@ public class SponsorSidebarController {
     }
 
     @FXML
-    void initialize() {
+    void initialize() throws Exception {
+        FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
+        Parent root=loader.load();
+        alertController=loader.getController();
+        alertStage=new Stage();
+        alertStage.setScene(new Scene(root));
+        loader = new FXMLLoader(this.getClass().getResource("../view/decision.fxml"));
+        root = loader.load();
+
 
 
     }
@@ -74,6 +96,15 @@ public class SponsorSidebarController {
         jibLabel.setText(sponsor.getJmbjib());
         phoneNumberLabel.setText(sponsor.getPhoneNumber());
         typeLabel.setText(sponsor.getKind());
+    }
+    public void clearSponsor(){
+        this.sponsor=null;
+        nameLabel.setText("");
+        adressLabel.setText("");
+        emailLabel.setText("");
+        jibLabel.setText("");
+        phoneNumberLabel.setText("");
+        typeLabel.setText("");
     }
 
 }
