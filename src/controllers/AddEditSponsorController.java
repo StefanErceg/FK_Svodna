@@ -39,6 +39,12 @@ public class AddEditSponsorController {
 
     @FXML
     void addSponsor(ActionEvent event) {
+        if(!nameField.getText().equals("") && (!addresField.getText().equals("") || !emailField.getText().equals("") || !phonenumberField.getText().equals("") ) ){
+            alertController.setText("Nisu uneseni svi potrebni podatci, sponzor mora imati ime i bar adresu,email ili broj telefona.");
+            alertStage.showAndWait();
+            return;
+        }
+
         if(sponsor.getName()==null){
             sponsor=new Sponsor(nameField.getText().trim(),addresField.getText().trim(),
                 emailField.getText().trim(),phonenumberField.getText().trim(),typeTextField.getText().trim(),jibField.getText().trim());
