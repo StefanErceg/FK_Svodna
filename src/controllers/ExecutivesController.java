@@ -7,11 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Manager;
 import model.util.FKSvodnaUtilities;
 
+import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,6 +41,7 @@ public class ExecutivesController {
         addEditExecutives = new Stage();
         addEditExecutives.initModality(Modality.APPLICATION_MODAL);
         addEditExecutives.setScene(new Scene(root));
+        addEditExecutives.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
 
         executivesTableView.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
         executivesTableView.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -88,6 +91,7 @@ public class ExecutivesController {
                 addEditExecutivesController.setSelectedManagerId(selectedExecutive.getId());
                 addEditExecutives.showAndWait();
                 displayExecutives();
+                executivesTableView.getSelectionModel().clearSelection();
             }
             else {
                 displayAlert("Nije izabran rukovodilac za izmjenu!");
@@ -106,6 +110,7 @@ public class ExecutivesController {
                     FKSvodnaUtilities.getDAOFactory().getManagerDAO().delete(selectedExecutive);
                 }
                 displayExecutives();
+                executivesTableView.getSelectionModel().clearSelection();
             } else {
                 displayAlert("Nije izabran rukovodilac za brisanje!");
             }

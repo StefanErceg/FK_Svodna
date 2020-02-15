@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEditAccountsController">
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0">
          <children>
@@ -64,31 +64,31 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <TextField style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1">
+                  <TextField fx:id="nameTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
+                  <TextField fx:id="surnameTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2">
+                  <TextField fx:id="usernameTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3">
+                  <PasswordField fx:id="passwordField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
                      </font>
-                  </TextField>
-                  <TextField style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="4">
+                  </PasswordField>
+                  <PasswordField fx:id="againPasswordField" style="-fx-text-fill: white; -fx-background-color: #01323d;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="14.0" />
                      </font>
-                  </TextField>
+                  </PasswordField>
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="100.0" />
@@ -107,12 +107,12 @@
             </GridPane>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="125.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj nalog">
+                  <Button fx:id="addEditButton" mnemonicParsing="false" onAction="#save" prefWidth="125.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj nalog">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="125.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Odustani">
+                  <Button mnemonicParsing="false" onAction="#quit" prefWidth="125.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Odustani">
                      <font>
                         <Font size="15.0" />
                      </font>
