@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import model.DTO.Manager;
 import model.util.FKSvodnaUtilities;
 
+import java.io.File;
+
 public class AddEditExecutivesController {
     @FXML
     private TextField nameTextField;
@@ -108,44 +110,20 @@ public class AddEditExecutivesController {
         return nameTextField;
     }
 
-    public void setNameTextField(TextField nameTextField) {
-        this.nameTextField = nameTextField;
-    }
-
     public TextField getSurnameTextField() {
         return surnameTextField;
-    }
-
-    public void setSurnameTextField(TextField surnameTextField) {
-        this.surnameTextField = surnameTextField;
     }
 
     public TextField getPhoneNumberTextField() {
         return phoneNumberTextField;
     }
 
-    public void setPhoneNumberTextField(TextField phoneNumberTextField) {
-        this.phoneNumberTextField = phoneNumberTextField;
-    }
-
     public TextField getEmailTextField() {
         return emailTextField;
     }
 
-    public void setEmailTextField(TextField emailTextField) {
-        this.emailTextField = emailTextField;
-    }
-
     public TextField getPositionTextField() {
         return positionTextField;
-    }
-
-    public void setPositionTextField(TextField positionTextField) {
-        this.positionTextField = positionTextField;
-    }
-
-    public int getSelectedManagerId() {
-        return selectedManagerId;
     }
 
     public void setSelectedManagerId(int selectedManagerId) {
