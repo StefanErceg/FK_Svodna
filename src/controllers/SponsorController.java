@@ -70,7 +70,7 @@ public class SponsorController {
             return;
         }
         Sponsor selection=sponsorTable.getSelectionModel().getSelectedItem();
-        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati sponzora.");
+        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati sponzora?");
         decisionStage.showAndWait();
         if( selection!= null && decisionController.returnResult()){
             if(!DAOFactory.getDAOFactory().getSponsorDAO().delete(selection)){

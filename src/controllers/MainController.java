@@ -4,11 +4,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class MainController {
 
+    @FXML
+    private Label usernameLabel;
     @FXML
     private AnchorPane matchesUI;
     @FXML
@@ -37,6 +45,19 @@ public class MainController {
     private AnchorPane sponsorsSidebarUI;
     @FXML
     private SponsorSidebarController sponsorsSidebarUIController;
+
+    private LogInController logInController;
+    private Stage logInStage;
+
+    public void logOut() {
+        try {
+            displayLogIn();
+            ((Stage) usernameLabel.getScene().getWindow()).close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @FXML
     void loadHomeUI(ActionEvent event){
@@ -108,7 +129,21 @@ public class MainController {
     }
 
     @FXML
-    void initialize() {
+    void initialize(String user) {
         sponsorsUIController.setSponsorSidebarController(sponsorsSidebarUIController);
+    }
+
+    public void setUser(String user) {
+        usernameLabel.setText(user);
+    }
+
+    private void displayLogIn() throws Exception {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/logIn.fxml"));
+        Parent root = loader.load();
+        logInController = loader.getController();
+        logInStage = new Stage();
+        logInStage.initModality(Modality.APPLICATION_MODAL);
+        logInStage.setScene(new Scene(root));
+        logInStage.show();
     }
 }
