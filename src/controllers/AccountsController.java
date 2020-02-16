@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -22,6 +23,11 @@ public class AccountsController {
     private TableView<UserAccount> accountsTableView;
     @FXML
     private ImageView adminImageView;
+    @FXML
+    private Label userLabel;
+
+    private LogInController logInController;
+    private Stage logInStage;
 
     private AddEditAccountsController addEditAccountsController;
     private Stage addEditAccountsStage;
@@ -144,5 +150,30 @@ public class AccountsController {
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
         decisionStage.showAndWait();
+    }
+
+    public void setUser(String user) {
+        userLabel.setText(user);
+    }
+
+    private void displayLogIn() throws Exception {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/logIn.fxml"));
+        Parent root = loader.load();
+        logInController = loader.getController();
+        logInStage = new Stage();
+        logInStage.initModality(Modality.APPLICATION_MODAL);
+        logInStage.setScene(new Scene(root));
+        logInStage.show();
+    }
+
+    public void logOut() {
+        try {
+            displayLogIn();
+            ((Stage) userLabel.getScene().getWindow()).close();
+        }
+            catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

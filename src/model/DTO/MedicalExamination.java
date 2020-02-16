@@ -67,10 +67,8 @@ public class MedicalExamination {
 
     @Override
     public String toString() {
-        return "MedicalExamination{" +
-                "id=" + id +
-                ", expiration date=" + expirationDate +
-                ", examination date=" + examinationDate +
-                '}';
+        return "" + person.getName() + " " + person.getSurname() + "    (JMB:  " +
+                person.getJmb() + ")    Datum isteka: " + expirationDate;
+
     }
 }

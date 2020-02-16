@@ -72,7 +72,7 @@ insert into zaduzenje values (null, 'provjera terena', 1, 1, 0);
 
 drop view if exists razlikadatuma;
 create view razlikadatuma as
-select ljekarskipregled.*, TIMESTAMPDIFF(DAY, DatumPregleda, DatumIsteka) as Razlika from ljekarskipregled;
+select ljekarskipregled.*, TIMESTAMPDIFF(YEAR, now(), DatumIsteka) as RazlikaGodina, TIMESTAMPDIFF(MONTH, now(), DatumIsteka) as RazlikaMjesec, TIMESTAMPDIFF(DAY, now(), DatumIsteka) as RazlikaDan from ljekarskipregled;
 
 
 
