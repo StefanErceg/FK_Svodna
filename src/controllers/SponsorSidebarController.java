@@ -39,7 +39,7 @@ public class SponsorSidebarController {
     @FXML
     void showContactPersons(ActionEvent event){
         if(sponsor==null){
-            alertController.setText("Nije izabran sponzor za pregled kontak osoba.");
+            alertController.setText("Nije izabran sponzor za pregled kontakt osoba.");
             alertStage.showAndWait();
             return;
         }

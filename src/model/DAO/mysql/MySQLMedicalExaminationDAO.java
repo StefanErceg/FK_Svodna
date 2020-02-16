@@ -90,7 +90,7 @@ public class MySQLMedicalExaminationDAO implements MedicalExaminationDAO {
         String query = "select r.Id, DatumPregleda, DatumIsteka, OsobaId, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                 "from razlikadatuma r " +
                 "inner join osoba o on o.Id=r.OsobaId " +
-                "where o.Obrisana=0 and r.Razlika<=14";
+                "where o.Obrisana=0 and r.RazlikaGodina=0 and r.RazlikaMjesec<=1 and r.RazlikaDan<=14 and r.RazlikaDan>=0";
 
         try {
             conn = ConnectionPool.getInstance().checkOut();
