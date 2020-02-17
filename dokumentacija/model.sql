@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`KorisnickiNalog` (
   `Prezime` VARCHAR(45) NOT NULL,
   `KorisnickoIme` VARCHAR(45) NOT NULL,
   `Lozinka` VARCHAR(255) NOT NULL,
-  `Admin` TINYINT NOT NULL,
+  `Administrator` TINYINT NOT NULL,
   `Obrisan` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;

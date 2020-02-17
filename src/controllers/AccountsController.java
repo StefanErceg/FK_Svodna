@@ -52,10 +52,9 @@ public class AccountsController {
         accountsTableView.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("username"));
 
         accountsTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(accountsTableView.getSelectionModel().getSelectedItem().isAdmin()) {
+            if (newValue != null && newValue.isAdmin()) {
                 adminImageView.setImage(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "check.png"));
-            }
-            else {
+            } else {
                 adminImageView.setImage(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "cancel.png"));
             }
         });
@@ -87,11 +86,12 @@ public class AccountsController {
                 addEditAccountsController.getNameTextField().setText(selectedAccount.getName());
                 addEditAccountsController.getSurnameTextField().setText(selectedAccount.getSurname());
                 addEditAccountsController.getUsernameTextField().setText(selectedAccount.getUsername());
-                addEditAccountsController.getPasswordField().setText(selectedAccount.getPassword());
+                addEditAccountsController.getAdminCheckBox().setSelected(selectedAccount.isAdmin());
+                addEditAccountsController.getPasswordField().clear();
+                addEditAccountsController.getAgainPasswordField().clear();
                 addEditAccountsController.setSelectedAccountId(selectedAccount.getId());
                 addEditAccountsStage.showAndWait();
                 displayAccounts();
-                accountsTableView.getSelectionModel().clearSelection();
             }
             else {
                 displayAlert("Nije izabran korisnički nalog za izmjenu!");
@@ -110,7 +110,6 @@ public class AccountsController {
                     FKSvodnaUtilities.getDAOFactory().getUserAccountDAO().delete(selectedAccount);
                 }
                 displayAccounts();
-                accountsTableView.getSelectionModel().clearSelection();
             } else {
                 displayAlert("Nije izabran korisnički nalog za brisanje!");
             }
@@ -125,6 +124,7 @@ public class AccountsController {
             accountsTableView.refresh();
             listOfAccounts = FKSvodnaUtilities.getDAOFactory().getUserAccountDAO().accounts();
             accountsTableView.getItems().addAll(listOfAccounts);
+            accountsTableView.getSelectionModel().select(1);
         } catch(Exception ex) {
             ex.printStackTrace();
         }
