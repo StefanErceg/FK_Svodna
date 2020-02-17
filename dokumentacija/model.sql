@@ -11,6 +11,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema FKSvodna
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `FKSvodna`;
 CREATE SCHEMA IF NOT EXISTS `FKSvodna` DEFAULT CHARACTER SET utf8 ;
 USE `FKSvodna` ;
 
@@ -156,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`Kazna` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Datum` DATETIME NOT NULL,
   `NovcaniIznos` DECIMAL NULL,
-  `BrojMecevaSuspenzije` INT NOT NULL,
+  `BrojMecevaSuspenzije` INT NULL,
   `Opis` VARCHAR(255) NULL,
   `OsobaId` INT NOT NULL,
   `Karton` ENUM('Zuti', 'Crveni') NULL,
@@ -179,6 +180,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`Oprema` (
   `Tip` VARCHAR(45) NOT NULL,
   `BrojDresa` INT NULL,
   `Sifra` VARCHAR(45) NOT NULL,
+  `Zaduzena` TINYINT NOT NULL,
   PRIMARY KEY (`Id`),
   INDEX `5_idx` (`OsobaId` ASC) VISIBLE,
   CONSTRAINT `5`

@@ -43,9 +43,9 @@ insert into ljekarskipregled values (null, '2019-11-08 13:11:03', '2020-05-08 13
 insert into ljekarskipregled values (null, '2019-10-15 09:20:03', '2020-04-15 09:20:03', 2);
 insert into ljekarskipregled values (null, '2019-08-08 10:15:08', '2020-02-08 10:15:08', 3);
 
-insert into oprema values (null, 1, 'dres', '1', 'A52871');
-insert into oprema values (null, 2, 'dres', '12', 'A74120');
-insert into oprema values (null, 3, 'kopacke', '43', 'C74136');
+insert into oprema values (null, 1, 'dres', '1', 'A52871', 1);
+insert into oprema values (null, 2, 'dres', '12', 'A74120', 1);
+insert into oprema values (null, 3, 'kopacke', '43', 'C74136', 1);
 
 insert into kazna values (null, '2019-06-12 18:00:06', 55.0, 4, 'prekrsaj na terenu', 3, 2); 
 

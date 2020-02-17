@@ -23,7 +23,7 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
         String query = "select op.Id, OsobaId, Tip, BrojDresa, Sifra, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                        "from oprema op " +
                        "inner join osoba os on os.Id=op.OsobaId " +
-                       "where os.Obrisana=0";
+                       "where os.Obrisana=0 and op.Zaduzena=1";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -33,7 +33,7 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
                 equipment.add(new Equipment(rs.getInt("Id"), new Person(rs.getInt("OsobaId"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getString("BrojTelefona"), rs.getString("Jmb"),
                         rs.getString("Email"), rs.getString("Adresa"), rs.getString("BrojLicence")),
-                        rs.getString("Tip"), rs.getInt("BrojDresa"), rs.getString("Sifra")));
+                        rs.getString("Tip"), rs.getInt("BrojDresa"), rs.getString("Sifra"), rs.getBoolean("Zaduzena")));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -54,7 +54,7 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
         String query = "select op.Id, OsobaId, Tip, BrojDresa, Sifra, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                 "from oprema op " +
                 "inner join osoba os on os.Id=op.OsobaId " +
-                "where os.Obrisana=0 and op.Id=?";
+                "where os.Obrisana=0 and op.Zaduzena=1 and op.Id=?";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -65,7 +65,7 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
                 equipment = new Equipment(rs.getInt("Id"), new Person(rs.getInt("OsobaId"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getString("BrojTelefona"), rs.getString("Jmb"),
                         rs.getString("Email"), rs.getString("Adresa"), rs.getString("BrojLicence")),
-                        rs.getString("Tip"), rs.getInt("BrojDresa"), rs.getString("Sifra"));
+                        rs.getString("Tip"), rs.getInt("BrojDresa"), rs.getString("Sifra"), rs.getBoolean("Zaduzena"));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -77,12 +77,60 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
     }
 
     @Override
+    public boolean obligate(Equipment equipment) {
+        boolean retVal = false;
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "update oprema set Zaduzena=1 where Id=?";
+
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, equipment.getId());
+
+            retVal = ps.executeUpdate() == 1;
+
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps);
+        }
+        return retVal;
+    }
+
+    @Override
+    public boolean returnEquipment(Equipment equipment) {
+        boolean retVal = false;
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String query = "update oprema set Zaduzena=0 where Id=?";
+
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, equipment.getId());
+
+            retVal = ps.executeUpdate() == 1;
+
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps);
+        }
+        return retVal;
+    }
+
+    @Override
     public boolean insert(Equipment equipment) {
         boolean retVal = false;
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into oprema (OsobaId, Tip, BrojDresa, Sifra) values (?, ?, ?, ?)";
+        String query = "insert into oprema (OsobaId, Tip, BrojDresa, Sifra, Zaduzena) values (?, ?, ?, ?, ?)";
 
         try {
             conn = ConnectionPool.getInstance().checkOut();
@@ -91,6 +139,7 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
             ps.setString(2, equipment.getType());
             ps.setInt(3, equipment.getJerseyNumber());
             ps.setString(4, equipment.getCode());
+            ps.setBoolean(5, equipment.isObligated());
 
             retVal = ps.executeUpdate() == 1;
 
