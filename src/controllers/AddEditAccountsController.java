@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -26,6 +27,8 @@ public class AddEditAccountsController {
     private PasswordField passwordField;
     @FXML
     private PasswordField againPasswordField;
+    @FXML
+    private CheckBox adminCheckBox;
 
     private int selectedAccountId;
     private AlertController alertController;
@@ -38,24 +41,7 @@ public class AddEditAccountsController {
     }
 
     public void save() {
-        if (checkFields()) { // PROBLEM JE POLJE ADMIN, NIJE NEKO OBRATIO PAZNJUUU!!!
-            if ("Dodaj nalog".equals(addEditButton.getText())) {
-                FKSvodnaUtilities.getDAOFactory().getUserAccountDAO().insert(new UserAccount(0, nameTextField.getText(), surnameTextField.getText(),
-                        usernameTextField.getText(), FKSvodnaUtilities.getSHA256(passwordField.getText()), false));
-            } else {
-                FKSvodnaUtilities.getDAOFactory().getUserAccountDAO().update(new UserAccount(selectedAccountId, nameTextField.getText(), surnameTextField.getText(),
-                        usernameTextField.getText(), FKSvodnaUtilities.getSHA256(passwordField.getText()), false));
-            }
-        } else {
-            try {
-                displayAlert("Nisu unesena sva polja!");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-
         if (!checkCorrectPasswordFields()) {
-            finished = false;
             try {
                 displayAlert("Nije uspješno unesena lozinka!");
                 passwordField.clear();
@@ -63,21 +49,34 @@ public class AddEditAccountsController {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }
-        else {
-            finished = true;
+            return;
         }
 
-        if (!checkCorrectUsername()) {
-            finished = false;
+        if (checkFields()) {
+            if ("Dodaj nalog".equals(addEditButton.getText())) {
+                if (!checkCorrectUsername()) {
+                    try {
+                        displayAlert("Korisničko ime postoji!");
+                        finished = false;
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else {
+                    FKSvodnaUtilities.getDAOFactory().getUserAccountDAO().insert(new UserAccount(0, nameTextField.getText(), surnameTextField.getText(),
+                            usernameTextField.getText(), FKSvodnaUtilities.getSHA256(passwordField.getText()), adminCheckBox.isSelected()));
+                    finished = true;
+                }
+            } else {
+                FKSvodnaUtilities.getDAOFactory().getUserAccountDAO().update(new UserAccount(selectedAccountId, nameTextField.getText(), surnameTextField.getText(),
+                        usernameTextField.getText(), FKSvodnaUtilities.getSHA256(passwordField.getText()), adminCheckBox.isSelected()));
+                finished = true;
+            }
+        } else {
             try {
-                displayAlert("Korisničko ime postoji!");
+                displayAlert("Nisu unesena sva polja!");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }
-        else {
-            finished = true;
         }
 
         if(finished) {
@@ -165,6 +164,10 @@ public class AddEditAccountsController {
 
     public void setSelectedAccountId(int selectedAccountId) {
         this.selectedAccountId = selectedAccountId;
+    }
+
+    public CheckBox getAdminCheckBox() {
+        return adminCheckBox;
     }
 
     private void displayAlert(String content) throws Exception {
