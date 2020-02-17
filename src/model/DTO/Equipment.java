@@ -8,17 +8,19 @@ public class Equipment {
     protected String type;
     protected Integer jerseyNumber;
     protected String code;
+    protected boolean obligated;
 
     public Equipment() {
         super();
     }
 
-    public Equipment(int id, Person person, String type, Integer jerseyNumber, String code) {
+    public Equipment(int id, Person person, String type, Integer jerseyNumber, String code, boolean obligated) {
         this.id = id;
         this.person = person;
         this.type = type;
         this.jerseyNumber = jerseyNumber;
         this.code = code;
+        this.obligated = obligated;
     }
 
     public int getId() {
@@ -60,6 +62,14 @@ public class Equipment {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public boolean isObligated() {
+        return obligated;
+    }
+
+    public void setObligated(boolean obligated) {
+        this.obligated = obligated;
     }
 
     @Override

@@ -10,4 +10,6 @@ public interface EquipmentDAO {
     Equipment getEquipmentById(int id);
     boolean insert(Equipment equipment);
     boolean update(Equipment equipment);
+    boolean obligate(Equipment equipment);
+    boolean returnEquipment(Equipment equipment);
 }
