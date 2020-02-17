@@ -70,6 +70,13 @@ public class LogInController {
                         }
                     }
                 }
+                else {
+                    try {
+                        displayAlert("Nije unesena ispravna lozinka!");
+                    } catch(Exception e) {
+
+                    }
+                }
             }
             else {
                 try {

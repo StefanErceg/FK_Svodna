@@ -110,9 +110,9 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                      <columns>
-                        <TableColumn maxWidth="240.0" minWidth="75.0" prefWidth="-1.0" style="-fx-background-color: #01323d;" text="Ime" />
-                        <TableColumn maxWidth="240.0" minWidth="75.0" prefWidth="-1.0" style="-fx-background-color: #01323d;" text="Prezime" />
-                        <TableColumn maxWidth="240.0" minWidth="75.0" prefWidth="-1.0" style="-fx-background-color: #01323d;" text="Korisničko ime" />
+                        <TableColumn maxWidth="240.0" minWidth="75.0" prefWidth="-1.0" text="Ime" />
+                        <TableColumn maxWidth="240.0" minWidth="75.0" prefWidth="-1.0" text="Prezime" />
+                        <TableColumn maxWidth="240.0" minWidth="75.0" prefWidth="-1.0" text="Korisničko ime" />
                      </columns>
                   </TableView>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="2.0">

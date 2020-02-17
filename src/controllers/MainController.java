@@ -129,7 +129,7 @@ public class MainController {
     }
 
     @FXML
-    void initialize(String user) {
+    void initialize() {
         sponsorsUIController.setSponsorSidebarController(sponsorsSidebarUIController);
     }
 
