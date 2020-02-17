@@ -28,7 +28,7 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
             while(rs.next()) {
                 accounts.add(new UserAccount(rs.getInt("Id"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getNString("KorisnickoIme"), rs.getString("Lozinka"),
-                        rs.getBoolean("Admin")));
+                        rs.getBoolean("Administrator")));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -56,7 +56,7 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
             if(rs.next()) {
                 userAccount = new UserAccount(rs.getInt("Id"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getNString("KorisnickoIme"), rs.getString("Lozinka"),
-                        rs.getBoolean("Admin"));
+                        rs.getBoolean("Administrator"));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -84,7 +84,7 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
             if(rs.next()) {
                 userAccount = new UserAccount(rs.getInt("Id"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getNString("KorisnickoIme"), rs.getString("Lozinka"),
-                        rs.getBoolean("Admin"));
+                        rs.getBoolean("Administrator"));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -113,7 +113,7 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
             if(rs.next()) {
                 userAccount = new UserAccount(rs.getInt("Id"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getNString("KorisnickoIme"), rs.getString("Lozinka"),
-                        rs.getBoolean("Admin"));
+                        rs.getBoolean("Administrator"));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -140,7 +140,7 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
             while(rs.next()) {
                 accounts.add(new UserAccount(rs.getInt("Id"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getNString("KorisnickoIme"), rs.getString("Lozinka"),
-                        rs.getBoolean("Admin")));
+                        rs.getBoolean("Administrator")));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -163,7 +163,7 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into korisnickinalog(Ime, Prezime, KorisnickoIme, Lozinka, Admin, Obrisan) values (?, ?, ?, ?, ?, ?)";
+        String query = "insert into korisnickinalog(Ime, Prezime, KorisnickoIme, Lozinka, Administrator, Obrisan) values (?, ?, ?, ?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -193,9 +193,9 @@ public class MySQLUserAccountDAO implements UserAccountDAO {
         String query = "update korisnickinalog set " +
                        "Ime=?, " +
                        "Prezime=?, " +
-                       "KorisnickoIme=? " +
-                       "Lozinka=? " +
-                       "Admin=? " +
+                       "KorisnickoIme=?, " +
+                       "Lozinka=?, " +
+                       "Administrator=? " +
                        "where Id=?";
         try {
             conn = ConnectionPool.getInstance().checkOut();
