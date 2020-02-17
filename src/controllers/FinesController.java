@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import model.DAO.DAOFactory;
+import model.DTO.Person;
 
 public class FinesController {
 
@@ -39,15 +40,8 @@ public class FinesController {
     @FXML
     private ToggleGroup card;
 
-    @FXML
-    void bdff42(ActionEvent event) {
+    private Person player;
 
-    }
-
-    @FXML
-    void ff1f1f(ActionEvent event) {
-
-    }
 
     @FXML
     void add(ActionEvent event) {

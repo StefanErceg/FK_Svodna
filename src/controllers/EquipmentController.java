@@ -48,10 +48,12 @@ public class EquipmentController {
 
     @FXML
     void addEquipment(ActionEvent event) { //dodaje opremu u tabelu
-        if(!typeTxtField.getText().isEmpty() && !numberTxtField.getText().isEmpty() && !codeTxtField.getText().isEmpty()){
+        if(!typeTxtField.getText().isEmpty() && !codeTxtField.getText().isEmpty()){
             Equipment equipment = new Equipment();
             equipment.setType(typeTxtField.getText().trim());
-            equipment.setJerseyNumber(Integer.parseInt(numberTxtField.getText().trim()));
+            if(!numberTxtField.getText().isEmpty()) {  //ako su kopacke, polje moze ostati prazno, null
+                equipment.setJerseyNumber(Integer.parseInt(numberTxtField.getText().trim()));
+            }
             equipment.setCode(codeTxtField.getText().trim());
             if(!DAOFactory.getDAOFactory().getEquipmentDAO().insert(equipment)){
                 alertController.setText("Desila se greska pri upisu, oprema nije dodana.");
