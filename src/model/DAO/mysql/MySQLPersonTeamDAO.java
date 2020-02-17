@@ -48,6 +48,74 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
     }
 
     @Override
+    public List<PersonTeam> getPlayersForTeam(int teamId) {
+        ArrayList<PersonTeam> personTeams = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+                "from osobatim ot " +
+                "inner join osoba o on o.Id=ot.OsobaId " +
+                "inner join tim t on t.Id=ot.TimId " +
+                "where o.Obrisana=0 and t.Obrisan=0 and ot.TimId=? and Do is null and Uloga='igrac'";
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, teamId);
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                personTeams.add(new PersonTeam(new Person(rs.getInt("OsobaId"), rs.getString("Ime"), rs.getString("Prezime"),
+                        rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
+                        rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
+                        rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca")));
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+        return personTeams;
+    }
+
+    @Override
+    public List<PersonTeam> getStaffForTeam(int teamId) {
+        ArrayList<PersonTeam> personTeams = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+                "from osobatim ot " +
+                "inner join osoba o on o.Id=ot.OsobaId " +
+                "inner join tim t on t.Id=ot.TimId " +
+                "where o.Obrisana=0 and t.Obrisan=0 and TimId=? and Uloga<>'igrac'";
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, teamId);
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                personTeams.add(new PersonTeam(new Person(rs.getInt("OsobaId"), rs.getString("Ime"), rs.getString("Prezime"),
+                        rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
+                        rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
+                        rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca")));
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+        return personTeams;
+    }
+
+    @Override
     public PersonTeam getPersonTeamByIds(int personId, int teamId) {
         PersonTeam personTeam = null;
 
