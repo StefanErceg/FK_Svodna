@@ -55,10 +55,11 @@ public class EquipmentController {
                 equipment.setJerseyNumber(Integer.parseInt(numberTxtField.getText().trim()));
             }
             equipment.setCode(codeTxtField.getText().trim());
+            equipment.setPerson(player);
             if(!DAOFactory.getDAOFactory().getEquipmentDAO().insert(equipment)){
                 alertController.setText("Desila se greska pri upisu, oprema nije dodana.");
                 alertStage.showAndWait();
-                DAOFactory.getDAOFactory().getEquipmentDAO().update(equipment);
+                DAOFactory.getDAOFactory().getEquipmentDAO().returnEquipment(equipment);
             }
             reloadTable();
         }
@@ -72,7 +73,7 @@ public class EquipmentController {
             decisionStage.showAndWait();
             if(decisionController.returnResult()){
                 Equipment equipment= (Equipment) equipmentTable.getSelectionModel().getSelectedItem();
-                if(!DAOFactory.getDAOFactory().getEquipmentDAO().update(equipment)) {
+                if(!DAOFactory.getDAOFactory().getEquipmentDAO().returnEquipment(equipment)) {
                     alertController.setText("Desila se greska pri brisanju, oprema nije izbrisana.");
                     alertStage.showAndWait();
                 }
