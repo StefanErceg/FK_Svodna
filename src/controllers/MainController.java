@@ -45,6 +45,10 @@ public class MainController {
     private AnchorPane sponsorsSidebarUI;
     @FXML
     private SponsorSidebarController sponsorsSidebarUIController;
+    @FXML
+    private AnchorPane playersSidebarUI;
+    @FXML
+    private PlayerSidebarController playersSidebarUIController;
 
     private LogInController logInController;
     private Stage logInStage;
@@ -67,8 +71,8 @@ public class MainController {
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
+        playersSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
-
 
     }
     @FXML
@@ -80,7 +84,7 @@ public class MainController {
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
-
+        playersSidebarUI.setVisible(false);
     }
 
     @FXML
@@ -92,7 +96,7 @@ public class MainController {
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
-
+        playersSidebarUI.setVisible(false);
     }
 
     @FXML
@@ -104,7 +108,7 @@ public class MainController {
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
-
+        playersSidebarUI.setVisible(true);
     }
 
     @FXML
@@ -116,6 +120,7 @@ public class MainController {
         homeUI.setVisible(false);
         playersUI.setVisible(false);
         executivesUI.setVisible(false);
+        playersSidebarUI.setVisible(false);
     }
 
     @FXML
@@ -127,11 +132,13 @@ public class MainController {
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
+        playersSidebarUI.setVisible(false);
     }
 
     @FXML
     void initialize() {
         sponsorsUIController.setSponsorSidebarController(sponsorsSidebarUIController);
+        playersUIController.setPlayerSidebarController(playersSidebarUIController);
     }
 
     public void setUser(String user) {
