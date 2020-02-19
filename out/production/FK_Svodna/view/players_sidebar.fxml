@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayerSidebarController">
    <children>
       <GridPane alignment="CENTER_LEFT" hgap="5.0" layoutY="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="3.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
         <columnConstraints>
@@ -30,47 +27,47 @@
             <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Ime" textFill="WHITE">
+            <Label fx:id="nameLabel" text="Ime" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Prezime" textFill="WHITE" GridPane.rowIndex="1">
+            <Label fx:id="lastNameLabel" text="Prezime" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Pozicija" textFill="WHITE" GridPane.rowIndex="2">
+            <Label fx:id="positionLabel" text="Pozicija" textFill="WHITE" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Broj dresa" textFill="WHITE" GridPane.rowIndex="3">
+            <Label fx:id="jerseyNumberLabel" text="Broj dresa" textFill="WHITE" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Broj licence" textFill="WHITE" GridPane.rowIndex="4">
+            <Label fx:id="licenceNumberLabel" text="Broj licence" textFill="WHITE" GridPane.rowIndex="4">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Broj telefona" textFill="WHITE" GridPane.rowIndex="5">
+            <Label fx:id="phoneNumberLabel" text="Broj telefona" textFill="WHITE" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Adresa" textFill="WHITE" GridPane.rowIndex="6">
+            <Label fx:id="addressLabel" text="Adresa" textFill="WHITE" GridPane.rowIndex="6">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Email" textFill="WHITE" GridPane.rowIndex="7">
+            <Label fx:id="emailLabel" text="Email" textFill="WHITE" GridPane.rowIndex="7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Jmbg" textFill="WHITE" GridPane.rowIndex="8">
+            <Label fx:id="jmbgLabel" text="Jmbg" textFill="WHITE" GridPane.rowIndex="8">
                <font>
                   <Font size="16.0" />
                </font>
@@ -125,7 +122,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni igrača" GridPane.rowIndex="11">
+            <Button fx:id="editPlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni igrača" GridPane.rowIndex="11">
                <font>
                   <Font size="14.0" />
                </font>
@@ -137,7 +134,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši igrača" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <Button fx:id="deletePlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši igrača" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <font>
                   <Font size="14.0" />
                </font>
@@ -149,7 +146,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj kazne" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Button fx:id="checkPunishmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj kazne" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="14.0" />
                </font>
@@ -166,7 +163,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj opremu" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Button fx:id="checkEquipmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj opremu" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <font>
                   <Font size="14.0" />
                </font>
