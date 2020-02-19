@@ -6,3 +6,7 @@
 .table-row-cell .text {
        -fx-fill: white ;
 }
+.table-row-cell:selected {
+   -fx-background-color: #829194;
+
+}

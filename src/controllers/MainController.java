@@ -71,7 +71,12 @@ public class MainController {
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
+<<<<<<< HEAD
         playersSidebarUI.setVisible(false);
+=======
+        executivesUI.setVisible(false);
+
+>>>>>>> c499902d3e92ed630963ae50a88b3c198de2e0bf
 
     }
     @FXML
