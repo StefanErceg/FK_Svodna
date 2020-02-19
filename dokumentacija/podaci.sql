@@ -35,7 +35,7 @@ insert into osoba values (null, 'Srdjan', 'Batez', '066/926-729', '2003996100031
 insert into osoba values (null, 'Nemanja', 'Sarengaca', '065/261-475', '0201995111024', 'nemanjaneco@fujifilm.com', 'Svodna bb', 'A722001', 0);
 
 insert into osobatim values (1, 1, '2019-05-17 16:30:02', null, 'igrac', 'golman');
-insert into osobatim values (2, 1, '2019-02-18 10:30:02', null, 'igrac', 'trener');
+insert into osobatim values (2, 1, '2019-02-18 10:30:02', null, 'trener', null);
 insert into osobatim values (3, 2, '2019-05-17 12:15:15', null, 'igrac', 'lijevo krilo');
 insert into osobatim values (2, 2, '2019-06-25 14:23:02', null, 'igrac', 'golman');
 

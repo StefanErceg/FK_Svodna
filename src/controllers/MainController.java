@@ -67,6 +67,7 @@ public class MainController {
         playersUI.setVisible(false);
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
+        executivesUI.setVisible(false);
 
 
     }

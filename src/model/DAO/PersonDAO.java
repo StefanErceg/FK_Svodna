@@ -8,6 +8,7 @@ public interface PersonDAO {
 
     List<Person> persons();
     Person getPersonById(int id);
+    Person getLastPerson();
     boolean insert(Person person);
     boolean update(Person person);
     boolean delete(Person person);
