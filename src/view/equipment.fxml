@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EquipmentController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
          <children>
@@ -84,7 +84,7 @@
                   </TableView>
                </children>
             </GridPane>
-            <Button layoutX="658.0" layoutY="380.0" mnemonicParsing="false" onAction="#deliteEquipment" style="-fx-background-color: #01323d;" text="Razduži" textFill="WHITE">
+            <Button layoutX="658.0" layoutY="380.0" mnemonicParsing="false" onAction="#deleteEquipment" style="-fx-background-color: #01323d;" text="Razduži" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
