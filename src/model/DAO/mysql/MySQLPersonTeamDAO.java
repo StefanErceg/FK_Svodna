@@ -92,7 +92,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                 "from osobatim ot " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
                 "inner join tim t on t.Id=ot.TimId " +
-                "where o.Obrisana=0 and t.Obrisan=0 and TimId=? and Uloga<>'igrac'";
+                "where o.Obrisana=0 and t.Obrisan=0 and TimId=? and Uloga<>'igrac' and Do is null";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -191,14 +191,12 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
-            ps.setInt(1, personTeam.getPerson().getId());
-            ps.setInt(2, personTeam.getTeam().getId());
-            ps.setTimestamp(3, personTeam.getDateFrom());
-            ps.setTimestamp(4, personTeam.getDateTo());
-            ps.setString(5, personTeam.getRole());
-            ps.setString(6, personTeam.getPlayerPosition());
-            ps.setInt(7, personTeam.getPerson().getId());
-            ps.setInt(8, personTeam.getTeam().getId());
+            ps.setTimestamp(1, personTeam.getDateFrom());
+            ps.setTimestamp(2, personTeam.getDateTo());
+            ps.setString(3, personTeam.getRole());
+            ps.setString(4, personTeam.getPlayerPosition());
+            ps.setInt(5, personTeam.getPerson().getId());
+            ps.setInt(6, personTeam.getTeam().getId());
 
             retVal = ps.executeUpdate() == 1;
         } catch(SQLException ex) {

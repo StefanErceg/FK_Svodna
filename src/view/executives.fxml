@@ -71,7 +71,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TableView fx:id="executivesTableView" maxHeight="600.0" maxWidth="700.0" style="-fx-background-color: #01323d;" stylesheets="@tableView.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0">
+            <TableView fx:id="executivesTableView" maxHeight="600.0" maxWidth="700.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@tableView.css" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Ime" />
                 <TableColumn prefWidth="75.0" text="Prezime" />

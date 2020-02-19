@@ -72,6 +72,35 @@ public class MySQLPersonDAO implements PersonDAO {
     }
 
     @Override
+    public Person getLastPerson() {
+        Person person = null;
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select * from osoba where Obrisana= 0 order by Id desc limit 1;";
+
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                person = new Person(rs.getInt("Id"), rs.getString("Ime"), rs.getString("Prezime"),
+                        rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
+                        rs.getString("Adresa"), rs.getString("BrojLicence"));
+            }
+
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+        return person;
+    }
+
+    @Override
     public boolean insert(Person person) {
         boolean retVal = false;
 

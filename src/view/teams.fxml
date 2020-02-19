@@ -64,7 +64,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#addTeam" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj">
+                        <Button mnemonicParsing="false" onAction="#addPersonTeam" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -73,7 +73,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#editTeam" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni">
+                        <Button mnemonicParsing="false" onAction="#editPersonTeam" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -82,7 +82,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#deleteTeam" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši">
+                        <Button mnemonicParsing="false" onAction="#deletePersonTeam" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
