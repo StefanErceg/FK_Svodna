@@ -62,13 +62,17 @@ public class AddEditPlayerController {
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().insert(player);
                 player = FKSvodnaUtilities.getDAOFactory().getPersonDAO().getLastPerson();
-                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));
+                boolean retval=FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));
+                System.out.println(retval);
             } else {
 
                 Person player = new Person(selectedPlayerId,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
-                System.out.println(FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player));
-                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));
+              FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player);
+                System.out.println(selectedPlayerId);
+                System.out.println(teamSelectComboBox.getSelectionModel().getSelectedItem().getId());
+                boolean retval = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));
+                System.out.println(retval);
             }
         }else{
             try {
@@ -107,6 +111,20 @@ public class AddEditPlayerController {
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
         alertStage.show();
+    }
+
+    public void clearFields(){
+        nameTextField.clear();
+        lastNameTextField.clear();
+        phoneNumberTextField.clear();
+        jmbgTextField.clear();
+        licenceNumberTextField.clear();
+        positionTextField.clear();
+        adressTextField.clear();
+        emailTextField.clear();
+        dateFrom.setValue(null);
+        dateTo.setValue(null);
+        teamSelectComboBox.getSelectionModel().clearSelection();
     }
 
     public TextField getNameTextField() {
@@ -151,5 +169,13 @@ public class AddEditPlayerController {
 
     public Button getCancelButton() {
         return cancelButton;
+    }
+
+    public DatePicker getDateFrom() {
+        return dateFrom;
+    }
+
+    public DatePicker getDateTo() {
+        return dateTo;
     }
 }

@@ -31,7 +31,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="deletePlayerButton" layoutX="360.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši igrača">
+      <Button fx:id="deletePlayerButton" layoutX="360.0" layoutY="100.0" mnemonicParsing="false" onAction="#deletePlayer" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši igrača">
          <font>
             <Font size="14.0" />
          </font>

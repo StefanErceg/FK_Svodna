@@ -14,10 +14,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DAO.DAOFactory;
 import model.DTO.Person;
+import model.DTO.PersonTeam;
 import model.DTO.Sponsor;
 import model.DTO.Team;
 import model.util.FKSvodnaUtilities;
@@ -39,33 +41,34 @@ public class PlayerController {
     private PlayerSidebarController playerSidebarController;
     private Stage addEditPlayerStage;
     private ObservableList<Person> playersList;
+    private AlertController alertController;
+    private  DecisionController decisionController;
+    private Stage alertStage;
+    private Stage decisionStage;
 
 
     @FXML
     void addPlayer(ActionEvent event) {
+        addEditPlayerController.clearFields();
         addEditPlayerController.getTeamSelectComboBox().setItems(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getTeamDAO().teams()));
         addEditPlayerController.getAddPlayerButton().setText("Dodaj igrača");
-        addEditPlayerController.getNameTextField().clear();
-        addEditPlayerController.getLastNameTextField().clear();
-        addEditPlayerController.getPositionTextField().clear();
-        addEditPlayerController.getLicenceNumberTextField().clear();
-        addEditPlayerController.getJmbgTextField().clear();
-        addEditPlayerController.getAdressTextField().clear();
-        addEditPlayerController.getEmailTextField().clear();
-        addEditPlayerController.getPhoneNumberTextField().clear();
         addEditPlayerStage.showAndWait();
         displayPlayers();
     }
 
     @FXML
     void editPlayer(ActionEvent event){
-
-        var person = playerTable.getSelectionModel().getSelectedItem();
+        addEditPlayerController.clearFields();
+        Person person = playerTable.getSelectionModel().getSelectedItem();
         addEditPlayerController.getTeamSelectComboBox().setItems(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getTeamDAO().teams()));
-        var lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
-
-        if(!lista.isEmpty())
+        List<PersonTeam> lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
+        addEditPlayerController.setSelectedPlayerId(person.getId());
+        if(!lista.isEmpty()) {
+            addEditPlayerController.getDateFrom().setValue(lista.get(0).getDateFrom().toLocalDateTime().toLocalDate());
+            if(lista.get(0).getDateTo()!=null)
+                addEditPlayerController.getDateTo().setValue(lista.get(0).getDateTo().toLocalDateTime().toLocalDate());
             addEditPlayerController.getTeamSelectComboBox().getSelectionModel().select(lista.get(0).getTeam());
+        }
         addEditPlayerController.getAddPlayerButton().setText("Izmjeni igrača");
         addEditPlayerController.getNameTextField().setText(person.getName());
         addEditPlayerController.getLastNameTextField().setText(person.getSurname());
@@ -78,6 +81,28 @@ public class PlayerController {
 
         addEditPlayerStage.showAndWait();
         displayPlayers();
+    }
+
+    @FXML
+    void deletePlayer(ActionEvent event){
+        if(playerTable.getSelectionModel().isEmpty()) {
+            alertController.setText("Nije izabaran sponzor za brisanje.");
+            alertStage.showAndWait();
+            return;
+        }
+        Person selection=playerTable.getSelectionModel().getSelectedItem();
+        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati igraca?");
+        decisionStage.showAndWait();
+        if( selection!= null && decisionController.returnResult()){
+            if(!FKSvodnaUtilities.getDAOFactory().getPersonDAO().delete(selection)){
+                alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
+                alertStage.showAndWait();
+            }
+            playersList=new FilteredList<Person>(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getPersonDAO().persons()));
+            playerTable.setItems(playersList);
+        }
+        playerTable.getSelectionModel().clearSelection();
+        playerSidebarController.clearPlayer();
     }
 
     @FXML
@@ -95,6 +120,18 @@ public class PlayerController {
         addEditPlayerStage = new Stage();
         addEditPlayerStage.initModality(Modality.APPLICATION_MODAL);
         addEditPlayerStage.setScene(new Scene(root));
+        loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
+        VBox alert=loader.load();
+        alertController=loader.getController();
+        alertStage=new Stage();
+        alertStage.setScene(new Scene(alert));
+        loader = new FXMLLoader(this.getClass().getResource("../view/decision.fxml"));
+        root = loader.load();
+        decisionController = loader.getController();
+        decisionController.getDecisionLabel().setText("Da li ste sigurni da želite da obrišete igrača?");
+        decisionStage = new Stage();
+        decisionStage.initModality(Modality.APPLICATION_MODAL);
+        decisionStage.setScene(new Scene(root));
 
         playerTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
         playerTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -112,6 +149,7 @@ public class PlayerController {
             playerTable.getSelectionModel().clearSelection();
 
             playerSidebarController.clearPlayer();
+
         } catch(Exception ex) {
             ex.printStackTrace();
         }
