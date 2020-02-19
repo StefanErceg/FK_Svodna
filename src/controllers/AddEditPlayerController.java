@@ -68,7 +68,7 @@ public class AddEditPlayerController {
 
                 Person player = new Person(selectedPlayerId,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
-              FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player);
+                FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player);
                 System.out.println(selectedPlayerId);
                 System.out.println(teamSelectComboBox.getSelectionModel().getSelectedItem().getId());
                 boolean retval = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));

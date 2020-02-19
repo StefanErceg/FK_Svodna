@@ -31,7 +31,7 @@ public class MySQLPunishmentDAO implements PunishmentDAO {
             rs = ps.executeQuery();
 
             while(rs.next()) {
-                panishments.add(new Punishment(rs.getInt("Id"), rs.getTimestamp("Datum"), rs.getDouble("Iznos"),
+                panishments.add(new Punishment(rs.getInt("Id"), rs.getTimestamp("Datum"), rs.getDouble("NovcaniIznos"),
                         rs.getInt("BrojMecevaSuspenzije"), rs.getString("Opis"), new Person(rs.getInt("OsobaId"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getString("BrojTelefona"),rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), Card.valueOf(rs.getString("Karton"))));

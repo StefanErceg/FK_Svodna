@@ -9,13 +9,14 @@
    <children>
       <GridPane alignment="CENTER_LEFT" hgap="5.0" layoutY="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="3.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="ALWAYS" minWidth="50.0" prefWidth="140.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="240.0" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="150.0" minWidth="50.0" prefWidth="134.0" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="246.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -111,7 +112,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="checkPunishmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj kazne" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Button fx:id="checkPunishmentButton" alignment="CENTER" mnemonicParsing="false" onAction="#checkPunishments" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj kazne" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="14.0" />
                </font>
@@ -140,7 +141,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label text="Tim" textFill="WHITE" GridPane.rowIndex="8" >
+            <Label text="Tim" textFill="WHITE" GridPane.rowIndex="8">
                <font>
                   <Font size="16.0" />
                </font>
@@ -150,6 +151,23 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <Label text="Ljekarski pregled" textFill="WHITE" GridPane.rowIndex="11">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="addMedicalExamination" onAction="#addMedicalExamination" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj ljekarski pregled" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/calendar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </GridPane>
    </children>

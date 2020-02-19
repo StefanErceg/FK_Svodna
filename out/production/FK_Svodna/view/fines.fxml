@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FinesController">
    <children>
       <VBox alignment="TOP_CENTER" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
          <children>
@@ -26,7 +26,7 @@
       </VBox>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="380.0" prefWidth="100.0" spacing="12.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="130.0">
          <children>
-            <Label text="Igrač: Pera Perić, napad" textFill="WHITE">
+            <Label fx:id="playerLabel" text="Igrač: Pera Perić, napad" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -42,7 +42,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <DatePicker style="-fx-background-color: transparent;" stylesheets="@datePicker.css" />
+                              <DatePicker fx:id="datePicker" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" />
                            </children>
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -55,7 +55,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" />
+                              <TextField fx:id="priceTxtField" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" />
                            </children>
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -70,7 +70,7 @@
                               </Label>
                               <HBox alignment="CENTER" spacing="20.0">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" stylesheets="@radioButton.css">
+                                    <RadioButton fx:id="yellowCardButton" mnemonicParsing="false" stylesheets="@radioButton.css">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="card" />
                                        </toggleGroup>
@@ -78,7 +78,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdff42" height="20.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                                        </graphic>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" stylesheets="@radioButton.css" toggleGroup="$card">
+                                    <RadioButton fx:id="redCardButton" mnemonicParsing="false" stylesheets="@radioButton.css" toggleGroup="$card">
                                        <graphic>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="20.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                                        </graphic>
@@ -97,7 +97,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" />
+                              <TextField fx:id="suspensionTxtField" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" />
                            </children>
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -110,13 +110,13 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" />
+                              <TextField fx:id="descriptionTxtField" maxWidth="200.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" />
                            </children>
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
                         </VBox>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #01323d;" text="Dodaj kaznu" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#add" style="-fx-background-color: #01323d;" text="Dodaj kaznu" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #01323d;">
                                  <image>
@@ -135,7 +135,7 @@
                   </HBox>
                </children>
             </VBox>
-            <TableView maxHeight="400.0" maxWidth="1000.0" prefHeight="250.0" prefWidth="700.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@tableView.css" VBox.vgrow="ALWAYS">
+            <TableView fx:id="finesTable" maxHeight="400.0" maxWidth="1000.0" prefHeight="250.0" prefWidth="700.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@tableView.css" VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn prefWidth="75.0" text="Datum kazne" />
                 <TableColumn prefWidth="75.0" text="Novčani iznos" />
@@ -150,7 +150,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </TableView>
-            <Button mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Obriši kaznu" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#delete" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Obriši kaznu" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -171,7 +171,7 @@
          <children>
             <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Zatvori" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+                  <Button mnemonicParsing="false" onAction="#close" prefWidth="130.0" style="-fx-background-color: #01323d;" text="Zatvori" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
                      <font>
                         <Font size="14.0" />
                      </font>

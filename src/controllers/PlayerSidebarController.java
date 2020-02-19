@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import model.DTO.Person;
 import model.DTO.Sponsor;
 import model.util.FKSvodnaUtilities;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
@@ -36,6 +38,10 @@ public class PlayerSidebarController {
     private Person person;
     private AlertController alertController;
     private Stage alertStage;
+    private FinesController finesController;
+    private Stage finesStage;
+    private MedicalExaminationController medicalExaminationController;
+    private Stage medicalExaminationStage;
 
     public void initialize() throws IOException {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
@@ -43,6 +49,16 @@ public class PlayerSidebarController {
         alertController=loader.getController();
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
+        loader = new FXMLLoader(this.getClass().getResource("../view/fines.fxml"));
+        root = loader.load();
+        finesStage = new Stage();
+        finesStage.setScene(new Scene(root));
+        finesController = loader.getController();
+        loader = new FXMLLoader(this.getClass().getResource("../view/medical_examinations.fxml"));
+        root = loader.load();
+        medicalExaminationStage = new Stage();
+        medicalExaminationStage.setScene(new Scene(root));
+        medicalExaminationController = loader.getController();
     }
 
     public void setPlayer(Person person) {
@@ -76,7 +92,19 @@ public class PlayerSidebarController {
     }
 
     @FXML
-    public void editPlayer(){
+    public void checkPunishments(ActionEvent event){
+        if(person!=null) {
+            finesController.setPlayer(person);
+            finesStage.showAndWait();
+        }
+    }
 
+    @FXML
+    public void addMedicalExamination(ActionEvent event){
+        if(person!=null) {
+            medicalExaminationController.clearFields();
+            medicalExaminationController.setPlayer(person);
+            medicalExaminationStage.showAndWait();
+        }
     }
 }
