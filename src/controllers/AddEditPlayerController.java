@@ -59,7 +59,7 @@ public class AddEditPlayerController {
                 Person player = new Person(0,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().insert(player);
-                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().toString()),Timestamp.from(Instant.now()),"",positionTextField.getText()));//todo:check date picker to timestamp
+                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.from(Instant.now()),"",positionTextField.getText()));//todo:check date picker to timestamp
             } else {
                 Person player = new Person(selectedPlayerId,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());

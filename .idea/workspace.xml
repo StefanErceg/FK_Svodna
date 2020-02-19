@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FK_Svodna.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FK_Svodna.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/model/DAO/mysql/ConnectionPool.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/model/DAO/mysql/ConnectionPool.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/accounts.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_accounts.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_player.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_player.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/players.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/players.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/teams.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/teams.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/players_sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FK_Svodna/view/players_sidebar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/add_edit_player.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_player.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/players.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/players_sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players_sidebar.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1579971193821</updated>
       <workItem from="1582035731816" duration="5511000" />
+      <workItem from="1582104217796" duration="1038000" />
     </task>
     <servers />
   </component>
@@ -161,26 +147,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1581520045615" />
-    <state width="1323" height="82" key="GridCell.Tab.0.bottom" timestamp="1582055264485">
+    <state width="1323" height="82" key="GridCell.Tab.0.bottom" timestamp="1582104904831">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
-    <state width="1323" height="82" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1582055264485" />
-    <state width="1323" height="82" key="GridCell.Tab.0.center" timestamp="1582055264484">
+    <state width="1323" height="82" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1582104904831" />
+    <state width="1323" height="82" key="GridCell.Tab.0.center" timestamp="1582104904831">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
-    <state width="1323" height="82" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1582055264484" />
-    <state width="1323" height="82" key="GridCell.Tab.0.left" timestamp="1582055264484">
+    <state width="1323" height="82" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1582104904831" />
+    <state width="1323" height="82" key="GridCell.Tab.0.left" timestamp="1582104904830">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581681794257" />
-    <state width="1323" height="82" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1582055264484" />
-    <state width="1323" height="82" key="GridCell.Tab.0.right" timestamp="1582055264484">
+    <state width="1323" height="82" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1582104904830" />
+    <state width="1323" height="82" key="GridCell.Tab.0.right" timestamp="1582104904831">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
-    <state width="1323" height="82" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1582055264484" />
+    <state width="1323" height="82" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1582104904831" />
     <state width="1323" height="244" key="GridCell.Tab.1.bottom" timestamp="1582035683466">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

@@ -24,105 +24,94 @@
             <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="40.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="nameLabel" text="Ime" textFill="WHITE">
+            <Label text="Ime" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lastNameLabel" text="Prezime" textFill="WHITE" GridPane.rowIndex="1">
+            <Label text="Prezime" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="positionLabel" text="Pozicija" textFill="WHITE" GridPane.rowIndex="2">
+            <Label text="Pozicija" textFill="WHITE" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="jerseyNumberLabel" text="Broj dresa" textFill="WHITE" GridPane.rowIndex="3">
+            <Label text="Broj licence" textFill="WHITE" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="licenceNumberLabel" text="Broj licence" textFill="WHITE" GridPane.rowIndex="4">
+            <Label text="Broj telefona" textFill="WHITE" GridPane.rowIndex="4">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="phoneNumberLabel" text="Broj telefona" textFill="WHITE" GridPane.rowIndex="5">
+            <Label text="Adresa" textFill="WHITE" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="addressLabel" text="Adresa" textFill="WHITE" GridPane.rowIndex="6">
+            <Label text="Email" textFill="WHITE" GridPane.rowIndex="6">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="emailLabel" text="Email" textFill="WHITE" GridPane.rowIndex="7">
+            <Label text="Jmbg" textFill="WHITE" GridPane.rowIndex="7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="jmbgLabel" text="Jmbg" textFill="WHITE" GridPane.rowIndex="8">
+            <Label text="Kazne" textFill="WHITE" GridPane.rowIndex="8">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Kazne" textFill="WHITE" GridPane.rowIndex="9">
+            <Label fx:id="nameLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Marko" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+            <Label fx:id="lastNameLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Markovic" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+            <Label fx:id="positionLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Napad" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+            <Label fx:id="licenceNumberLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="10" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+            <Label fx:id="phoneNumberLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="222/14" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+            <Label fx:id="addressLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="066/555-333" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
+            <Label fx:id="emailLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Topolska 18" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6">
+            <Label fx:id="jmbgLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="marko@markovic.com" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label text="1234567891011" textFill="WHITE" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Button fx:id="editPlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni igrača" GridPane.rowIndex="11">
+            <Button fx:id="editPlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni igrača" GridPane.rowIndex="10">
                <font>
                   <Font size="14.0" />
                </font>
@@ -134,7 +123,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="deletePlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši igrača" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <Button fx:id="deletePlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši igrača" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <font>
                   <Font size="14.0" />
                </font>
@@ -146,7 +135,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="checkPunishmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj kazne" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Button fx:id="checkPunishmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj kazne" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="14.0" />
                </font>
@@ -158,12 +147,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label text="Oprema" textFill="WHITE" GridPane.rowIndex="10">
+            <Label text="Oprema" textFill="WHITE" GridPane.rowIndex="9">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="checkEquipmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj opremu" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Button fx:id="checkEquipmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj opremu" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="14.0" />
                </font>
