@@ -48,7 +48,7 @@ public class AddEditPersonController {
 
     @FXML
     private void initialize() {
-        roleComboBox.getItems().addAll("igrac", "trener", "doktor");
+        roleComboBox.getItems().addAll("trener", "pomocni trener", "ekonom", "fizioterapeut");
     }
 
     public void save() {
