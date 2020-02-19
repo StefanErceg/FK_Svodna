@@ -30,6 +30,8 @@ public class PlayerSidebarController {
     private Label emailLabel;
     @FXML
     private Label positionLabel;
+    @FXML
+    private Label teamLabel;
 
     private Person person;
     private AlertController alertController;
@@ -54,8 +56,10 @@ public class PlayerSidebarController {
         jmbgLabel.setText(person.getJmb());
         phoneNumberLabel.setText(person.getPhoneNumber());
         var lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
-        if(!lista.isEmpty())
+        if(!lista.isEmpty()) {
             positionLabel.setText(lista.get(0).getPlayerPosition());
+            teamLabel.setText(lista.get(0).getTeam().toString());
+        }
     }
 
     public void clearPlayer(){
@@ -68,6 +72,7 @@ public class PlayerSidebarController {
         emailLabel.setText("");
         jmbgLabel.setText("");
         phoneNumberLabel.setText("");
+        teamLabel.setText("");
     }
 
     @FXML
