@@ -111,30 +111,6 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="editPlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Izmijeni igrača" GridPane.rowIndex="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="deletePlayerButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Obriši igrača" GridPane.columnIndex="1" GridPane.rowIndex="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/delete.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="checkPunishmentButton" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Pregledaj kazne" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="14.0" />

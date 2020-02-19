@@ -164,8 +164,15 @@
                   </Label>
                   <ComboBox fx:id="teamSelectComboBox" prefWidth="150.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                   <DatePicker fx:id="dateFrom" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Label text="Igra do" GridPane.rowIndex="9" />
-                  <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Label text="Igra do" textFill="WHITE" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker fx:id="dateTo" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                </children>
             </GridPane>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">

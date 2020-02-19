@@ -11,14 +11,13 @@ import model.DTO.Sponsor;
 import model.util.FKSvodnaUtilities;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class PlayerSidebarController {
     @FXML
     private Label nameLabel;
     @FXML
     private Label lastNameLabel;
-    @FXML
-    private Label jerseyNumberLabel;
     @FXML
     private Label licenceNumberLabel;
     @FXML
@@ -45,23 +44,25 @@ public class PlayerSidebarController {
     }
 
     public void setPlayer(Person person) {
+        clearPlayer();
         this.person = person;
         nameLabel.setText(person.getName());
         lastNameLabel.setText(person.getSurname());
-        positionLabel.setText(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().get(person.getId()).getPlayerPosition());
-        jerseyNumberLabel.setText("5");//todo:do this
         licenceNumberLabel.setText(person.getLicenceNumber());
         addressLabel.setText(person.getAddress());
         emailLabel.setText(person.getEmail());
         jmbgLabel.setText(person.getJmb());
         phoneNumberLabel.setText(person.getPhoneNumber());
+        var lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
+        if(!lista.isEmpty())
+            positionLabel.setText(lista.get(0).getPlayerPosition());
     }
+
     public void clearPlayer(){
         this.person=null;
         nameLabel.setText("");
         lastNameLabel.setText("");
         positionLabel.setText("");
-        jerseyNumberLabel.setText("");
         licenceNumberLabel.setText("");
         addressLabel.setText("");
         emailLabel.setText("");
@@ -69,4 +70,8 @@ public class PlayerSidebarController {
         phoneNumberLabel.setText("");
     }
 
+    @FXML
+    public void editPlayer(){
+
+    }
 }

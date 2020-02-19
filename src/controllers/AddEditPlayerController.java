@@ -43,6 +43,8 @@ public class AddEditPlayerController {
     private Button cancelButton;
     @FXML
     private DatePicker dateFrom;
+    @FXML
+    private DatePicker dateTo;
 
     private int selectedPlayerId;
     private Stage alertStage;
@@ -59,12 +61,14 @@ public class AddEditPlayerController {
                 Person player = new Person(0,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().insert(player);
-                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.from(Instant.now()),"",positionTextField.getText()));//todo:check date picker to timestamp
+                player = FKSvodnaUtilities.getDAOFactory().getPersonDAO().getLastPerson();
+                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));
             } else {
+
                 Person player = new Person(selectedPlayerId,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
-                FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player);
-                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().toString()),Timestamp.from(Instant.now()),"",positionTextField.getText()));
+                System.out.println(FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player));
+                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));
             }
         }else{
             try {
