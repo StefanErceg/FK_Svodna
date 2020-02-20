@@ -75,7 +75,7 @@ public class PlayerController {
                 addEditPlayerController.getDateTo().setValue(lista.get(0).getDateTo().toLocalDateTime().toLocalDate());
             addEditPlayerController.getTeamSelectComboBox().getSelectionModel().select(lista.get(0).getTeam());
         }
-        addEditPlayerController.getAddPlayerButton().setText("Izmjeni igrača");
+        addEditPlayerController.getAddPlayerButton().setText("Izmijeni igrača");
         addEditPlayerController.getNameTextField().setText(person.getName());
         addEditPlayerController.getLastNameTextField().setText(person.getSurname());
         addEditPlayerController.getLicenceNumberTextField().setText(person.getLicenceNumber());
