@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DAO.DAOFactory;
 import model.DTO.Sponsor;
@@ -40,7 +41,7 @@ public class AddEditSponsorController {
     @FXML
     void addSponsor(ActionEvent event) {
         if(nameField.getText().equals("") || (emailField.getText().equals("") && phonenumberField.getText().equals("") ) ){
-            alertController.setText("Nisu uneseni svi potrebni podatci, sponzor mora imati ime i bar email ili broj telefona.");
+            alertController.setText("Nisu uneseni svi potrebni podaci, sponzor mora imati ime i email ili broj telefona.");
             alertStage.showAndWait();
             return;
         }
@@ -96,6 +97,7 @@ public class AddEditSponsorController {
             alertController = loader.getController();
             alertStage = new Stage();
             alertStage.setScene(new Scene(alert));
+            alertStage.initModality(Modality.APPLICATION_MODAL);
     }
 
 }

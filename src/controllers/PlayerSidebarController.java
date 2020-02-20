@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Person;
 import model.DTO.PersonTeam;
@@ -53,20 +54,24 @@ public class PlayerSidebarController {
         alertController=loader.getController();
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
+        alertStage.initModality(Modality.APPLICATION_MODAL);
         loader = new FXMLLoader(this.getClass().getResource("../view/fines.fxml"));
         root = loader.load();
         finesStage = new Stage();
         finesStage.setScene(new Scene(root));
+        finesStage.initModality(Modality.APPLICATION_MODAL);
         finesController = loader.getController();
         loader = new FXMLLoader(this.getClass().getResource("../view/medical_examinations.fxml"));
         root = loader.load();
         medicalExaminationStage = new Stage();
         medicalExaminationStage.setScene(new Scene(root));
+        medicalExaminationStage.initModality(Modality.APPLICATION_MODAL);
         medicalExaminationController = loader.getController();
         loader=new FXMLLoader(this.getClass().getResource("../view/equipment.fxml"));
         root=loader.load();
         equipmentStage=new Stage();
         equipmentStage.setScene(new Scene(root));
+        equipmentStage.initModality(Modality.APPLICATION_MODAL);
         equipmentController=loader.getController();
     }
 

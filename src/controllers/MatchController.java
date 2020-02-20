@@ -17,6 +17,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Match;
 import model.DTO.Person;
@@ -100,11 +101,13 @@ public class MatchController {
         alertController=loader.getController();
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
+        alertStage.initModality(Modality.APPLICATION_MODAL);
         loader = new FXMLLoader(this.getClass().getResource("../view/add_edit_matches.fxml"));
         root = loader.load();
         addEditMatchesController = loader.getController();
         addEditMatchesStage = new Stage();
         addEditMatchesStage.setScene(new Scene(root));
+        addEditMatchesStage.initModality(Modality.APPLICATION_MODAL);
 
         tableResult.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
         tableResult.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("opposingTeam"));
