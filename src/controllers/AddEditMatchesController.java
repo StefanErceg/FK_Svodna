@@ -46,7 +46,7 @@ public class AddEditMatchesController {
 
     public void save(){
         if(checkFields()) {
-            if ("Dodaj meč".equals(addEditButton.getText())) {
+            if ("Dodaj utakmicu".equals(addEditButton.getText())) {
                 Timestamp matchTime = Timestamp.valueOf(dateofMatch.getValue().atStartOfDay());
                 String[] time = timeField.getText().split(":");
                 if(time.length>1) {

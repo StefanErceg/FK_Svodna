@@ -48,7 +48,7 @@ public class MatchController {
     @FXML
     void addMatch(ActionEvent event) {
         addEditMatchesController.clearFields();
-        addEditMatchesController.getAddEditButton().setText("Dodaj meč");
+        addEditMatchesController.getAddEditButton().setText("Dodaj utakmicu");
         addEditMatchesController.getResultField().setVisible(false);
         addEditMatchesController.getResultLabel().setVisible(false);
         addEditMatchesStage.showAndWait();
@@ -64,7 +64,7 @@ public class MatchController {
             FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(selectedMatch);
         }
         else{
-            alertController.setText("Nije odabrana utakmica");
+            alertController.setText("Nije izabrana utakmica.");
             alertStage.show();
         }
         displayMatches();
@@ -79,13 +79,13 @@ public class MatchController {
             addEditMatchesController.getOpponentTeamField().setText(selectedMatch.getOpposingTeam());
             addEditMatchesController.getTimeField().setText(selectedMatch.getDate().getHours()+":"+selectedMatch.getDate().getMinutes());
             addEditMatchesController.getDateofMatch().setValue(selectedMatch.getDate().toLocalDateTime().toLocalDate());
-            addEditMatchesController.getAddEditButton().setText("Izmjeni meč");
+            addEditMatchesController.getAddEditButton().setText("Izmijeni utakmicu");
             addEditMatchesController.getResultField().setVisible(true);
             addEditMatchesController.getResultLabel().setVisible(true);
             addEditMatchesStage.showAndWait();
         }
         else{
-            alertController.setText("Utakmica nije odabrana");
+            alertController.setText("Nije izabrana utakmica.");
             alertStage.show();
         }
         displayMatches();

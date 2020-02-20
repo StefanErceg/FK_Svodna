@@ -1,18 +1,18 @@
 package model.DTO;
 
 public enum Card {
-    CRVENI
+    Crveni
             {
                 @Override
                 public String toString() {
-                    return "CRVENI";
+                    return "Crveni";
                 }
             },
-    ZUTI
+    Zuti
             {
                 @Override
                 public String toString() {
-                    return "ZUTI";
+                    return "Zuti";
                 }
             }
 }

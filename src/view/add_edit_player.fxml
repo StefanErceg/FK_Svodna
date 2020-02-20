@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEditPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEditPlayerController">
    <children>
       <VBox alignment="CENTER" layoutX="233.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0">
          <children>
@@ -161,8 +162,8 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="teamSelectComboBox" prefWidth="150.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <DatePicker fx:id="dateFrom" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <ComboBox fx:id="teamSelectComboBox" prefHeight="30.0" prefWidth="200.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <DatePicker fx:id="dateFrom" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                </children>
             </GridPane>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">

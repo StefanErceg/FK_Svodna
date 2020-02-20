@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MatchController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MatchController">
    <children>
       <VBox layoutX="60.0" layoutY="100.0" spacing="10.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
          <children>
@@ -19,7 +20,7 @@
                      <children>
                         <HBox>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#addMatch" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj utakmicu">
+                              <Button mnemonicParsing="false" onAction="#addMatch" prefWidth="100.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

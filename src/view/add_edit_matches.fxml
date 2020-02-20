@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEditMatchesController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEditMatchesController">
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0">
          <children>
@@ -30,7 +31,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label text="Datum meča" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="0">
+                  <Label text="Datum utakmice" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -51,7 +52,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <DatePicker fx:id="dateofMatch" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  <DatePicker fx:id="dateofMatch" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                   <TextField fx:id="timeField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
@@ -87,7 +88,7 @@
             </GridPane>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">
                <children>
-                  <Button fx:id="addEditButton" mnemonicParsing="false" onAction="#save" prefWidth="125.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj meč">
+                  <Button fx:id="addEditButton" mnemonicParsing="false" onAction="#save" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj utakmicu">
                      <font>
                         <Font size="15.0" />
                      </font>

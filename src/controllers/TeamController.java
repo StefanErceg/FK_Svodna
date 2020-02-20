@@ -117,7 +117,7 @@ public class TeamController {
             displayStaff();
         } else {
             try {
-                displayAlert("Nije izabrana osoba za izsmjenu!");
+                displayAlert("Nije izabrana osoba stručnog štaba za izmjenu!");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

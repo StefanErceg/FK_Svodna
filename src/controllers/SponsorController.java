@@ -49,7 +49,7 @@ public class SponsorController {
     @FXML
     void changeSponsor(ActionEvent event)  { //poziva formu za promjenu sponzora i refresuje tabelu
         if(sponsorTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabaran sponzor za izmjenu.");
+            alertController.setText("Nije izabran sponzor za izmjenu.");
             alertStage.showAndWait();
             return;
         }
@@ -65,12 +65,12 @@ public class SponsorController {
     void deleteSponsor(ActionEvent event) { //brise sponzora iz baze refresuje tabelu
 
         if(sponsorTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabaran sponzor za brisanje.");
+            alertController.setText("Nije izabran sponzor za brisanje.");
             alertStage.showAndWait();
             return;
         }
         Sponsor selection=sponsorTable.getSelectionModel().getSelectedItem();
-        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati sponzora?");
+        decisionController.getDecisionLabel().setText("Da li ste sigurni da želite obrisati sponzora?");
         decisionStage.showAndWait();
         if( selection!= null && decisionController.returnResult()){
             if(!DAOFactory.getDAOFactory().getSponsorDAO().delete(selection)){
@@ -90,7 +90,9 @@ public class SponsorController {
         //pretrazuje po imenima tako da sadrzi podstring ostale izbacuje
         ObservableList<Sponsor> filtered=sponsorList.filtered( e->e.getName().toLowerCase().matches(".*"+sponsorNameField.getText().toLowerCase()+".*"));
         sponsorTable.setItems(filtered);
-        sponsorSidebarController.setSponsor(filtered.get(0));
+        if (filtered.size() > 0) {
+            sponsorSidebarController.setSponsor(filtered.get(0));
+        }
 
     }
 

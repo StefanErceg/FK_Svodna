@@ -68,9 +68,9 @@ public class FinesController {
         punishment.setDate(new Timestamp(date.getTime()));
         punishment.setMonetaryAmount(Double.parseDouble(priceTxtField.getText()));
         if(yellowCardButton.isSelected()) {
-            punishment.setCard(Card.ZUTI);
+            punishment.setCard(Card.Zuti);
         } else if(redCardButton.isSelected()) {
-            punishment.setCard(Card.CRVENI);
+            punishment.setCard(Card.Crveni);
         }
         punishment.setSuspensionMatchesNumber(Integer.parseInt(suspensionTxtField.getText()));
         punishment.setDescription(descriptionTxtField.getText());
@@ -82,27 +82,6 @@ public class FinesController {
         }
         reloadTable();
         finesTable.getSelectionModel().clearSelection();
-    }
-
-    @FXML
-    void delete(ActionEvent event) {
-//        if(finesTable.getSelectionModel().isEmpty()) {
-//            alertController.setText("Nije izabarana kazna za brisanje.");
-//            alertStage.showAndWait();
-//            return;
-//        }
-//        Punishment selection = finesTable.getSelectionModel().getSelectedItem();
-//        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati kaznu?");
-//        decisionStage.showAndWait();
-//        if( selection!= null && decisionController.returnResult()){
-//            if(!FKSvodnaUtilities.getDAOFactory().getPunishmentDAO().delete(selection)){//TODO: Sacekaj Milicu za delete
-//                alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
-//                alertStage.showAndWait();
-//            }
-//            punishmentObservableList=new FilteredList<Punishment>(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getPunishmentDAO().panishments()));
-//            finesTable.setItems(punishmentObservableList);
-//        }
-//        finesTable.getSelectionModel().clearSelection();
     }
 
     @FXML
