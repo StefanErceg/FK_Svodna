@@ -67,6 +67,7 @@ public class AddEditPlayerController {
                 Person player = new Person(selectedPlayerId,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player);
+               // if(teamSelectComboBox.getSelectionModel().getSelectedItem().getName().equals(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().))
                 FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),Timestamp.valueOf(dateTo.getValue().atStartOfDay()),"",positionTextField.getText()));
             }
         }else{
