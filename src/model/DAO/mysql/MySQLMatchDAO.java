@@ -74,7 +74,7 @@ public class MySQLMatchDAO implements MatchDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select * from utakmica order by DatumIVrijeme limit 1";
+        String query = "select * from utakmica where DatumIVrijeme >= now() order by DatumIVrijeme limit 1";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
