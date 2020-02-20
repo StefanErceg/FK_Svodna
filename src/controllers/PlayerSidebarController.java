@@ -8,11 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.DTO.Person;
+import model.DTO.PersonTeam;
 import model.DTO.Sponsor;
 import model.util.FKSvodnaUtilities;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerSidebarController {
@@ -42,6 +44,8 @@ public class PlayerSidebarController {
     private Stage finesStage;
     private MedicalExaminationController medicalExaminationController;
     private Stage medicalExaminationStage;
+    private Stage equipmentStage;
+    private EquipmentController equipmentController;
 
     public void initialize() throws IOException {
         FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
@@ -59,6 +63,11 @@ public class PlayerSidebarController {
         medicalExaminationStage = new Stage();
         medicalExaminationStage.setScene(new Scene(root));
         medicalExaminationController = loader.getController();
+        loader=new FXMLLoader(this.getClass().getResource("../view/equipment.fxml"));
+        root=loader.load();
+        equipmentStage=new Stage();
+        equipmentStage.setScene(new Scene(root));
+        equipmentController=loader.getController();
     }
 
     public void setPlayer(Person person) {
@@ -71,7 +80,7 @@ public class PlayerSidebarController {
         emailLabel.setText(person.getEmail());
         jmbgLabel.setText(person.getJmb());
         phoneNumberLabel.setText(person.getPhoneNumber());
-        var lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
+        List<PersonTeam> lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
         if(!lista.isEmpty()) {
             positionLabel.setText(lista.get(0).getPlayerPosition());
             teamLabel.setText(lista.get(0).getTeam().toString());
@@ -102,7 +111,16 @@ public class PlayerSidebarController {
             alertStage.show();
         }
     }
-
+    @FXML
+    void checkEquipment(ActionEvent event){
+        if(person!=null){
+            equipmentController.setPlayer(person);
+            equipmentStage.showAndWait();
+        }else {
+            alertController.setText("Nije izazbran ni jedan igrač.");
+            alertStage.showAndWait();
+        }
+    }
     @FXML
     public void addMedicalExamination(ActionEvent event){
         if(person!=null) {
