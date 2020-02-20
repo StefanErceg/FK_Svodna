@@ -49,16 +49,17 @@ public class PaymentController {
 
     @FXML
     void addPayment(ActionEvent event) { // dodaje trenutno unesene podatke u novu uplatu
-        if(paymentDatePicker.getValue()!=null && !paymentAmountField.getText().isEmpty()){
-            Payment payment=new Payment();
-
-                loadPayment(payment);
-                if(DAOFactory.getDAOFactory().geTPaymentDAO().insert(payment)) {
-                    alertController.setText("Desila se greska pri upisu, upis nije izvrsen.");
-                    alertStage.showAndWait();
-                }
-
+        if(paymentDatePicker.getValue()!=null && expirationDatePicker.getValue()!=null && !paymentAmountField.getText().isEmpty()) {
+            Payment payment = new Payment();
+            loadPayment(payment);
+            if (!DAOFactory.getDAOFactory().geTPaymentDAO().insert(payment)) {
+                alertController.setText("Desila se greska pri upisu, upis nije izvrsen.");
+                alertStage.showAndWait();
+            }
             reloadTable();
+        }else{
+            alertController.setText("Nisu popunjena sva polja.");
+            alertStage.show();
         }
     }
 
@@ -69,19 +70,26 @@ public class PaymentController {
             alertStage.showAndWait();
             return;
         }
-        Payment payment=paymentTable.getSelectionModel().getSelectedItem();
-        loadPayment(payment);
-        if(DAOFactory.getDAOFactory().geTPaymentDAO().update(payment))
-            alertController.setText("Desila se greska pri upisu, nije izvrsen upis.");
+        if(expirationDatePicker != null && paymentDatePicker != null) {
+            Payment payment = paymentTable.getSelectionModel().getSelectedItem();
+            loadPayment(payment);
+            if (!DAOFactory.getDAOFactory().geTPaymentDAO().update(payment)) {
+                alertController.setText("Desila se greska pri upisu, nije izvrsen upis.");
+                alertStage.show();
+            }
+        }else{
+            alertController.setText("Nisu popunjena sva polja.");
+            alertStage.show();
+        }
         reloadTable();
-
     }
 
     @FXML
     void selectionChange(MouseEvent event) { // setuje podatke o uplati na gui, za potrebe promjene
         Payment payment=paymentTable.getSelectionModel().getSelectedItem();
         paymentDatePicker.setValue(payment.getPaymentDate().toLocalDateTime().toLocalDate());
-        expirationDatePicker.setValue(payment.getExpirationDate().toLocalDateTime().toLocalDate());
+        if(payment.getExpirationDate()!=null)
+            expirationDatePicker.setValue(payment.getExpirationDate().toLocalDateTime().toLocalDate());
         paymentAmountField.setText(""+payment.getAmount());
 
     }
@@ -102,7 +110,9 @@ public class PaymentController {
     private void reloadTable(){ // pomocna metoda za ucitavanje tabele
         List<Payment> paymentList= DAOFactory.getDAOFactory().geTPaymentDAO().payments().stream()
                 .filter(e->e.getSponsor().equals(sponsor)).collect(Collectors.toList());
-        paymentObservableList= FXCollections.observableList(paymentList);
+        paymentObservableList = FXCollections.observableList(paymentList);
+        paymentTable.getItems().clear();
+        paymentTable.refresh();
         paymentTable.setItems(paymentObservableList);
     }
 

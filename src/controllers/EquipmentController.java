@@ -49,7 +49,7 @@ public class EquipmentController {
 
     @FXML
     void addEquipment(ActionEvent event) { //dodaje opremu u tabelu
-        if(!typeTxtField.getText().isEmpty() && !codeTxtField.getText().isEmpty()){
+        if(!typeTxtField.getText().isEmpty() && !codeTxtField.getText().isEmpty() && !numberTxtField.getText().isEmpty() && isInt(numberTxtField.getText())){
             Equipment equipment = new Equipment();
             equipment.setObligated(true);
             equipment.setType(typeTxtField.getText().trim());
@@ -77,6 +77,10 @@ public class EquipmentController {
                 DAOFactory.getDAOFactory().getEquipmentDAO().returnEquipment(equipment);
             }
             reloadTable();
+        }
+        else {
+            alertController.setText("Nisu unesena potrebna polja.");
+            alertStage.showAndWait();
         }
         equipmentTable.getSelectionModel().clearSelection();
     }
@@ -147,5 +151,9 @@ public class EquipmentController {
         typeTxtField.setText("");
         numberTxtField.setText("");
         codeTxtField.setText("");
+    }
+    private boolean isInt(String string){
+        if(string.matches("([0-9]*)")) return true;
+        return false;
     }
 }

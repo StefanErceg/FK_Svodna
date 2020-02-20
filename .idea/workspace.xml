@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/EquipmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/EquipmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ExecutivesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ExecutivesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/FinesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FinesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/PersonTeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/PersonTeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLPersonTeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLPersonTeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/add_edit_player.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_player.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,26 +133,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1581520045615" />
-    <state width="1323" height="37" key="GridCell.Tab.0.bottom" timestamp="1582215734443">
+    <state width="1323" height="95" key="GridCell.Tab.0.bottom" timestamp="1582235397003">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
-    <state width="1323" height="37" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1582215734443" />
-    <state width="1323" height="37" key="GridCell.Tab.0.center" timestamp="1582215734442">
+    <state width="1323" height="95" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1582235397003" />
+    <state width="1323" height="95" key="GridCell.Tab.0.center" timestamp="1582235397003">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
-    <state width="1323" height="37" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1582215734442" />
-    <state width="1323" height="37" key="GridCell.Tab.0.left" timestamp="1582215734442">
+    <state width="1323" height="95" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1582235397003" />
+    <state width="1323" height="95" key="GridCell.Tab.0.left" timestamp="1582235397002">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581681794257" />
-    <state width="1323" height="37" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1582215734442" />
-    <state width="1323" height="37" key="GridCell.Tab.0.right" timestamp="1582215734443">
+    <state width="1323" height="95" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1582235397002" />
+    <state width="1323" height="95" key="GridCell.Tab.0.right" timestamp="1582235397003">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
-    <state width="1323" height="37" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1582215734443" />
+    <state width="1323" height="95" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1582235397003" />
     <state width="1323" height="71" key="GridCell.Tab.1.bottom" timestamp="1582203504776">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -189,5 +191,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1581594231334" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1582230828602">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1582230828602" />
   </component>
 </project>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.UserAccount;
@@ -45,7 +48,7 @@ public class LogInController {
     private UserAccount userAccount;
 
     @FXML
-    void logIn(ActionEvent event) {
+    void logIn() {
         if (checkUsername() && checkPassword()) {
             username = usernameTextField.getText();
             password = passwordField.getText();
@@ -100,6 +103,11 @@ public class LogInController {
             catch (Exception e){
                 e.printStackTrace();
             }
+    }
+
+    @FXML
+    void logInByEnter(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)) logIn();
     }
 
     @FXML

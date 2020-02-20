@@ -54,7 +54,7 @@ public class ExecutivesController {
 
     public void search() {
         List<Manager> filteredManagers = listOfExecutives.stream()
-                .filter(manager -> manager.getName().toUpperCase().contains(searchTextField.getText().toUpperCase()))
+                .filter(manager -> manager.getName().toUpperCase().contains(searchTextField.getText().toUpperCase())||manager.getSurname().toUpperCase().contains(searchTextField.getText().toUpperCase()))
                 .collect(Collectors.toList());
         executivesTableView.getItems().clear();
         executivesTableView.getItems().addAll(filteredManagers);

@@ -82,6 +82,7 @@ public class MatchController {
             addEditMatchesController.getAddEditButton().setText("Izmijeni utakmicu");
             addEditMatchesController.getResultField().setVisible(true);
             addEditMatchesController.getResultLabel().setVisible(true);
+            addEditMatchesController.getResultField().setText(selectedMatch.getResult());
             addEditMatchesStage.showAndWait();
         }
         else{

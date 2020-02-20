@@ -64,21 +64,27 @@ public class FinesController {
     void add(ActionEvent event) {
         Punishment punishment = new Punishment();
         LocalDate localDate = datePicker.getValue();
-        Date date = Date.valueOf(localDate);
-        punishment.setDate(new Timestamp(date.getTime()));
-        punishment.setMonetaryAmount(Double.parseDouble(priceTxtField.getText()));
-        if(yellowCardButton.isSelected()) {
-            punishment.setCard(Card.Zuti);
-        } else if(redCardButton.isSelected()) {
-            punishment.setCard(Card.Crveni);
+        if (localDate != null && checkFields()) {
+            Date date = Date.valueOf(localDate);
+            punishment.setDate(new Timestamp(date.getTime()));
+            punishment.setMonetaryAmount(Double.parseDouble(priceTxtField.getText()));
+            if (yellowCardButton.isSelected()) {
+                punishment.setCard(Card.Zuti);
+            } else if (redCardButton.isSelected()) {
+                punishment.setCard(Card.Crveni);
+            }
+            punishment.setSuspensionMatchesNumber(Integer.parseInt(suspensionTxtField.getText()));
+            punishment.setDescription(descriptionTxtField.getText());
+            punishment.setPerson(player);
+            if (!DAOFactory.getDAOFactory().getPunishmentDAO().insert(punishment)) {
+                alertController.setText("Desila se greska pri upisu, kazna nije dodana.");
+                alertStage.showAndWait();
+                //  DAOFactory.getDAOFactory().getPunishmentDAO().returnEquipment(equipment);
+            }
         }
-        punishment.setSuspensionMatchesNumber(Integer.parseInt(suspensionTxtField.getText()));
-        punishment.setDescription(descriptionTxtField.getText());
-        punishment.setPerson(player);
-        if(!DAOFactory.getDAOFactory().getPunishmentDAO().insert(punishment)){
-            alertController.setText("Desila se greska pri upisu, kazna nije dodana.");
+        else{
+            alertController.setText("Nisu unesena potrebna polja.");
             alertStage.showAndWait();
-          //  DAOFactory.getDAOFactory().getPunishmentDAO().returnEquipment(equipment);
         }
         reloadTable();
         finesTable.getSelectionModel().clearSelection();
@@ -124,5 +130,20 @@ public class FinesController {
         this.player = player;
         playerLabel.setText(player.getName());
         reloadTable();
+    }
+
+    private boolean checkFields(){
+        boolean filled = !priceTxtField.getText().isEmpty()&&!suspensionTxtField.getText().isEmpty()&&!descriptionTxtField.getText().isEmpty()&&(redCardButton.isSelected()||yellowCardButton.isSelected());
+        return filled && isDouble( priceTxtField.getText()) && isInt(suspensionTxtField.getText());
+    }
+
+    private boolean isDouble(String string){
+        if(string.matches("([0-9]*)\\.([0-9]*)")||isInt(string)) return true;
+        return false;
+    }
+
+    private boolean isInt(String string){
+        if(string.matches("([0-9]*)")) return true;
+        return false;
     }
 }

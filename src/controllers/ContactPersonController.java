@@ -65,6 +65,10 @@ public class ContactPersonController {
             }
             reloadTable();
         }
+        else {
+            alertController.setText("Nisu popunjena sva polja.");
+            alertStage.show();
+        }
         contactTable.getSelectionModel().clearSelection();
     }
 

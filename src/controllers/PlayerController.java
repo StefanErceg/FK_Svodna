@@ -119,7 +119,7 @@ public class PlayerController {
 
     @FXML
     void findPlayer(KeyEvent event) {
-        ObservableList<Person> filtered=playersList.filtered( e->e.getName().toLowerCase().matches(".*"+findPlayerField.getText().toLowerCase()+".*"));
+        ObservableList<Person> filtered=playersList.filtered( e->e.getName().toLowerCase().matches(".*"+findPlayerField.getText().toLowerCase()+".*")||e.getSurname().toLowerCase().matches(".*"+findPlayerField.getText().toLowerCase()+".*"));
         playerTable.setItems(filtered);
         if(filtered.size() > 0) {
             playerSidebarController.setPlayer(filtered.get(0));
