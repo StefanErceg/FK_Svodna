@@ -1,6 +1,7 @@
 package model.DAO.mysql;
 
 import model.DAO.TeamDAO;
+import model.DTO.Person;
 import model.DTO.Team;
 
 import java.sql.Connection;
@@ -49,6 +50,32 @@ public class MySQLTeamDAO implements TeamDAO {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                team = new Team(rs.getInt("Id"), rs.getString("Naziv"));
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+        return team;
+    }
+
+    @Override
+    public Team getTeamByName(String name) {
+        Team team = null;
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select * from tim where Naziv=? and Obrisan=0";
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
             rs = ps.executeQuery();
 
             if(rs.next()) {

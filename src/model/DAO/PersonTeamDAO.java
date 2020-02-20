@@ -1,6 +1,7 @@
 package model.DAO;
 
 import model.DTO.PersonTeam;
+import model.DTO.Team;
 
 import java.util.List;
 
