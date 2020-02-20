@@ -74,5 +74,3 @@ drop view if exists razlikadatuma;
 create view razlikadatuma as
 select ljekarskipregled.*, TIMESTAMPDIFF(YEAR, now(), DatumIsteka) as RazlikaGodina, TIMESTAMPDIFF(MONTH, now(), DatumIsteka) as RazlikaMjesec, TIMESTAMPDIFF(DAY, now(), DatumIsteka) as RazlikaDan from ljekarskipregled;
 
-
-
