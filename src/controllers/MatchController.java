@@ -63,29 +63,12 @@ public class MatchController {
             selectedMatch.setResult(result.getText());
             FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(selectedMatch);
         }
+        else{
+            alertController.setText("Nije odabrana utakmica");
+            alertStage.show();
+        }
         displayMatches();
         clearFields();
-    }
-
-    @FXML
-    void deleteResult(ActionEvent event) {
-//        if(tableResult.getSelectionModel().isEmpty()) {
-//            alertController.setText("Nije izabaran sponzor za brisanje.");
-//            alertStage.showAndWait();
-//            return;
-//        }
-//        Match selection=tableResult.getSelectionModel().getSelectedItem();
-//        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati igraca?");
-//        decisionStage.showAndWait();
-//        if( selection!= null && decisionController.returnResult()){
-//            if(!FKSvodnaUtilities.getDAOFactory().getMatchDAO().delete(selection)){
-//                alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
-//                alertStage.showAndWait();
-//            }
-//        }
-//        tableResult.getSelectionModel().clearSelection();
-//        displayMatches();
-//        clearFields();
     }
 
     @FXML
@@ -100,6 +83,10 @@ public class MatchController {
             addEditMatchesController.getResultField().setVisible(true);
             addEditMatchesController.getResultLabel().setVisible(true);
             addEditMatchesStage.showAndWait();
+        }
+        else{
+            alertController.setText("Utakmica nije odabrana");
+            alertStage.show();
         }
         displayMatches();
         clearFields();

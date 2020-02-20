@@ -9,6 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.DateTimeStringConverter;
 import model.DTO.Match;
+import model.DTO.Obligation;
 import model.DTO.Person;
 import model.DTO.PersonTeam;
 import model.util.FKSvodnaUtilities;
@@ -17,6 +18,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.List;
 
 public class AddEditMatchesController {
     @FXML
@@ -52,8 +54,13 @@ public class AddEditMatchesController {
                     matchTime.setMinutes(Integer.parseInt(time[1]));
                 }
                 Match match = new Match(0,matchTime,opponentTeamField.getText(),"");
-                
                 FKSvodnaUtilities.getDAOFactory().getMatchDAO().insert(match);
+                match = FKSvodnaUtilities.getDAOFactory().getMatchDAO().getLastMatch();
+                List<Obligation> obligationList = FKSvodnaUtilities.getDAOFactory().getObligationDAO().obligations();
+                for(Obligation obligation : obligationList) {
+                    FKSvodnaUtilities.getDAOFactory().getObligationDAO().insert(new Obligation(obligation.getId(), obligation.getDescription(), false, match));
+                }
+
             } else {
                 Timestamp matchTime = Timestamp.valueOf(dateofMatch.getValue().atStartOfDay());
                 String[] time = timeField.getText().split(":");

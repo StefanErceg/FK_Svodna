@@ -60,6 +60,11 @@ public class PlayerController {
     void editPlayer(ActionEvent event){
         addEditPlayerController.clearFields();
         Person person = playerTable.getSelectionModel().getSelectedItem();
+        if(person==null){
+            alertController.setText("Nije izabran igrač za izmjenu");
+            alertStage.show();
+            return;
+        }
         addEditPlayerController.getTeamSelectComboBox().setItems(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getTeamDAO().teams()));
         List<PersonTeam> lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
         addEditPlayerController.setSelectedPlayerId(person.getId());
@@ -86,7 +91,7 @@ public class PlayerController {
     @FXML
     void deletePlayer(ActionEvent event){
         if(playerTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabaran sponzor za brisanje.");
+            alertController.setText("Nije izabaran igrač za brisanje.");
             alertStage.showAndWait();
             return;
         }
@@ -147,7 +152,6 @@ public class PlayerController {
             playersList = new FilteredList<>(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getPersonDAO().persons()));
             playerTable.getItems().addAll(playersList);
             playerTable.getSelectionModel().clearSelection();
-
             playerSidebarController.clearPlayer();
 
         } catch(Exception ex) {

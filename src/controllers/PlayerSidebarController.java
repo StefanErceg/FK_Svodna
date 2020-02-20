@@ -97,6 +97,10 @@ public class PlayerSidebarController {
             finesController.setPlayer(person);
             finesStage.showAndWait();
         }
+        else{
+            alertController.setText("Igrač nije izabran");
+            alertStage.show();
+        }
     }
 
     @FXML
@@ -105,6 +109,10 @@ public class PlayerSidebarController {
             medicalExaminationController.clearFields();
             medicalExaminationController.setPlayer(person);
             medicalExaminationStage.showAndWait();
+        }
+        else{
+            alertController.setText("Igrač nije izabran");
+            alertStage.show();
         }
     }
 }
