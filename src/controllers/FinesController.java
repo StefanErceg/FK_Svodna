@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import model.DAO.DAOFactory;
 import model.DTO.Card;
 import model.DTO.Person;
 import model.DTO.Punishment;
+import model.util.FKSvodnaUtilities;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -84,22 +86,23 @@ public class FinesController {
 
     @FXML
     void delete(ActionEvent event) {
-        if(!finesTable.getSelectionModel().isEmpty() ){
-            decisionController.getDecisionLabel().setText("Jeste li sigurni da zelite da izbrisete izabranu kaznu?");
-            decisionStage.showAndWait();
-            if(decisionController.returnResult()){
-                Punishment punishment= (Punishment) finesTable.getSelectionModel().getSelectedItem();
-                if(!DAOFactory.getDAOFactory().getPunishmentDAO().update(punishment)) {
-                    alertController.setText("Desila se greska pri brisanju, kazna nije izbrisana.");
-                    alertStage.showAndWait();
-                }
-                reloadTable();
-            }
-        }else{
-            alertController.setText("Nije izabrana kazna za uklanjanje.");
-            alertStage.showAndWait();
-        }
-        finesTable.getSelectionModel().clearSelection();
+//        if(finesTable.getSelectionModel().isEmpty()) {
+//            alertController.setText("Nije izabarana kazna za brisanje.");
+//            alertStage.showAndWait();
+//            return;
+//        }
+//        Punishment selection = finesTable.getSelectionModel().getSelectedItem();
+//        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati kaznu?");
+//        decisionStage.showAndWait();
+//        if( selection!= null && decisionController.returnResult()){
+//            if(!FKSvodnaUtilities.getDAOFactory().getPunishmentDAO().delete(selection)){//TODO: Sacekaj Milicu za delete
+//                alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
+//                alertStage.showAndWait();
+//            }
+//            punishmentObservableList=new FilteredList<Punishment>(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getPunishmentDAO().panishments()));
+//            finesTable.setItems(punishmentObservableList);
+//        }
+//        finesTable.getSelectionModel().clearSelection();
     }
 
     @FXML

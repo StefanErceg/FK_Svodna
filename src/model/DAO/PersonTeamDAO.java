@@ -15,5 +15,4 @@ public interface PersonTeamDAO {
     PersonTeam getTeamForPlayer(Person player);
     boolean insert(PersonTeam personTeam);
     boolean update(PersonTeam personTeam);
-    boolean delete(PersonTeam personTeam);
 }

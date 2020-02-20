@@ -29,7 +29,9 @@ public class HomeController {
     void initialize() {
         List<MedicalExamination> examinationsToDo = FKSvodnaUtilities.getDAOFactory().getMedicalExaminationDAO().getAlerts();
         medicalExaminationsListVIew.getItems().addAll(examinationsToDo);
-        List<Obligation> obligations = FKSvodnaUtilities.getDAOFactory().getObligationDAO().getObligationsForMatch(FKSvodnaUtilities.getDAOFactory().getMatchDAO().getFirstMatch().getId());
+        List<Obligation> obligations=List.of();
+        if(FKSvodnaUtilities.getDAOFactory().getMatchDAO().getFirstMatch()!=null)
+             obligations = FKSvodnaUtilities.getDAOFactory().getObligationDAO().getObligationsForMatch(FKSvodnaUtilities.getDAOFactory().getMatchDAO().getFirstMatch().getId());
         for (Obligation obligation : obligations) {
             tempCheckBox = new CheckBox();
             tempCheckBox.setText(obligation.getDescription());

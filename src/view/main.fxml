@@ -169,7 +169,7 @@
    <right>
       <StackPane BorderPane.alignment="CENTER">
          <children>
-            <fx:include source="players_sidebar.fxml" visible="false" />
+            <fx:include fx:id="playersSidebarUI" source="players_sidebar.fxml" visible="false" />
             <fx:include fx:id="sponsorsSidebarUI" source="sponsors_sidebar.fxml" visible="false" />
          </children>
       </StackPane>

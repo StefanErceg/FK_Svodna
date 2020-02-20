@@ -33,7 +33,7 @@ public class MySQLEquipmentDAO implements EquipmentDAO {
                 equipment.add(new Equipment(rs.getInt("Id"), new Person(rs.getInt("OsobaId"), rs.getString("Ime"),
                         rs.getString("Prezime"), rs.getString("BrojTelefona"), rs.getString("Jmb"),
                         rs.getString("Email"), rs.getString("Adresa"), rs.getString("BrojLicence")),
-                        rs.getString("Tip"), rs.getInt("BrojDresa"), rs.getString("Sifra"), rs.getBoolean("Zaduzena")));
+                        rs.getString("Tip"), rs.getInt("BrojDresa"), rs.getString("Sifra"),true));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
