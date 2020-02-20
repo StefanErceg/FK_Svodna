@@ -31,12 +31,6 @@ public class MatchController {
     private URL location;
 
     @FXML
-    private DatePicker dateofMatch;
-
-    @FXML
-    private TextField opponentName;
-
-    @FXML
     private TextField result;
 
     @FXML
@@ -48,17 +42,16 @@ public class MatchController {
     private Match selectedMatch;
     private DecisionController decisionController;
     private Stage decisionStage;
+    private AddEditMatchesController addEditMatchesController;
+    private Stage addEditMatchesStage;
 
     @FXML
     void addMatch(ActionEvent event) {
-        if(checkFields()){
-            Match match = new Match(0, Timestamp.valueOf(dateofMatch.getValue().atStartOfDay()),opponentName.getText(),"");
-            FKSvodnaUtilities.getDAOFactory().getMatchDAO().insert(match);
-        }
-        else{
-            alertController.setText("Nisu unesena polja!");
-            alertStage.show();
-        }
+        addEditMatchesController.clearFields();
+        addEditMatchesController.getAddEditButton().setText("Dodaj meč");
+        addEditMatchesController.getResultField().setVisible(false);
+        addEditMatchesController.getResultLabel().setVisible(false);
+        addEditMatchesStage.showAndWait();
         displayMatches();
         clearFields();
     }
@@ -70,39 +63,30 @@ public class MatchController {
             selectedMatch.setResult(result.getText());
             FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(selectedMatch);
         }
+        else{
+            alertController.setText("Nije odabrana utakmica");
+            alertStage.show();
+        }
         displayMatches();
         clearFields();
     }
 
     @FXML
-    void deleteResult(ActionEvent event) {
-//        if(tableResult.getSelectionModel().isEmpty()) {
-//            alertController.setText("Nije izabaran sponzor za brisanje.");
-//            alertStage.showAndWait();
-//            return;
-//        }
-//        Match selection=tableResult.getSelectionModel().getSelectedItem();
-//        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati igraca?");
-//        decisionStage.showAndWait();
-//        if( selection!= null && decisionController.returnResult()){
-//            if(!FKSvodnaUtilities.getDAOFactory().getMatchDAO().delete(selection)){
-//                alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
-//                alertStage.showAndWait();
-//            }
-//        }
-//        tableResult.getSelectionModel().clearSelection();
-//        displayMatches();
-//        clearFields();
-    }
-
-    @FXML
     void updateResult(ActionEvent event) {
         selectedMatch = tableResult.getSelectionModel().getSelectedItem();
-        if(checkFields() && selectedMatch!=null && !result.getText().isEmpty()){
-            selectedMatch.setResult(result.getText());
-            selectedMatch.setDate(Timestamp.valueOf(dateofMatch.getValue().atStartOfDay()));
-            selectedMatch.setOpposingTeam(opponentName.getText());
-            FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(selectedMatch);
+        if(selectedMatch!=null){
+            addEditMatchesController.setSelectedMatch(selectedMatch);
+            addEditMatchesController.getOpponentTeamField().setText(selectedMatch.getOpposingTeam());
+            addEditMatchesController.getTimeField().setText(selectedMatch.getDate().getHours()+":"+selectedMatch.getDate().getMinutes());
+            addEditMatchesController.getDateofMatch().setValue(selectedMatch.getDate().toLocalDateTime().toLocalDate());
+            addEditMatchesController.getAddEditButton().setText("Izmjeni meč");
+            addEditMatchesController.getResultField().setVisible(true);
+            addEditMatchesController.getResultLabel().setVisible(true);
+            addEditMatchesStage.showAndWait();
+        }
+        else{
+            alertController.setText("Utakmica nije odabrana");
+            alertStage.show();
         }
         displayMatches();
         clearFields();
@@ -115,6 +99,11 @@ public class MatchController {
         alertController=loader.getController();
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
+        loader = new FXMLLoader(this.getClass().getResource("../view/add_edit_matches.fxml"));
+        root = loader.load();
+        addEditMatchesController = loader.getController();
+        addEditMatchesStage = new Stage();
+        addEditMatchesStage.setScene(new Scene(root));
 
         tableResult.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
         tableResult.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("opposingTeam"));
@@ -123,14 +112,8 @@ public class MatchController {
         displayMatches();
     }
 
-    private boolean checkFields(){
-        return dateofMatch.getValue()!=null && !opponentName.getText().isEmpty();
-    }
-
     private void clearFields(){
-        opponentName.clear();
         result.clear();
-        dateofMatch.setValue(null);
     }
 
     private void displayMatches(){

@@ -9,6 +9,7 @@ public interface MatchDAO {
     List<Match> matches();
     Match getMatchById(int id);
     Match getFirstMatch();
+    Match getLastMatch();
     boolean insert(Match match);
     boolean update(Match match);
 }

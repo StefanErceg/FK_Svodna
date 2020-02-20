@@ -61,11 +61,17 @@ public class PlayerController {
     void editPlayer(ActionEvent event){
         addEditPlayerController.clearFields();
         Person person = playerTable.getSelectionModel().getSelectedItem();
+        if(person==null){
+            alertController.setText("Nije izabran igrač za izmjenu");
+            alertStage.show();
+            return;
+        }
         addEditPlayerController.getTeamSelectComboBox().setItems(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getTeamDAO().teams()));
         List<PersonTeam> lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
         addEditPlayerController.setSelectedPlayerId(person.getId());
         if(!lista.isEmpty()) {
             addEditPlayerController.getDateFrom().setValue(lista.get(0).getDateFrom().toLocalDateTime().toLocalDate());
+            addEditPlayerController.getPositionTextField().setText(lista.get(0).getPlayerPosition());
             if(lista.get(0).getDateTo()!=null)
                 addEditPlayerController.getDateTo().setValue(lista.get(0).getDateTo().toLocalDateTime().toLocalDate());
             addEditPlayerController.getTeamSelectComboBox().getSelectionModel().select(lista.get(0).getTeam());
@@ -73,7 +79,6 @@ public class PlayerController {
         addEditPlayerController.getAddPlayerButton().setText("Izmjeni igrača");
         addEditPlayerController.getNameTextField().setText(person.getName());
         addEditPlayerController.getLastNameTextField().setText(person.getSurname());
-        addEditPlayerController.getPositionTextField().setText("");//TODO: UPDATE !
         addEditPlayerController.getLicenceNumberTextField().setText(person.getLicenceNumber());
         addEditPlayerController.getJmbgTextField().setText(person.getJmb());
         addEditPlayerController.getAdressTextField().setText(person.getAddress());
@@ -87,7 +92,7 @@ public class PlayerController {
     @FXML
     void deletePlayer(ActionEvent event){
         if(playerTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabaran sponzor za brisanje.");
+            alertController.setText("Nije izabaran igrač za brisanje.");
             alertStage.showAndWait();
             return;
         }
@@ -149,7 +154,6 @@ public class PlayerController {
             playersList = new FilteredList<>(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getPersonDAO().persons()));
             playerTable.getItems().addAll(playersList);
             playerTable.getSelectionModel().clearSelection();
-
             playerSidebarController.clearPlayer();
 
         } catch(Exception ex) {
