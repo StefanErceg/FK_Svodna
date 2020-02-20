@@ -1,5 +1,6 @@
 package model.DAO;
 
+import model.DTO.Person;
 import model.DTO.PersonTeam;
 import model.DTO.Team;
 
