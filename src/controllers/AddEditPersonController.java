@@ -56,6 +56,7 @@ public class AddEditPersonController {
             finished = false;
             try {
                 displayAlert("Nije izabrana uloga!");
+                return;
             } catch(Exception ex) {
                 ex.printStackTrace();
             }
@@ -65,6 +66,7 @@ public class AddEditPersonController {
             finished = false;
             try {
                 displayAlert("Unos za polje Jmbg nije odgovarajući!");
+                return;
             } catch(Exception ex) {
                 ex.printStackTrace();
             }

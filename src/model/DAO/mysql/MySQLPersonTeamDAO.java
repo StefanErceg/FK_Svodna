@@ -160,7 +160,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                 "from osobatim ot " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
                 "inner join tim t on t.Id=ot.TimId " +
-                "where o.Obrisana=0 and t.Obrisan=0 and OsobaId=? and TimId=?";
+                "where o.Obrisana=0 and t.Obrisan=0 and OsobaId=? and TimId=? and Do is null";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -232,30 +232,6 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
             ps.setString(4, personTeam.getPlayerPosition());
             ps.setInt(5, personTeam.getPerson().getId());
             ps.setInt(6, personTeam.getTeam().getId());
-
-            retVal = ps.executeUpdate() == 1;
-        } catch(SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionPool.getInstance().checkIn(conn);
-            DBUtilities.getInstance().close(ps);
-        }
-
-        return retVal;
-    }
-
-    @Override
-    public boolean delete(PersonTeam personTeam) {
-        boolean retVal = false;
-
-        Connection conn = null;
-        PreparedStatement ps = null;
-        String query = "delete from osobatim where OsobaId=? and TimId=?";
-        try {
-            conn = ConnectionPool.getInstance().checkOut();
-            ps = conn.prepareStatement(query);
-            ps.setInt(1, personTeam.getPerson().getId());
-            ps.setInt(2, personTeam.getTeam().getId());
 
             retVal = ps.executeUpdate() == 1;
         } catch(SQLException ex) {

@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Person;
@@ -16,6 +13,7 @@ import model.DTO.Team;
 import model.util.FKSvodnaUtilities;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Calendar;
 
@@ -44,6 +42,8 @@ public class AddEditPlayerController {
     private Button cancelButton;
     @FXML
     private DatePicker dateFrom;
+    @FXML
+    private Label teamLabel;
 
     private int selectedPlayerId;
     private Stage alertStage;
@@ -61,15 +61,14 @@ public class AddEditPlayerController {
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().insert(player);
                 player = FKSvodnaUtilities.getDAOFactory().getPersonDAO().getLastPerson();
-                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),null,"",positionTextField.getText()));
+                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),null,"igrac",positionTextField.getText()));
             } else {
                 Person player = new Person(selectedPlayerId,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player);
-//                Team selectedTeam = teamSelectComboBox.getSelectionModel().getSelectedItem();
-//                if(!selectedTeam.equals(FKSvodnaUtilities.getDAOFactory())) {
-//                    FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(new PersonTeam(player, FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO()., Timestamp.valueOf(dateFrom.getValue().atStartOfDay()), new Timestamp(Calendar.getInstance().getTime().getTime()), "", positionTextField.getText()));
-//                }
+                PersonTeam personTeam = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(player);
+                personTeam.setPlayerPosition(positionTextField.getText());
+                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(personTeam);
             }
         }else{
             try {
@@ -169,5 +168,9 @@ public class AddEditPlayerController {
 
     public DatePicker getDateFrom() {
         return dateFrom;
+    }
+
+    public Label getTeamLabel() {
+        return teamLabel;
     }
 }

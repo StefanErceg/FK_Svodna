@@ -80,11 +80,8 @@ public class PlayerSidebarController {
         emailLabel.setText(person.getEmail());
         jmbgLabel.setText(person.getJmb());
         phoneNumberLabel.setText(person.getPhoneNumber());
-        List<PersonTeam> lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
-        if(!lista.isEmpty()) {
-            positionLabel.setText(lista.get(0).getPlayerPosition());
-            teamLabel.setText(lista.get(0).getTeam().toString());
-        }
+        positionLabel.setText(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getPlayerPosition());
+        teamLabel.setText(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getTeam().getName());
     }
 
     public void clearPlayer(){
@@ -107,7 +104,7 @@ public class PlayerSidebarController {
             finesStage.showAndWait();
         }
         else{
-            alertController.setText("Igrač nije izabran");
+            alertController.setText("Igrač nije izabran.");
             alertStage.show();
         }
     }
@@ -117,7 +114,7 @@ public class PlayerSidebarController {
             equipmentController.setPlayer(person);
             equipmentStage.showAndWait();
         }else {
-            alertController.setText("Nije izazbran ni jedan igrač.");
+            alertController.setText("Igrač nije izabran.");
             alertStage.showAndWait();
         }
     }
@@ -129,7 +126,7 @@ public class PlayerSidebarController {
             medicalExaminationStage.showAndWait();
         }
         else{
-            alertController.setText("Igrač nije izabran");
+            alertController.setText("Igrač nije izabran.");
             alertStage.show();
         }
     }
