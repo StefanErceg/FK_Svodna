@@ -65,6 +65,7 @@ public class PlayerController {
         addEditPlayerController.setSelectedPlayerId(person.getId());
         if(!lista.isEmpty()) {
             addEditPlayerController.getDateFrom().setValue(lista.get(0).getDateFrom().toLocalDateTime().toLocalDate());
+            addEditPlayerController.getPositionTextField().setText(lista.get(0).getPlayerPosition());
             if(lista.get(0).getDateTo()!=null)
                 addEditPlayerController.getDateTo().setValue(lista.get(0).getDateTo().toLocalDateTime().toLocalDate());
             addEditPlayerController.getTeamSelectComboBox().getSelectionModel().select(lista.get(0).getTeam());
@@ -72,7 +73,6 @@ public class PlayerController {
         addEditPlayerController.getAddPlayerButton().setText("Izmjeni igrača");
         addEditPlayerController.getNameTextField().setText(person.getName());
         addEditPlayerController.getLastNameTextField().setText(person.getSurname());
-        addEditPlayerController.getPositionTextField().setText("");//TODO: UPDATE !
         addEditPlayerController.getLicenceNumberTextField().setText(person.getLicenceNumber());
         addEditPlayerController.getJmbgTextField().setText(person.getJmb());
         addEditPlayerController.getAdressTextField().setText(person.getAddress());
