@@ -95,6 +95,33 @@ public class MySQLMatchDAO implements MatchDAO {
     }
 
     @Override
+    public Match getLastMatch() {
+        Match match = null;
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select * from utakmica order by Id desc limit 1";
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                match = new Match(rs.getInt("Id"), rs.getTimestamp("DatumIVrijeme"),
+                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"));
+            }
+
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+        return match;
+    }
+
+    @Override
     public boolean insert(Match match) {
         boolean retVal = false;
 
