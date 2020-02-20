@@ -72,8 +72,6 @@ public class PlayerController {
         if(!lista.isEmpty()) {
             addEditPlayerController.getDateFrom().setValue(lista.get(0).getDateFrom().toLocalDateTime().toLocalDate());
             addEditPlayerController.getPositionTextField().setText(lista.get(0).getPlayerPosition());
-            if(lista.get(0).getDateTo()!=null)
-                addEditPlayerController.getDateTo().setValue(lista.get(0).getDateTo().toLocalDateTime().toLocalDate());
             addEditPlayerController.getTeamSelectComboBox().getSelectionModel().select(lista.get(0).getTeam());
         }
         addEditPlayerController.getAddPlayerButton().setText("Izmijeni igrača");

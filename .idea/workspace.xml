@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/fines.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/fines.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_player.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_player.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,11 +54,11 @@
     <property name="project.structure.side.proportion" value="0.25172412" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Korisnik\Documents\GitHub\FK_Svodna\src\view" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Milica\Documents\GitHub\FK_Svodna\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Korisnik\Documents\GitHub\FK_Svodna\src\view" />
     </key>
   </component>
   <component name="RunManager">

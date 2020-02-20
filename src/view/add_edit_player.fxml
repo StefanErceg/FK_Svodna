@@ -36,7 +36,6 @@
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <VBox.margin>
                   <Insets top="10.0" />
@@ -154,7 +153,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Label text="Tim" textFill="WHITE" GridPane.rowIndex="10">
+                  <Label text="Tim" textFill="WHITE" GridPane.rowIndex="9">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -162,17 +161,8 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="teamSelectComboBox" prefWidth="150.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <ComboBox fx:id="teamSelectComboBox" prefWidth="150.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                   <DatePicker fx:id="dateFrom" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Label text="Igra do" textFill="WHITE" GridPane.rowIndex="9">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <DatePicker fx:id="dateTo" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                </children>
             </GridPane>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">
