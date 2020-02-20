@@ -48,6 +48,40 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
     }
 
     @Override
+    public PersonTeam getTeamForPlayer(Person player) {
+        PersonTeam personTeam = null;
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+                "from osobatim ot " +
+                "inner join osoba o on o.Id=ot.OsobaId " +
+                "inner join tim t on t.Id=ot.TimId " +
+                "where o.Obrisana=0 and t.Obrisan=0 and OsobaId=? and Do is null";
+        try {
+            conn = ConnectionPool.getInstance().checkOut();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, player.getId());
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                personTeam = new PersonTeam(new Person(rs.getInt("OsobaId"), rs.getString("Ime"), rs.getString("Prezime"),
+                        rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
+                        rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
+                        rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"));
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getInstance().checkIn(conn);
+            DBUtilities.getInstance().close(ps, rs);
+        }
+        return personTeam;
+    }
+
+    @Override
     public List<PersonTeam> getPlayersForTeam(int teamId) {
         ArrayList<PersonTeam> personTeams = new ArrayList<>();
 

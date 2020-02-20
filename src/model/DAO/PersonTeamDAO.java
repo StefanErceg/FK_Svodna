@@ -12,6 +12,7 @@ public interface PersonTeamDAO {
     PersonTeam getPersonTeamByIds(int personId, int teamId);
     List<PersonTeam> getPlayersForTeam(int teamId);
     List<PersonTeam> getStaffForTeam(int teamId);
+    PersonTeam getTeamForPlayer(Person player);
     boolean insert(PersonTeam personTeam);
     boolean update(PersonTeam personTeam);
     boolean delete(PersonTeam personTeam);
