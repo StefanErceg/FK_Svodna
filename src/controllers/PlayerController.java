@@ -47,6 +47,7 @@ public class PlayerController {
     private Stage decisionStage;
 
 
+
     @FXML
     void addPlayer(ActionEvent event) {
         addEditPlayerController.clearFields();
@@ -132,6 +133,7 @@ public class PlayerController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+
 
         playerTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
         playerTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("surname"));

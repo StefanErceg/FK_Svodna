@@ -4,7 +4,76 @@
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/META-INF/FK_Svodna.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/model/DAO/mysql/ConnectionPool.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/TODO.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/accounts.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_accounts.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_executives.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_player.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/add_edit_sponsors.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/alert.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/comboBox.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/contact_persons.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/datePicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/decision.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/equipment.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/executives.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/fines.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/home.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/boss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/cancel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/check.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/delete.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/logo-small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/money.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/player.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/shoes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/sneaker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/soccer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/sponsor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/team.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/time-and-date.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/icons/wallet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/matches.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/menuButton.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/payments.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/players.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/players_sidebar.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/radioButton.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/scrollPane.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/sponsors_sidebar.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/tableView.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FK_Svodna/view/teams.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AlertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AlertController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/EquipmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/EquipmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/FinesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FinesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MedicalExaminationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MedicalExaminationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/ConnectionPool.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLEquipmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLEquipmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLPunishmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLPunishmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/equipment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/equipment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/fines.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/fines.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/medical_examinations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/medical_examinations.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/players.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/players_sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players_sidebar.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,25 +191,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1581520045615" />
-    <state width="1323" height="88" key="GridCell.Tab.0.bottom" timestamp="1582189996071">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1323" height="226" key="GridCell.Tab.0.bottom" timestamp="1582203124107">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
+    <state width="1323" height="226" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1582203124107" />
     <state width="1323" height="88" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1582189996071" />
-    <state width="1323" height="88" key="GridCell.Tab.0.center" timestamp="1582189996071">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1323" height="226" key="GridCell.Tab.0.center" timestamp="1582203124106">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
+    <state width="1323" height="226" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1582203124106" />
     <state width="1323" height="88" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1582189996071" />
-    <state width="1323" height="88" key="GridCell.Tab.0.left" timestamp="1582189996071">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1323" height="226" key="GridCell.Tab.0.left" timestamp="1582203124105">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581681794257" />
+    <state width="1323" height="226" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1582203124105" />
     <state width="1323" height="88" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1582189996071" />
-    <state width="1323" height="88" key="GridCell.Tab.0.right" timestamp="1582189996071">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1323" height="226" key="GridCell.Tab.0.right" timestamp="1582203124106">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581681794272" />
+    <state width="1323" height="226" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1582203124106" />
     <state width="1323" height="88" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1582189996071" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1581255493905">
       <screen x="0" y="0" width="1366" height="738" />
@@ -158,14 +227,15 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1581255493905" />
-    <state x="163" y="0" key="SettingsEditor" timestamp="1582123989223">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1582123989223" />
-    <state x="470" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1581672918269">
+    <state x="163" y="0" key="SettingsEditor" timestamp="1582195350563">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="470" y="253" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1581672918269" />
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1582195350563" />
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1582123989223" />
+    <state x="470" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1582195277340">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="470" y="253" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1582195277340" />
     <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570804368" />
     <state width="429" height="260" key="javadoc.popup.new" timestamp="1581669386713">
       <screen x="0" y="0" width="1366" height="738" />
