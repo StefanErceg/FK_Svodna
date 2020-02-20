@@ -25,7 +25,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                        "from osobatim ot " +
                        "inner join osoba o on o.Id=ot.OsobaId " +
                        "inner join tim t on t.Id=ot.TimId " +
-                       "where o.Obrisana=0 and t.Obrisan=0";
+                       "where o.Obrisana=0 and t.Obrisan=0 and Do is null";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
