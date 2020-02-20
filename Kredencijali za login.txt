@@ -1,0 +1,9 @@
+korisnik
+user: marinak
+pass: marina123
+
+administrator
+user: markoj	
+pass: marko123
+
+u src/model/DAO/mysql/ConnectionPool.properties podesiti parametre konekcije na bazu
