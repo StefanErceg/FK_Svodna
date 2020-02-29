@@ -74,14 +74,14 @@
                   </HBox>
                </children>
             </VBox>
-            <TableView fx:id="tableResult" style="-fx-background-color: #01323d;" stylesheets="@tableView.css">
+            <TableView fx:id="tableResult" style="-fx-background-color: #01323d;" stylesheets="@tableView.css" VBox.vgrow="ALWAYS">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                <columns>
                   <TableColumn prefWidth="218.0" text="Protivnički tim" />
-                  <TableColumn prefWidth="207.0" text="Rezultat" />
                   <TableColumn prefWidth="150.0" text="Datum i vrijeme" />
+                  <TableColumn prefWidth="207.0" text="Rezultat" />
                </columns>
             </TableView>
          </children>

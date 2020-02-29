@@ -1,7 +1,6 @@
 package controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +8,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+
 
 public class MainController {
 
     @FXML
     private Label usernameLabel;
+    @FXML
+    BorderPane borderPane;
     @FXML
     private AnchorPane matchesUI;
     @FXML
@@ -56,8 +58,8 @@ public class MainController {
     public void logOut() {
         try {
             displayLogIn();
-            ((Stage) usernameLabel.getScene().getWindow()).close();
         } catch (Exception e) {
+            ((Stage) usernameLabel.getScene().getWindow()).close();
             e.printStackTrace();
         }
 
@@ -73,6 +75,7 @@ public class MainController {
         sponsorsSidebarUI.setVisible(false);
         playersSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
+        borderPane.setRight(null);
 
     }
     @FXML
@@ -85,6 +88,7 @@ public class MainController {
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
         playersSidebarUI.setVisible(false);
+        borderPane.setRight(null);
     }
 
     @FXML
@@ -97,6 +101,7 @@ public class MainController {
         sponsorsSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
         playersSidebarUI.setVisible(false);
+        borderPane.setRight(null);
     }
 
     @FXML
@@ -108,6 +113,7 @@ public class MainController {
         sponsorsUI.setVisible(false);
         sponsorsSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
+        borderPane.setRight(playersSidebarUI);
         playersSidebarUI.setVisible(true);
     }
 
@@ -120,7 +126,9 @@ public class MainController {
         homeUI.setVisible(false);
         playersUI.setVisible(false);
         executivesUI.setVisible(false);
+        borderPane.setRight(sponsorsSidebarUI);
         playersSidebarUI.setVisible(false);
+
     }
 
     @FXML
@@ -133,25 +141,26 @@ public class MainController {
         sponsorsSidebarUI.setVisible(false);
         executivesUI.setVisible(false);
         playersSidebarUI.setVisible(false);
+        borderPane.setRight(null);
     }
 
     @FXML
     void initialize() {
         sponsorsUIController.setSponsorSidebarController(sponsorsSidebarUIController);
         playersUIController.setPlayerSidebarController(playersSidebarUIController);
+
     }
 
     public void setUser(String user) {
         usernameLabel.setText(user);
+        borderPane.setRight(null);
     }
 
     private void displayLogIn() throws Exception {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/logIn.fxml"));
         Parent root = loader.load();
         logInController = loader.getController();
-        logInStage = new Stage();
-        logInStage.initModality(Modality.APPLICATION_MODAL);
+        logInStage = (Stage) this.borderPane.getScene().getWindow();
         logInStage.setScene(new Scene(root));
-        logInStage.show();
     }
 }

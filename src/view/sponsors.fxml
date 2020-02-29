@@ -18,7 +18,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SponsorController">
    <children>
-      <VBox layoutX="11.0" layoutY="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <VBox layoutX="20.0" layoutY="26.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
             <GridPane prefWidth="619.0">
                <columnConstraints>
@@ -97,7 +97,7 @@
                   </TextField>
                </children>
             </HBox>
-            <TableView fx:id="sponsorTable" onMouseClicked="#selectionChange" style="-fx-background-color: #01323d;" stylesheets="@tableView.css">
+            <TableView fx:id="sponsorTable" onMouseClicked="#selectionChange" style="-fx-background-color: #01323d;" stylesheets="@tableView.css" VBox.vgrow="ALWAYS">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>

@@ -13,17 +13,17 @@
    <children>
       <HBox layoutX="20.0" layoutY="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
-            <VBox prefHeight="427.0" prefWidth="244.0" HBox.hgrow="ALWAYS">
+            <VBox HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Ljekarski pregledi" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="medicalExaminationsListVIew" prefHeight="400.0" prefWidth="228.0" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="medicalExaminationsListVIew" prefHeight="400.0" prefWidth="192.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <VBox fillWidth="false" prefHeight="427.0" prefWidth="286.0">
+            <VBox HBox.hgrow="ALWAYS">
                <children>
                   <Label prefHeight="27.0" text="Zaduženja" textFill="WHITE">
                      <font>
