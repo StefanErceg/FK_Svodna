@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.MedicalExamination;
 import model.DTO.Person;
@@ -33,6 +34,7 @@ public class MedicalExaminationController {
         alertController=loader.getController();
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
+        alertStage.initModality(Modality.APPLICATION_MODAL);
     }
     @FXML
     public void save(){

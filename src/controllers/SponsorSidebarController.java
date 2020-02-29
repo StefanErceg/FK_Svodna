@@ -81,6 +81,7 @@ public class SponsorSidebarController {
         alertController=loader.getController();
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
+        alertStage.initModality(Modality.APPLICATION_MODAL);
         loader = new FXMLLoader(this.getClass().getResource("../view/decision.fxml"));
         root = loader.load();
 

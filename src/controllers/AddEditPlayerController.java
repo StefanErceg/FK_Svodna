@@ -85,9 +85,11 @@ public class AddEditPlayerController {
     }
 
     private boolean checkFields(){
-        return !(nameTextField.getText().isEmpty()&&lastNameTextField.getText().isEmpty()&&jmbgTextField.getText().isEmpty()&&positionTextField.getText().isEmpty()&&
-                licenceNumberTextField.getText().isEmpty()&&adressTextField.getText().isEmpty()&&
-                emailTextField.getText().isEmpty()&&phoneNumberTextField.getText().isEmpty()&&teamSelectComboBox.getSelectionModel().getSelectedItem()!=null&&dateFrom.getValue()!=null);
+        return !(nameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() ||
+                jmbgTextField.getText().isEmpty()|| positionTextField.getText().isEmpty() ||
+                licenceNumberTextField.getText().isEmpty() || adressTextField.getText().isEmpty() ||
+                emailTextField.getText().isEmpty() || phoneNumberTextField.getText().isEmpty() ||
+                teamSelectComboBox.getSelectionModel().getSelectedItem()!=null || dateFrom.getValue() != null);
     }
 
     public int getSelectedPlayerId() {
