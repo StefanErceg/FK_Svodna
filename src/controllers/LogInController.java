@@ -3,6 +3,8 @@ package controllers;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Semaphore;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -20,12 +22,6 @@ import model.DTO.UserAccount;
 import model.util.FKSvodnaUtilities;
 
 public class LogInController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private TextField usernameTextField;
@@ -111,7 +107,21 @@ public class LogInController {
     }
 
     @FXML
-    void initialize() {
+    void initialize() throws Exception {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/accounts.fxml"));
+        Parent root = loader.load();
+        accountsController = loader.getController();
+        accountsStage = new Stage();
+        accountsStage.initModality(Modality.APPLICATION_MODAL);
+        accountsStage.setScene(new Scene(root));
+        accountsStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
+        loader = new FXMLLoader(this.getClass().getResource("../view/main.fxml"));
+        root = loader.load();
+        mainController = loader.getController();
+        mainStage = new Stage();
+        mainStage.initModality(Modality.APPLICATION_MODAL);
+        mainStage.setScene(new Scene(root));
+        mainStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
 
 
     }
@@ -140,25 +150,12 @@ public class LogInController {
     }
 
     private void displayAccounts(String user) throws Exception {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/accounts.fxml"));
-        Parent root = loader.load();
-        accountsController = loader.getController();
         accountsController.setUser(user);
-        accountsStage = new Stage();
-        accountsStage.initModality(Modality.APPLICATION_MODAL);
-        accountsStage.setScene(new Scene(root));
         accountsStage.show();
     }
 
     private void displayMain(String user) throws Exception {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/main.fxml"));
-        Parent root = loader.load();
-        mainController = loader.getController();
         mainController.setUser(user);
-        mainStage = new Stage();
-        mainStage.initModality(Modality.APPLICATION_MODAL);
-        mainStage.setScene(new Scene(root));
-        mainStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         mainStage.show();
     }
 

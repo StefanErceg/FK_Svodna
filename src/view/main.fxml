@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="680.0" prefWidth="1100.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<BorderPane fx:id="borderPane" prefHeight="655.0" prefWidth="1233.0" snapToPixel="false" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <left>
-      <VBox alignment="TOP_CENTER" minWidth="-Infinity" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" fillWidth="false" spacing="15.0">
          <children>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadHomeUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Početna">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#loadHomeUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Početna">
                <font>
                   <Font size="15.0" />
                </font>
@@ -34,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadPlayersUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Igrači">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#loadPlayersUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Igrači">
                <font>
                   <Font size="15.0" />
                </font>
@@ -46,7 +40,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadTeamsUi" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Timovi">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#loadTeamsUi" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Timovi">
                <font>
                   <Font size="15.0" />
                </font>
@@ -58,7 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadMatchesUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Utakmice">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#loadMatchesUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Utakmice">
                <font>
                   <Font size="15.0" />
                </font>
@@ -70,7 +64,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadSponsorsUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Sponzori">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#loadSponsorsUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Sponzori">
                <font>
                   <Font size="15.0" />
                </font>
@@ -82,7 +76,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#loadAdministrationUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Rukovodioci">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#loadAdministrationUI" prefHeight="55.0" prefWidth="170.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" stylesheets="@menuButton.css" text="Rukovodioci">
                <font>
                   <Font size="15.0" />
                </font>
@@ -96,14 +90,14 @@
             </Button>
          </children>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
    </left>
    <top>
-      <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+      <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" spacing="20.0">
+            <HBox alignment="CENTER" spacing="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <children>
                   <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -117,8 +111,7 @@
                   </Label>
                </children>
             </HBox>
-            <Region HBox.hgrow="ALWAYS" />
-            <HBox alignment="CENTER" spacing="50.0">
+            <HBox alignment="CENTER" spacing="50.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                <children>
                   <VBox alignment="CENTER" spacing="10.0">
                      <children>
@@ -149,28 +142,25 @@
                </padding>
             </HBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
-         </padding>
-      </HBox>
+      </AnchorPane>
    </top>
    <center>
       <StackPane>
          <children>
-         <fx:include fx:id="homeUI" source="home.fxml" visible="true" />
-         <fx:include fx:id="matchesUI" source="matches.fxml" visible="false" />
-         <fx:include fx:id="teamsUI" source="teams.fxml" visible="false" />
-         <fx:include fx:id="playersUI" source="players.fxml" visible="false" />
-         <fx:include fx:id="sponsorsUI" source="sponsors.fxml" visible="false" />
-         <fx:include fx:id="executivesUI" source="executives.fxml" visible="false" />
+            <fx:include fx:id="homeUI" source="home.fxml" visible="true" StackPane.alignment="CENTER" />
+            <fx:include fx:id="matchesUI" source="matches.fxml" visible="false" StackPane.alignment="CENTER" />
+            <fx:include fx:id="teamsUI" source="teams.fxml" visible="false" StackPane.alignment="CENTER" />
+            <fx:include fx:id="playersUI" source="players.fxml" visible="false" StackPane.alignment="CENTER" />
+            <fx:include fx:id="sponsorsUI" source="sponsors.fxml" visible="false" StackPane.alignment="CENTER" />
+            <fx:include fx:id="executivesUI" source="executives.fxml" visible="false" StackPane.alignment="CENTER" />
          </children>
       </StackPane>
    </center>
    <right>
-      <StackPane BorderPane.alignment="CENTER">
+      <StackPane fx:id="rightPane" prefWidth="364.0" style="-fx-border-color: steelblue; -fx-border-radius: 5;" visible="false">
          <children>
-            <fx:include fx:id="playersSidebarUI" source="players_sidebar.fxml" visible="false" />
-            <fx:include fx:id="sponsorsSidebarUI" source="sponsors_sidebar.fxml" visible="false" />
+            <fx:include fx:id="playersSidebarUI" source="players_sidebar.fxml" visible="false" StackPane.alignment="CENTER" />
+            <fx:include fx:id="sponsorsSidebarUI" source="sponsors_sidebar.fxml" visible="false" StackPane.alignment="CENTER" />
          </children>
       </StackPane>
    </right>

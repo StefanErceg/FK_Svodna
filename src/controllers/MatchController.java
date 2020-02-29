@@ -109,8 +109,8 @@ public class MatchController {
         addEditMatchesStage.setScene(new Scene(root));
         addEditMatchesStage.initModality(Modality.APPLICATION_MODAL);
 
-        tableResult.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
-        tableResult.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("opposingTeam"));
+        tableResult.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("date"));
+        tableResult.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("opposingTeam"));
         tableResult.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("result"));
 
         displayMatches();
