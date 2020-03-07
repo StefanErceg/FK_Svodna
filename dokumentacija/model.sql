@@ -212,6 +212,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`OsobaTim` (
   `Do` DATETIME NULL,
   `Uloga` VARCHAR(45) NOT NULL,
   `PozicijaIgraca` VARCHAR(45) NULL,
+  `BrojDresa` INT NULL,
   PRIMARY KEY (`OsobaId`, `TimId`),
   INDEX `7_idx` (`TimId` ASC) VISIBLE,
   INDEX `6_idx` (`OsobaId` ASC) VISIBLE,
@@ -236,6 +237,7 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`Utakmica` (
   `DatumIVrijeme` DATETIME NOT NULL,
   `ProtivnickiTim` VARCHAR(50) NOT NULL,
   `Rezultat` VARCHAR(15) NULL,
+  `Gostujuca` ENUM('Jeste', 'Nije') NULL,
   PRIMARY KEY (`Id`))
 ENGINE = InnoDB;
 

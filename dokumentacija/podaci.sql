@@ -34,10 +34,10 @@ insert into osoba values (null, 'Nikola', 'Medic', '065/473-053', '1302985102011
 insert into osoba values (null, 'Srdjan', 'Batez', '066/926-729', '2003996100031', 'srdjanba@gmail.com', 'Prijedor bb', 'A712204', 0);
 insert into osoba values (null, 'Nemanja', 'Sarengaca', '065/261-475', '0201995111024', 'nemanjaneco@fujifilm.com', 'Svodna bb', 'A722001', 0);
 
-insert into osobatim values (1, 1, '2019-05-17 16:30:02', null, 'igrac', 'golman');
-insert into osobatim values (2, 1, '2019-02-18 10:30:02', null, 'trener', null);
-insert into osobatim values (3, 2, '2019-05-17 12:15:15', null, 'igrac', 'lijevo krilo');
-insert into osobatim values (2, 2, '2019-06-25 14:23:02', null, 'igrac', 'golman');
+insert into osobatim values (1, 1, '2019-05-17 16:30:02', null, 'igrac', 'golman', 5);
+insert into osobatim values (2, 1, '2019-02-18 10:30:02', null, 'trener', null, 0);
+insert into osobatim values (3, 2, '2019-05-17 12:15:15', null, 'igrac', 'lijevo krilo', 7);
+insert into osobatim values (2, 2, '2019-06-25 14:23:02', null, 'igrac', 'golman', 8);
 
 insert into ljekarskipregled values (null, '2019-11-08 13:11:03', '2020-05-08 13:11:03', 1);
 insert into ljekarskipregled values (null, '2019-10-15 09:20:03', '2020-04-15 09:20:03', 2);
@@ -49,8 +49,8 @@ insert into oprema values (null, 3, 'kopacke', '43', 'C74136', 1);
 
 insert into kazna values (null, '2019-06-12 18:00:06', 55.0, 4, 'prekrsaj na terenu', 3, 2); 
 
-insert into utakmica values (null, '2020-01-16 12:00:00', 'FK Borac Banja Luka', '1:1');
-insert into utakmica values (null, '2020-01-24 18:00:00', 'OFK Laus Banja Luka', '2:1');
+insert into utakmica values (null, '2020-01-16 12:00:00', 'FK Borac Banja Luka', '1:1', 1);
+insert into utakmica values (null, '2020-01-24 18:00:00', 'OFK Laus Banja Luka', '2:1', 2);
 
 insert into osobatimutakmica values(1, 1, 1);
 insert into osobatimutakmica values(3, 2, 2);
