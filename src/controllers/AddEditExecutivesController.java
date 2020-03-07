@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Manager;
@@ -54,6 +56,11 @@ public class AddEditExecutivesController {
                 ex.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    void saveByEnter(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)) save();
     }
 
     public void quit() {

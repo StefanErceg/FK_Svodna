@@ -63,6 +63,7 @@ public class ContactPersonController {
                 alertStage.showAndWait();
                 DAOFactory.getDAOFactory().getContactPersonDAO().delete(contactPerson);
             }
+            clearFields();
             reloadTable();
         }
         else {
@@ -133,5 +134,11 @@ public class ContactPersonController {
                 .map(e->e.getContactPerson()).collect(Collectors.toList());
         contactPersonObservableList= FXCollections.observableList(contactPersonList);
         contactTable.setItems(contactPersonObservableList);
+    }
+
+    public void clearFields(){
+        nameTextField.setText("");
+        lastNameTextField.setText("");
+        phoneNumberTextField.setText("");
     }
 }

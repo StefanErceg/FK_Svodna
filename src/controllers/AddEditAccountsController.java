@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.UserAccount;
@@ -82,6 +84,11 @@ public class AddEditAccountsController {
         if(finished) {
             ((Stage) addEditButton.getScene().getWindow()).close();
         }
+    }
+
+    @FXML
+    void saveByEnter(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)) save();
     }
 
     public void quit() {

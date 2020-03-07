@@ -112,7 +112,7 @@ public class LogInController {
         Parent root = loader.load();
         accountsController = loader.getController();
         accountsStage = new Stage();
-        accountsStage.initModality(Modality.APPLICATION_MODAL);
+        //accountsStage.initModality(Modality.APPLICATION_MODAL);
         accountsStage.setScene(new Scene(root));
         accountsStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         loader = new FXMLLoader(this.getClass().getResource("../view/main.fxml"));

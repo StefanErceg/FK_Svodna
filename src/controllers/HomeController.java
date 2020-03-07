@@ -3,10 +3,13 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import model.DTO.IsAway;
+import model.DTO.Match;
 import model.DTO.MedicalExamination;
 import model.DTO.Obligation;
 import model.util.FKSvodnaUtilities;
@@ -22,6 +25,9 @@ public class HomeController {
     @FXML
     private ListView<MedicalExamination> medicalExaminationsListVIew;
 
+    @FXML
+    private Label obligationLabel;
+
     private CheckBox tempCheckBox;
 
 
@@ -30,8 +36,11 @@ public class HomeController {
         List<MedicalExamination> examinationsToDo = FKSvodnaUtilities.getDAOFactory().getMedicalExaminationDAO().getAlerts();
         medicalExaminationsListVIew.getItems().addAll(examinationsToDo);
         List<Obligation> obligations=List.of();
-        if(FKSvodnaUtilities.getDAOFactory().getMatchDAO().getFirstMatch()!=null)
-             obligations = FKSvodnaUtilities.getDAOFactory().getObligationDAO().getObligationsForMatch(FKSvodnaUtilities.getDAOFactory().getMatchDAO().getFirstMatch().getId());
+        Match firstMatch = FKSvodnaUtilities.getDAOFactory().getMatchDAO().getFirstMatch();
+        if(firstMatch!=null&&firstMatch.getIsAway().equals(IsAway.Nije)) {
+            obligations = FKSvodnaUtilities.getDAOFactory().getObligationDAO().getObligationsForMatch(firstMatch.getId());
+            obligationLabel.setText("Zaduženja za utakmicu protiv: " + firstMatch.getOpposingTeam());
+        }
         for (Obligation obligation : obligations) {
             tempCheckBox = new CheckBox();
             tempCheckBox.setText(obligation.getDescription());

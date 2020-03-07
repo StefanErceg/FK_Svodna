@@ -1,6 +1,7 @@
 package model.DAO.mysql;
 
 import model.DAO.MatchDAO;
+import model.DTO.IsAway;
 import model.DTO.Match;
 
 import java.sql.Connection;
@@ -27,7 +28,7 @@ public class MySQLMatchDAO implements MatchDAO {
 
             while(rs.next()) {
                 matches.add(new Match(rs.getInt("Id"), rs.getTimestamp("DatumIVrijeme"),
-                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat")));
+                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca"))));
             }
 
         } catch(SQLException ex) {
@@ -55,7 +56,7 @@ public class MySQLMatchDAO implements MatchDAO {
 
             if(rs.next()) {
                 match = new Match(rs.getInt("Id"), rs.getTimestamp("DatumIVrijeme"),
-                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"));
+                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca")));
             }
 
         } catch(SQLException ex) {
@@ -82,7 +83,7 @@ public class MySQLMatchDAO implements MatchDAO {
 
             if(rs.next()) {
                 match = new Match(rs.getInt("Id"), rs.getTimestamp("DatumIVrijeme"),
-                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"));
+                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca")));
             }
 
         } catch(SQLException ex) {
@@ -109,7 +110,7 @@ public class MySQLMatchDAO implements MatchDAO {
 
             if(rs.next()) {
                 match = new Match(rs.getInt("Id"), rs.getTimestamp("DatumIVrijeme"),
-                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"));
+                        rs.getString("ProtivnickiTim"), rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca")));
             }
 
         } catch(SQLException ex) {
@@ -127,13 +128,14 @@ public class MySQLMatchDAO implements MatchDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into utakmica (DatumIVrijeme, ProtivnickiTim, Rezultat) values (?, ?, ?)";
+        String query = "insert into utakmica (DatumIVrijeme, ProtivnickiTim, Rezultat, Gostujuca) values (?, ?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
             ps.setTimestamp(1, match.getDate());
             ps.setString(2, match.getOpposingTeam());
             ps.setString(3, match.getResult());
+            ps.setString(4,match.getIsAway().toString());
 
             retVal = ps.executeUpdate() == 1;
 
@@ -155,15 +157,17 @@ public class MySQLMatchDAO implements MatchDAO {
         String query = "update utakmica set " +
                        "DatumIVrijeme=?, " +
                        "ProtivnickiTim=?, " +
-                       "Rezultat=? " +
-                       "where Id=?";
+                       "Rezultat=?, " +
+                       "Gostujuca=? " +
+                       "where Id=? ";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
             ps.setTimestamp(1, match.getDate());
             ps.setString(2, match.getOpposingTeam());
             ps.setString(3, match.getResult());
-            ps.setInt(4, match.getId());
+            ps.setString(4, match.getIsAway().toString());
+            ps.setInt(5, match.getId());
 
             retVal = ps.executeUpdate() == 1;
 

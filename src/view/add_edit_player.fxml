@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEditPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,  #005f6b, #1a3a6e);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEditPlayerController">
    <children>
       <VBox alignment="CENTER" layoutX="233.0" layoutY="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0">
          <children>
@@ -30,6 +29,7 @@
                 <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="80.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -114,47 +114,47 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="nameTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                  <TextField fx:id="nameTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="lastNameTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                  <TextField fx:id="lastNameTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="positionTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                  <TextField fx:id="positionTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="licenceNumberTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+                  <TextField fx:id="licenceNumberTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="phoneNumberTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+                  <TextField fx:id="phoneNumberTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="adressTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
+                  <TextField fx:id="adressTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="jmbgTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6">
+                  <TextField fx:id="jmbgTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="emailTextField" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
+                  <TextField fx:id="emailTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="teamLabel" text="Tim" textFill="WHITE" GridPane.rowIndex="9">
+                  <Label fx:id="teamLabel" text="Tim" textFill="WHITE" GridPane.rowIndex="10">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -162,8 +162,21 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="teamSelectComboBox" prefHeight="30.0" prefWidth="200.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <ComboBox fx:id="teamSelectComboBox" prefHeight="30.0" prefWidth="200.0" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                   <DatePicker fx:id="dateFrom" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label fx:id="jerseyLabel" text="Broj dresa" textFill="WHITE" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="jerseyNumberTextField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
                </children>
             </GridPane>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">

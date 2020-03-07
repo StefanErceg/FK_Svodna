@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,12 +9,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Manager;
 import model.util.FKSvodnaUtilities;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +28,8 @@ public class ExecutivesController {
     private TableView<Manager> executivesTableView;
     @FXML
     private TextField searchTextField;
+
+    private DirectoryChooser directoryChooser;
 
     private List<Manager> listOfExecutives;
     private AddEditExecutivesController addEditExecutivesController;
@@ -48,6 +55,8 @@ public class ExecutivesController {
         executivesTableView.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         executivesTableView.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("email"));
         executivesTableView.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("position"));
+
+        directoryChooser = new DirectoryChooser();
 
         displayExecutives();
     }
@@ -154,4 +163,64 @@ public class ExecutivesController {
         decisionStage.showAndWait();
     }
 
+    @FXML
+    public void printExecutive(ActionEvent actionEvent) {
+        Workbook workbook = new HSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("sample");
+//        spreadsheet.setDefaultColumnWidth(15);
+        CellStyle topStyle = workbook.createCellStyle();
+        topStyle.setBorderBottom(BorderStyle.MEDIUM);
+        topStyle.setBorderLeft(BorderStyle.MEDIUM);
+        topStyle.setBorderRight(BorderStyle.MEDIUM);
+        topStyle.setBorderTop(BorderStyle.MEDIUM);
+        topStyle.setAlignment(HorizontalAlignment.CENTER);
+
+        CellStyle style = workbook.createCellStyle();
+        style.setBorderTop(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setAlignment(HorizontalAlignment.CENTER);
+
+        Row row = spreadsheet.createRow(0);
+
+        row.createCell(0).setCellStyle(topStyle);
+        row.getCell(0).setCellValue("RB");
+
+        for (int j = 1; j < executivesTableView.getColumns().size(); j++) {
+            row.createCell(j).setCellValue(executivesTableView.getColumns().get(j - 1).getText());
+            row.getCell(j).setCellStyle(topStyle);
+        }
+
+        for (int i = 0; i < executivesTableView.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            row.createCell(0);
+            row.getCell(0).setCellValue(i + 1 + ".");
+            row.getCell(0).setCellStyle(style);
+            for (int j = 1; j < executivesTableView.getColumns().size(); j++) {
+                if (executivesTableView.getColumns().get(j).getCellData(i) != null) {
+                    row.createCell(j).setCellValue(executivesTableView.getColumns().get(j - 1).getCellData(i).toString());
+                    row.getCell(j).setCellStyle(style);
+                } else {
+                    row.createCell(j).setCellValue("");
+                    row.getCell(j).setCellStyle(style);
+                }
+            }
+        }
+        spreadsheet.setColumnWidth(0,1500);
+        spreadsheet.setColumnWidth(1,4000);
+        spreadsheet.setColumnWidth(2,4500);
+        spreadsheet.setColumnWidth(3,4500);
+        spreadsheet.setColumnWidth(4,6500);
+        directoryChooser.setTitle("Odabir foldera");
+        File selectedDirectory = directoryChooser.showDialog(alertStage);
+        if (selectedDirectory != null)
+            try {
+                FileOutputStream fileOut = new FileOutputStream(selectedDirectory.getPath() + File.separator + "Rukovodstvo.xls");
+                workbook.write(fileOut);
+                fileOut.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }
 }

@@ -1,6 +1,7 @@
 package model.DAO.mysql;
 
 import model.DAO.ObligationDAO;
+import model.DTO.IsAway;
 import model.DTO.Match;
 import model.DTO.Obligation;
 
@@ -20,7 +21,7 @@ public class MySQLObligationDAO implements ObligationDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat " +
+        String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat, u.Gostujuca " +
                        "from zaduzenje z " +
                        "inner join utakmica u on u.Id=z.UtakmicaId " +
                        "where z.Obrisano=0";
@@ -33,7 +34,7 @@ public class MySQLObligationDAO implements ObligationDAO {
                 obligations.add(new Obligation(rs.getInt("Id"), rs.getString("Opis"),
                         rs.getBoolean("Odradjeno"), new Match(rs.getInt("uId"),
                         rs.getTimestamp("DatumIVrijeme"), rs.getString("ProtivnickiTim"),
-                        rs.getString("Rezultat"))));
+                        rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca")))));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -52,7 +53,7 @@ public class MySQLObligationDAO implements ObligationDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat " +
+        String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat, u.Gostujuca " +
                 "from zaduzenje z " +
                 "inner join utakmica u on u.Id=z.UtakmicaId " +
                 "where z.Obrisano=0 and z.Id=?";
@@ -66,7 +67,7 @@ public class MySQLObligationDAO implements ObligationDAO {
                 obligation = new Obligation(rs.getInt("Id"), rs.getString("Opis"),
                         rs.getBoolean("Odradjeno"), new Match(rs.getInt("uId"),
                         rs.getTimestamp("DatumIVrijeme"), rs.getString("ProtivnickiTim"),
-                        rs.getString("Rezultat")));
+                        rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca"))));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -85,7 +86,7 @@ public class MySQLObligationDAO implements ObligationDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat " +
+        String query = "select z.Id, z.Opis, z.Odradjeno, u.Id as uId, u.DatumIVrijeme, u.ProtivnickiTim, u.Rezultat, u.Gostujuca " +
                 "from zaduzenje z " +
                 "inner join utakmica u on u.Id=z.UtakmicaId " +
                 "where z.Obrisano=0 and z.UtakmicaId=?";
@@ -99,7 +100,7 @@ public class MySQLObligationDAO implements ObligationDAO {
                 obligations.add(new Obligation(rs.getInt("Id"), rs.getString("Opis"),
                         rs.getBoolean("Odradjeno"), new Match(rs.getInt("uId"),
                         rs.getTimestamp("DatumIVrijeme"), rs.getString("ProtivnickiTim"),
-                        rs.getString("Rezultat"))));
+                        rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca")))));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();

@@ -79,12 +79,14 @@ public class FinesController {
             if (!DAOFactory.getDAOFactory().getPunishmentDAO().insert(punishment)) {
                 alertController.setText("Desila se greska pri upisu, kazna nije dodana.");
                 alertStage.showAndWait();
-                //  DAOFactory.getDAOFactory().getPunishmentDAO().returnEquipment(equipment);
+                clearFields();
             }
+            clearFields();
         }
         else{
             alertController.setText("Nisu unesena potrebna polja.");
             alertStage.showAndWait();
+            clearFields();
         }
         reloadTable();
         finesTable.getSelectionModel().clearSelection();
@@ -146,5 +148,14 @@ public class FinesController {
     private boolean isInt(String string){
         if(string.matches("([0-9]*)")) return true;
         return false;
+    }
+
+    private void clearFields(){
+        redCardButton.setSelected(false);
+        yellowCardButton.setSelected(false);
+        datePicker.setValue(null);
+        suspensionTxtField.setText("");
+        descriptionTxtField.setText("");
+        priceTxtField.setText("");
     }
 }

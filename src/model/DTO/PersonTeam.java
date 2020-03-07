@@ -10,17 +10,19 @@ public class PersonTeam {
     protected Timestamp dateTo;
     protected String role;
     protected String playerPosition;
+    protected int jerseyNumber;
 
     public PersonTeam() {
     }
 
-    public PersonTeam(Person person, Team team, Timestamp dateFrom, Timestamp dateTo, String role, String playerPosition) {
+    public PersonTeam(Person person, Team team, Timestamp dateFrom, Timestamp dateTo, String role, String playerPosition, int jerseyNumber) {
         this.person = person;
         this.team = team;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.role = role;
         this.playerPosition = playerPosition;
+        this.jerseyNumber = jerseyNumber;
     }
 
     public Person getPerson() {
@@ -69,6 +71,14 @@ public class PersonTeam {
 
     public void setPlayerPosition(String playerPosition) {
         this.playerPosition = playerPosition;
+    }
+
+    public int getJerseyNumber() {
+        return jerseyNumber;
+    }
+
+    public void setJerseyNumber(int jerseyNumber) {
+        this.jerseyNumber = jerseyNumber;
     }
 
     @Override

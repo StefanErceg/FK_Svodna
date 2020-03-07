@@ -19,8 +19,8 @@ public class MySQLPersonTeamMatchDAO implements PersonTeamMatchDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select otu.OsobaId, otu.TimId, otu.UtakmicaId, Naziv, Od, Do, Uloga, PozicijaIgraca, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, " +
-                       "DatumIVrijeme, ProtivnickiTim, Rezultat " +
+        String query = "select otu.OsobaId, otu.TimId, otu.UtakmicaId, Naziv, Od, Do, Uloga, PozicijaIgraca, BrojDresa, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, " +
+                       "DatumIVrijeme, ProtivnickiTim, Rezultat, Gostujuca " +
                        "from osobatimutakmica otu " +
                        "inner join osobatim ot on ot.OsobaId=otu.OsobaId and ot.TimId=otu.TimId " +
                        "inner join osoba o on o.Id=ot.OsobaId " +
@@ -37,9 +37,9 @@ public class MySQLPersonTeamMatchDAO implements PersonTeamMatchDAO {
                         rs.getString("Ime"), rs.getString("Prezime"), rs.getString("BrojTelefona"),
                         rs.getString("Jmb"), rs.getString("Email"), rs.getString("Adresa"), rs.getString("BrojLicence")),
                         new Team(rs.getInt("TimId"), rs.getString("Naziv")), rs.getTimestamp("Od"),
-                        rs.getTimestamp("Do"), rs.getString("Uloga"), rs.getString("PozicijaIgraca")),
+                        rs.getTimestamp("Do"), rs.getString("Uloga"), rs.getString("PozicijaIgraca"), rs.getInt("BrojDresa")),
                         new Match(rs.getInt("TimId"), rs.getTimestamp("DatumIVrijeme"), rs.getString("ProtivnickiTim"),
-                        rs.getString("Rezultat"))));
+                        rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca")))));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -58,8 +58,8 @@ public class MySQLPersonTeamMatchDAO implements PersonTeamMatchDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select otu.OsobaId, otu.TimId, otu.UtakmicaId, Naziv, Od, Do, Uloga, PozicijaIgraca, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, " +
-                "DatumIVrijeme, ProtivnickiTim, Rezultat " +
+        String query = "select otu.OsobaId, otu.TimId, otu.UtakmicaId, Naziv, Od, Do, Uloga, PozicijaIgraca, BrojDresa, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence, " +
+                "DatumIVrijeme, ProtivnickiTim, Rezultat, Gostujuca " +
                 "from osobatimutakmica otu " +
                 "inner join osobatim ot on ot.OsobaId=otu.OsobaId and ot.TimId=otu.TimId " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
@@ -79,9 +79,9 @@ public class MySQLPersonTeamMatchDAO implements PersonTeamMatchDAO {
                         rs.getString("Ime"), rs.getString("Prezime"), rs.getString("BrojTelefona"),
                         rs.getString("Jmb"), rs.getString("Email"), rs.getString("Adresa"), rs.getString("BrojLicence")),
                         new Team(rs.getInt("TimId"), rs.getString("Naziv")), rs.getTimestamp("Od"),
-                        rs.getTimestamp("Do"), rs.getString("Uloga"), rs.getString("PozicijaIgraca")),
+                        rs.getTimestamp("Do"), rs.getString("Uloga"), rs.getString("PozicijaIgraca"),rs.getInt("BrojDresa")),
                         new Match(rs.getInt("TimId"), rs.getTimestamp("DatumIVrijeme"), rs.getString("ProtivnickiTim"),
-                                rs.getString("Rezultat")));
+                                rs.getString("Rezultat"), IsAway.valueOf(rs.getString("Gostujuca"))));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();

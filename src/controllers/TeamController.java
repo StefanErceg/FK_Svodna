@@ -17,14 +17,18 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Person;
 import model.DTO.PersonTeam;
 import model.DTO.Team;
 import model.util.FKSvodnaUtilities;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -45,6 +49,8 @@ public class TeamController {
     private TableColumn<PersonTeam, String> nameColumn;
     @FXML
     private TableColumn<PersonTeam, String> surnameColumn;
+
+    private DirectoryChooser directoryChooser;
 
     private List<Team> listOfTeams;
     private List<PersonTeam> listOfStaff;
@@ -74,6 +80,8 @@ public class TeamController {
         addEditPersonStage.initModality(Modality.APPLICATION_MODAL);
         addEditPersonStage.setScene(new Scene(root));
         addEditPersonStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
+
+        directoryChooser = new DirectoryChooser();
 
     }
 
@@ -201,6 +209,72 @@ public class TeamController {
         decisionStage.showAndWait();
     }
 
+    @FXML
+    private void printStaff() {
+        if (selectedTeam != null) {
+            Workbook workbook = new HSSFWorkbook();
+            Sheet spreadsheet = workbook.createSheet("sample");
+            spreadsheet.setDefaultColumnWidth(15);
+            CellStyle topStyle = workbook.createCellStyle();
+            topStyle.setBorderBottom(BorderStyle.MEDIUM);
+            topStyle.setBorderLeft(BorderStyle.MEDIUM);
+            topStyle.setBorderRight(BorderStyle.MEDIUM);
+            topStyle.setBorderTop(BorderStyle.MEDIUM);
+            topStyle.setAlignment(HorizontalAlignment.CENTER);
 
+            CellStyle style = workbook.createCellStyle();
+            style.setBorderTop(BorderStyle.THIN);
+            style.setBorderRight(BorderStyle.THIN);
+            style.setBorderLeft(BorderStyle.THIN);
+            style.setBorderBottom(BorderStyle.THIN);
+            style.setAlignment(HorizontalAlignment.CENTER);
+
+            Row row = spreadsheet.createRow(0);
+
+            row.createCell(0).setCellStyle(topStyle);
+            row.getCell(0).setCellValue("RB");
+
+            for (int j = 0; j < staffTableView.getColumns().size(); j++) {
+                row.createCell(j+1).setCellValue(staffTableView.getColumns().get(j).getText());
+                row.getCell(j+1).setCellStyle(topStyle);
+            }
+
+            for (int i = 0; i < staffTableView.getItems().size(); i++) {
+                row = spreadsheet.createRow(i + 1);
+                row.createCell(0);
+                row.getCell(0).setCellValue(i + 1 + ".");
+                row.getCell(0).setCellStyle(style);
+                for (int j = 0; j < staffTableView.getColumns().size(); j++) {
+                    if (staffTableView.getColumns().get(j).getCellData(i) != null) {
+                        row.createCell(j+1).setCellValue(staffTableView.getColumns().get(j).getCellData(i).toString());
+                        row.getCell(j+1).setCellStyle(style);
+                    } else {
+                        row.createCell(j+1).setCellValue("");
+                        row.getCell(j+1).setCellStyle(style);
+                    }
+                }
+            }
+            spreadsheet.setColumnWidth(0,1500);
+            spreadsheet.setColumnWidth(1,4000);
+            spreadsheet.setColumnWidth(2,4500);
+            spreadsheet.setColumnWidth(3,6000);
+            directoryChooser.setTitle("Odabir foldera");
+            File selectedDirectory = directoryChooser.showDialog(addEditPersonStage);
+            if (selectedDirectory != null)
+                try {
+                    FileOutputStream fileOut = new FileOutputStream(selectedDirectory.getPath() + File.separator + "Stručni štab-" + selectedTeam.getName() + ".xls");
+                    workbook.write(fileOut);
+                    fileOut.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        }else{
+            try {
+                displayAlert("Nije odabran tim");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

@@ -1,6 +1,7 @@
 package model.DTO;
 
 import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class MedicalExamination {
@@ -68,7 +69,7 @@ public class MedicalExamination {
     @Override
     public String toString() {
         return "" + person.getName() + " " + person.getSurname() + "    (JMB:  " +
-                person.getJmb() + ")    Datum isteka: " + expirationDate;
+                person.getJmb() + ")    Datum isteka: " + expirationDate.toLocalDateTime().toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy."));
 
     }
 }

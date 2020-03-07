@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -17,11 +19,17 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.DTO.IsAway;
 import model.DTO.Match;
 import model.DTO.Person;
 import model.util.FKSvodnaUtilities;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+
+import javax.swing.*;
 
 public class MatchController {
 
@@ -36,6 +44,8 @@ public class MatchController {
 
     @FXML
     private TableView<Match> tableResult;
+
+    private DirectoryChooser directoryChooser;
 
     private Stage alertStage;
     private AlertController alertController;
@@ -84,6 +94,13 @@ public class MatchController {
             addEditMatchesController.getResultField().setVisible(true);
             addEditMatchesController.getResultLabel().setVisible(true);
             addEditMatchesController.getResultField().setText(selectedMatch.getResult());
+            if(selectedMatch.getIsAway().equals(IsAway.Jeste)){
+                addEditMatchesController.getHomeButton().setSelected(false);
+                addEditMatchesController.getAwayButton().setSelected(true);
+            }else{
+                addEditMatchesController.getHomeButton().setSelected(true);
+                addEditMatchesController.getAwayButton().setSelected(false);
+            }
             addEditMatchesStage.showAndWait();
         }
         else{
@@ -92,6 +109,65 @@ public class MatchController {
         }
         displayMatches();
         clearFields();
+    }
+
+    @FXML
+    void saveMatches(ActionEvent event){
+        Workbook workbook = new HSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("sample");
+        CellStyle topStyle = workbook.createCellStyle();
+        topStyle.setBorderBottom(BorderStyle.MEDIUM);
+        topStyle.setBorderLeft(BorderStyle.MEDIUM);
+        topStyle.setBorderRight(BorderStyle.MEDIUM);
+        topStyle.setBorderTop(BorderStyle.MEDIUM);
+        topStyle.setAlignment(HorizontalAlignment.CENTER);
+
+        CellStyle style = workbook.createCellStyle();
+        style.setBorderTop(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setAlignment(HorizontalAlignment.CENTER);
+
+        Row row = spreadsheet.createRow(0);
+
+        row.createCell(0).setCellStyle(topStyle);
+        row.getCell(0).setCellValue("RB");
+
+        for (int j = 0; j < tableResult.getColumns().size(); j++) {
+            row.createCell(j+1).setCellValue(tableResult.getColumns().get(j).getText());
+            row.getCell(j+1).setCellStyle(topStyle);
+        }
+
+        for (int i = 0; i < tableResult.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            row.createCell(0);
+            row.getCell(0).setCellValue(i + 1 + ".");
+            row.getCell(0).setCellStyle(style);
+            for (int j = 0; j < tableResult.getColumns().size(); j++) {
+                if (tableResult.getColumns().get(j).getCellData(i) != null) {
+                    row.createCell(j+1).setCellValue(tableResult.getColumns().get(j).getCellData(i).toString());
+                    row.getCell(j+1).setCellStyle(style);
+                } else {
+                    row.createCell(j+1).setCellValue("");
+                    row.getCell(j+1).setCellStyle(style);
+                }
+            }
+        }
+        spreadsheet.setColumnWidth(0,1500);
+        spreadsheet.setColumnWidth(1,6000);
+        spreadsheet.setColumnWidth(2,6000);
+        spreadsheet.setColumnWidth(3,2500);
+        directoryChooser.setTitle("Odabir foldera");
+        File selectedDirectory = directoryChooser.showDialog(addEditMatchesStage);
+        if (selectedDirectory != null)
+            try {
+                FileOutputStream fileOut = new FileOutputStream(selectedDirectory.getPath() + File.separator + "Utakmice.xls");
+                workbook.write(fileOut);
+                fileOut.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 
     @FXML
@@ -112,6 +188,8 @@ public class MatchController {
         tableResult.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("date"));
         tableResult.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("opposingTeam"));
         tableResult.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("result"));
+
+        directoryChooser = new DirectoryChooser();
 
         displayMatches();
     }

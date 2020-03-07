@@ -59,7 +59,7 @@
                 </GridPane>
                 <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0">
                     <children>
-                        <Button fx:id="addEditButton" mnemonicParsing="false" onAction="#save" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj ljekarski pregled">
+                        <Button fx:id="addEditButton" mnemonicParsing="false" onAction="#save" prefWidth="150.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj">
                             <font>
                                 <Font size="15.0" />
                             </font>

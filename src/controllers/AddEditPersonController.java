@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Person;
@@ -80,7 +82,7 @@ public class AddEditPersonController {
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().insert(personToAdd);
                 person = FKSvodnaUtilities.getDAOFactory().getPersonDAO().getLastPerson();
                 FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(person, selectedTeam, new Timestamp(Calendar.getInstance().getTime().getTime()),
-                        null, roleComboBox.getSelectionModel().getSelectedItem(), null));
+                        null, roleComboBox.getSelectionModel().getSelectedItem(), null, 0));
                 finished = true;
             }
             else {
@@ -101,6 +103,11 @@ public class AddEditPersonController {
         if(finished) {
             quit();
         }
+    }
+
+    @FXML
+    void saveByEnter(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)) save();
     }
 
     public void quit() {

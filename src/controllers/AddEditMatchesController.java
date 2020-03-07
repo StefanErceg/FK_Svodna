@@ -5,13 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.DateTimeStringConverter;
-import model.DTO.Match;
-import model.DTO.Obligation;
-import model.DTO.Person;
-import model.DTO.PersonTeam;
+import model.DTO.*;
 import model.util.FKSvodnaUtilities;
 
 import java.sql.Timestamp;
@@ -33,6 +32,12 @@ public class AddEditMatchesController {
     private TextField resultField;
     @FXML
     private Label resultLabel;
+    @FXML
+    private RadioButton homeButton;
+    @FXML
+    private RadioButton awayButton;
+    @FXML
+    private ToggleGroup whereIsPlayed;
 
     private Match selectedMatch;
     private AlertController alertController;
@@ -53,7 +58,9 @@ public class AddEditMatchesController {
                     matchTime.setHours(Integer.parseInt(time[0]));
                     matchTime.setMinutes(Integer.parseInt(time[1]));
                 }
-                Match match = new Match(0,matchTime,opponentTeamField.getText(),"");
+                Match match;
+                if(awayButton.isSelected()) match = new Match(0,matchTime,opponentTeamField.getText(),"", IsAway.Jeste);
+                else match = new Match(0,matchTime,opponentTeamField.getText(),"", IsAway.Nije);
                 FKSvodnaUtilities.getDAOFactory().getMatchDAO().insert(match);
                 match = FKSvodnaUtilities.getDAOFactory().getMatchDAO().getLastMatch();
                 List<Obligation> obligationList = FKSvodnaUtilities.getDAOFactory().getObligationDAO().obligations();
@@ -68,8 +75,10 @@ public class AddEditMatchesController {
                     matchTime.setHours(Integer.parseInt(time[0]));
                     matchTime.setMinutes(Integer.parseInt(time[1]));
                 }
-                Match match = new Match(selectedMatch.getId(),matchTime,opponentTeamField.getText(),resultField.getText());
-                FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(match);
+                Match match = new Match(selectedMatch.getId(),matchTime,opponentTeamField.getText(),"", null);
+                if(awayButton.isSelected()) match.setIsAway(IsAway.Jeste);
+                else match.setIsAway(IsAway.Nije);
+                System.out.println(FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(match));
             }
         }else{
             try {
@@ -81,12 +90,17 @@ public class AddEditMatchesController {
         quit();
     }
 
+    @FXML
+    void saveByEnter(KeyEvent event){
+        if(event.getCode().equals(KeyCode.ENTER)) save();
+    }
+
     public void quit(){
         ((Stage) addEditButton.getScene().getWindow()).close();
     }
 
     private boolean checkFields(){
-        return !(timeField.getText().isEmpty()&&dateofMatch.getValue()==null&&opponentTeamField.getText().isEmpty());
+        return !(timeField.getText().isEmpty()&&dateofMatch.getValue()==null&&opponentTeamField.getText().isEmpty())&&(homeButton.isSelected() || awayButton.isSelected());
     }
 
     private void displayAlert(String content) throws Exception {
@@ -152,5 +166,21 @@ public class AddEditMatchesController {
 
     public Label getResultLabel() {
         return resultLabel;
+    }
+
+    public RadioButton getHomeButton() {
+        return homeButton;
+    }
+
+    public void setHomeButton(RadioButton homeButton) {
+        this.homeButton = homeButton;
+    }
+
+    public RadioButton getAwayButton() {
+        return awayButton;
+    }
+
+    public void setAwayButton(RadioButton awayButton) {
+        this.awayButton = awayButton;
     }
 }

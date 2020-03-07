@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DAO.DAOFactory;
@@ -23,7 +24,12 @@ import model.DTO.PersonTeam;
 import model.DTO.Sponsor;
 import model.DTO.Team;
 import model.util.FKSvodnaUtilities;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -38,6 +44,8 @@ public class PlayerController {
 
     @FXML
     private TextField findPlayerField;
+
+    private DirectoryChooser directoryChooser;
 
     private AddEditPlayerController addEditPlayerController;
     private PlayerSidebarController playerSidebarController;
@@ -62,10 +70,10 @@ public class PlayerController {
     }
 
     @FXML
-    void editPlayer(ActionEvent event){
+    void editPlayer(ActionEvent event) {
         addEditPlayerController.clearFields();
         Person person = playerTable.getSelectionModel().getSelectedItem();
-        if(person==null){
+        if (person == null) {
             alertController.setText("Nije izabran igrač za izmjenu.");
             alertStage.show();
             return;
@@ -73,13 +81,12 @@ public class PlayerController {
         addEditPlayerController.getTeamSelectComboBox().setVisible(false);
         addEditPlayerController.getTeamLabel().setVisible(false);
         addEditPlayerController.getTeamSelectComboBox().setItems(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getTeamDAO().teams()));
-        List<PersonTeam> lista = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().personTeams().stream().filter(e->e.getPerson().getId()==person.getId()).collect(Collectors.toList());
         addEditPlayerController.setSelectedPlayerId(person.getId());
-        if(!lista.isEmpty()) {
-            addEditPlayerController.getDateFrom().setValue(lista.get(0).getDateFrom().toLocalDateTime().toLocalDate());
-            addEditPlayerController.getPositionTextField().setText(lista.get(0).getPlayerPosition());
-            addEditPlayerController.getTeamSelectComboBox().getSelectionModel().select(lista.get(0).getTeam());
-        }
+        PersonTeam personTeam = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person);
+        addEditPlayerController.getDateFrom().setValue(personTeam.getDateFrom().toLocalDateTime().toLocalDate());
+        addEditPlayerController.getPositionTextField().setText(personTeam.getPlayerPosition());
+        addEditPlayerController.getTeamSelectComboBox().getSelectionModel().select(personTeam.getTeam());
+        addEditPlayerController.getJerseyNumberTextField().setText("" + personTeam.getJerseyNumber());
         addEditPlayerController.getAddPlayerButton().setText("Izmijeni igrača");
         addEditPlayerController.getNameTextField().setText(person.getName());
         addEditPlayerController.getLastNameTextField().setText(person.getSurname());
@@ -148,6 +155,7 @@ public class PlayerController {
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
 
+        directoryChooser = new DirectoryChooser();
 
         playerTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
         playerTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -159,15 +167,13 @@ public class PlayerController {
     private void displayPlayers(){
         try {
             List<Team> teams = FKSvodnaUtilities.getDAOFactory().getTeamDAO().teams();
-            playerTable.getItems().clear();
-            playerTable.refresh();
             playersList = FXCollections.observableArrayList();
             for(Team team:teams) {
                 for(PersonTeam personTeam : FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getPlayersForTeam(team.getId())) {
                     playersList.add(personTeam.getPerson());
                 }
             }
-            playerTable.getItems().addAll(playersList);
+            playerTable.setItems(playersList);
             playerTable.getSelectionModel().clearSelection();
             playerSidebarController.clearPlayer();
 
@@ -184,5 +190,64 @@ public class PlayerController {
     public void setPlayerSidebarController(PlayerSidebarController playerSidebarController){
         this.playerSidebarController = playerSidebarController;
         displayPlayers();
+    }
+
+    @FXML
+    private void printPlayers() {
+        Workbook workbook = new HSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("sample");
+        spreadsheet.setDefaultColumnWidth(15);
+        CellStyle topStyle = workbook.createCellStyle();
+        topStyle.setBorderBottom(BorderStyle.MEDIUM);
+        topStyle.setBorderLeft(BorderStyle.MEDIUM);
+        topStyle.setBorderRight(BorderStyle.MEDIUM);
+        topStyle.setBorderTop(BorderStyle.MEDIUM);
+        topStyle.setAlignment(HorizontalAlignment.CENTER);
+
+        CellStyle style = workbook.createCellStyle();
+        style.setBorderTop(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setAlignment(HorizontalAlignment.CENTER);
+
+        Row row = spreadsheet.createRow(0);
+
+        row.createCell(0).setCellStyle(topStyle);
+        row.getCell(0).setCellValue("RB");
+
+        for (int j = 1; j < playerTable.getColumns().size(); j++) {
+            row.createCell(j).setCellValue(playerTable.getColumns().get(j - 1).getText());
+            row.getCell(j).setCellStyle(topStyle);
+        }
+
+        for (int i = 0; i < playerTable.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            row.createCell(0);
+            row.getCell(0).setCellValue(i + 1 + ".");
+            row.getCell(0).setCellStyle(style);
+            for (int j = 1; j < playerTable.getColumns().size(); j++) {
+                if (playerTable.getColumns().get(j).getCellData(i) != null) {
+                    row.createCell(j).setCellValue(playerTable.getColumns().get(j - 1).getCellData(i).toString());
+                    row.getCell(j).setCellStyle(style);
+                } else {
+                    row.createCell(j).setCellValue("");
+                    row.getCell(j).setCellStyle(style);
+                }
+            }
+        }
+        spreadsheet.setColumnWidth(0,1500);
+        spreadsheet.setColumnWidth(1,4000);
+        spreadsheet.setColumnWidth(2,4500);
+        directoryChooser.setTitle("Odabir foldera");
+        File selectedDirectory = directoryChooser.showDialog(addEditPlayerStage);
+        if (selectedDirectory != null)
+            try {
+                FileOutputStream fileOut = new FileOutputStream(selectedDirectory.getPath() + File.separator + "Igrači.xls");
+                workbook.write(fileOut);
+                fileOut.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 }

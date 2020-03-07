@@ -8,16 +8,18 @@ public class Match {
     protected String opposingTeam;
     protected Timestamp date;
     protected String result;
+    protected IsAway isAway;
 
     public Match() {
         super();
     }
 
-    public Match(int id, Timestamp date, String opposingTeam, String result) {
+    public Match(int id, Timestamp date, String opposingTeam, String result, IsAway isAway) {
         this.id = id;
         this.opposingTeam = opposingTeam;
         this.date = date;
         this.result = result;
+        this.isAway = isAway;
     }
 
     public int getId() {
@@ -50,6 +52,14 @@ public class Match {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public IsAway getIsAway() {
+        return isAway;
+    }
+
+    public void setIsAway(IsAway isAway) {
+        this.isAway = isAway;
     }
 
     @Override

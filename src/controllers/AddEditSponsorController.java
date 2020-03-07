@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -39,7 +41,7 @@ public class AddEditSponsorController {
     Sponsor sponsor;
 
     @FXML
-    void addSponsor(ActionEvent event) {
+    void addSponsor() {
         if(nameField.getText().equals("") || (emailField.getText().equals("") && phonenumberField.getText().equals("") ) ){
             alertController.setText("Nisu uneseni svi potrebni podaci, sponzor mora imati ime i email ili broj telefona.");
             alertStage.showAndWait();
@@ -68,6 +70,11 @@ public class AddEditSponsorController {
         }
         ((Stage)jibField.getScene().getWindow()).hide();
         editSponsorButton.setText("Dodaj");
+    }
+
+    @FXML
+    void saveByEnter(KeyEvent event){
+        if (event.getCode().equals(KeyCode.ENTER)) addSponsor();
     }
 
     @FXML

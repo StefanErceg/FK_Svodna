@@ -5,6 +5,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import model.DAO.DAOFactory;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Sponsor;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 
 public class SponsorController {
@@ -27,6 +33,7 @@ public class SponsorController {
     @FXML
     private TableView<Sponsor> sponsorTable;
     private ObservableList<Sponsor> sponsorList;
+    private DirectoryChooser directoryChooser;
     @FXML
     private SponsorSidebarController sponsorSidebarController;
     private AddEditSponsorController addEditSponsorController;
@@ -97,9 +104,18 @@ public class SponsorController {
     }
 
     @FXML
-    void selectionChange(MouseEvent event) {    // komunkikacija sa sidebar kontolerom, postavlja sponzora o kojem treba prikazati detaljne inormacije
-        if(sponsorTable.getSelectionModel().getSelectedItem()!=null){
-            sponsorSidebarController.setSponsor(sponsorTable.getSelectionModel().getSelectedItem());
+    void selectionChange(MouseEvent event) {    // komunkikacija sa sidebar kontrolerom, postavlja sponzora o kojem treba prikazati detaljne inormacije
+        Sponsor sponsor = sponsorTable.getSelectionModel().getSelectedItem();
+        if(sponsor!=null){
+            sponsorSidebarController.setSponsor(sponsor);
+            if (sponsor.getKind().equals("fizicko lice")){
+                sponsorSidebarController.getContactPersonButton().setVisible(false);
+                sponsorSidebarController.getContactPersonLabel().setVisible(false);
+            }
+            else{
+                sponsorSidebarController.getContactPersonLabel().setVisible(true);
+                sponsorSidebarController.getContactPersonButton().setVisible(true);
+            }
         }
     }
     public void setSponsorSidebarController(SponsorSidebarController sponsorSidebarController) {
@@ -136,5 +152,66 @@ public class SponsorController {
         sponsorTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("kind"));
         sponsorTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
 
+        directoryChooser = new DirectoryChooser();
+
+    }
+
+    @FXML
+    public void printAllSponsors(ActionEvent actionEvent) {
+        Workbook workbook = new HSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("sample");
+        CellStyle topStyle = workbook.createCellStyle();
+        topStyle.setBorderBottom(BorderStyle.MEDIUM);
+        topStyle.setBorderLeft(BorderStyle.MEDIUM);
+        topStyle.setBorderRight(BorderStyle.MEDIUM);
+        topStyle.setBorderTop(BorderStyle.MEDIUM);
+        topStyle.setAlignment(HorizontalAlignment.CENTER);
+
+        CellStyle style = workbook.createCellStyle();
+        style.setBorderTop(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setAlignment(HorizontalAlignment.CENTER);
+
+        Row row = spreadsheet.createRow(0);
+
+        row.createCell(0).setCellStyle(topStyle);
+        row.getCell(0).setCellValue("RB");
+
+        for (int j = 1; j <= sponsorTable.getColumns().size(); j++) {
+            row.createCell(j).setCellValue(sponsorTable.getColumns().get(j - 1).getText());
+            row.getCell(j).setCellStyle(topStyle);
+        }
+
+        for (int i = 0; i < sponsorTable.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            row.createCell(0);
+            row.getCell(0).setCellValue(i + 1 + ".");
+            row.getCell(0).setCellStyle(style);
+            for (int j = 1; j <= sponsorTable.getColumns().size(); j++) {
+                if (sponsorTable.getColumns().get(j-1).getCellData(i) != null) {
+                    row.createCell(j).setCellValue(sponsorTable.getColumns().get(j - 1).getCellData(i).toString());
+                    row.getCell(j).setCellStyle(style);
+                } else {
+                    row.createCell(j).setCellValue("");
+                    row.getCell(j).setCellStyle(style);
+                }
+            }
+        }
+        spreadsheet.setColumnWidth(0,1500);
+        spreadsheet.setColumnWidth(1,6000);
+        spreadsheet.setColumnWidth(2,4500);
+        spreadsheet.setColumnWidth(3,6000);
+        directoryChooser.setTitle("Odabir foldera");
+        File selectedDirectory = directoryChooser.showDialog(alertStage);
+        if (selectedDirectory != null)
+            try {
+                FileOutputStream fileOut = new FileOutputStream(selectedDirectory.getPath() + File.separator + "Sponzori.xls");
+                workbook.write(fileOut);
+                fileOut.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 }

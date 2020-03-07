@@ -21,7 +21,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, BrojDresa, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                        "from osobatim ot " +
                        "inner join osoba o on o.Id=ot.OsobaId " +
                        "inner join tim t on t.Id=ot.TimId " +
@@ -36,7 +36,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                         rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
                         rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
-                        rs.getString("Uloga"), rs.getString("PozicijaIgraca")));
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"),rs.getInt("BrojDresa")));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -54,7 +54,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, BrojDresa, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                 "from osobatim ot " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
                 "inner join tim t on t.Id=ot.TimId " +
@@ -70,7 +70,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                         rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
                         rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
-                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"));
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"), rs.getInt("BrojDresa"));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -88,7 +88,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, BrojDresa, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                 "from osobatim ot " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
                 "inner join tim t on t.Id=ot.TimId " +
@@ -104,7 +104,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                         rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
                         rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
-                        rs.getString("Uloga"), rs.getString("PozicijaIgraca")));
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"), rs.getInt("BrojDresa")));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -122,7 +122,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, BrojDresa, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                 "from osobatim ot " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
                 "inner join tim t on t.Id=ot.TimId " +
@@ -138,7 +138,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                         rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
                         rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
-                        rs.getString("Uloga"), rs.getString("PozicijaIgraca")));
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"), rs.getInt("BrojDresa")));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -156,7 +156,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
+        String query = "select OsobaId, TimId, Od, Do, Uloga, PozicijaIgraca, BrojDresa, Naziv, Ime, Prezime, BrojTelefona, Jmb, Email, Adresa, BrojLicence " +
                 "from osobatim ot " +
                 "inner join osoba o on o.Id=ot.OsobaId " +
                 "inner join tim t on t.Id=ot.TimId " +
@@ -173,7 +173,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                         rs.getString("BrojTelefona"), rs.getString("Jmb"), rs.getString("Email"),
                         rs.getString("Adresa"), rs.getString("BrojLicence")), new Team(rs.getInt("TimId"),
                         rs.getString("Naziv")), rs.getTimestamp("Od"), rs.getTimestamp("Do"),
-                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"));
+                        rs.getString("Uloga"), rs.getString("PozicijaIgraca"), rs.getInt("BrojDresa"));
             }
         } catch(SQLException ex) {
             ex.printStackTrace();
@@ -190,7 +190,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into osobatim values (?, ?, ?, ?, ?, ?)";
+        String query = "insert into osobatim values (?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -200,6 +200,7 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
             ps.setTimestamp(4, personTeam.getDateTo());
             ps.setString(5, personTeam.getRole());
             ps.setString(6, personTeam.getPlayerPosition());
+            ps.setInt(7,personTeam.getJerseyNumber());
 
             retVal = ps.executeUpdate() == 1;
         } catch(SQLException ex) {
@@ -221,7 +222,8 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
                        "Od=?, " +
                        "Do=?, " +
                        "Uloga=?, " +
-                       "PozicijaIgraca=? " +
+                       "PozicijaIgraca=?, " +
+                       "BrojDresa=? " +
                        "where OsobaId=? and TimId=?";
         try {
             conn = ConnectionPool.getInstance().checkOut();
@@ -230,8 +232,9 @@ public class MySQLPersonTeamDAO implements PersonTeamDAO {
             ps.setTimestamp(2, personTeam.getDateTo());
             ps.setString(3, personTeam.getRole());
             ps.setString(4, personTeam.getPlayerPosition());
-            ps.setInt(5, personTeam.getPerson().getId());
-            ps.setInt(6, personTeam.getTeam().getId());
+            ps.setInt(5, personTeam.getJerseyNumber());
+            ps.setInt(6, personTeam.getPerson().getId());
+            ps.setInt(7, personTeam.getTeam().getId());
 
             retVal = ps.executeUpdate() == 1;
         } catch(SQLException ex) {

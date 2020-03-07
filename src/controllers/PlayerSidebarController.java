@@ -6,15 +6,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Person;
 import model.DTO.PersonTeam;
 import model.DTO.Sponsor;
 import model.util.FKSvodnaUtilities;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +45,10 @@ public class PlayerSidebarController {
     private Label positionLabel;
     @FXML
     private Label teamLabel;
+    @FXML
+    private Label jerseyLabel;
+
+    private DirectoryChooser directoryChooser;
 
     private Person person;
     private AlertController alertController;
@@ -73,6 +85,10 @@ public class PlayerSidebarController {
         equipmentStage.setScene(new Scene(root));
         equipmentStage.initModality(Modality.APPLICATION_MODAL);
         equipmentController=loader.getController();
+
+        directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Odabir foldera");
+
     }
 
     public void setPlayer(Person person) {
@@ -87,6 +103,7 @@ public class PlayerSidebarController {
         phoneNumberLabel.setText(person.getPhoneNumber());
         positionLabel.setText(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getPlayerPosition());
         teamLabel.setText(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getTeam().getName());
+        jerseyLabel.setText("" + FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getJerseyNumber());
     }
 
     public void clearPlayer(){
@@ -100,6 +117,7 @@ public class PlayerSidebarController {
         jmbgLabel.setText("");
         phoneNumberLabel.setText("");
         teamLabel.setText("");
+        jerseyLabel.setText("");
     }
 
     @FXML
@@ -129,6 +147,52 @@ public class PlayerSidebarController {
             medicalExaminationController.clearFields();
             medicalExaminationController.setPlayer(person);
             medicalExaminationStage.showAndWait();
+        }
+        else{
+            alertController.setText("Igrač nije izabran.");
+            alertStage.show();
+        }
+    }
+
+    @FXML
+    public void printPlayer(ActionEvent actionEvent) {
+        if(person!=null) {
+            try {
+                XWPFDocument document = new XWPFDocument();
+                XWPFParagraph tmpParagraph = document.createParagraph();
+                XWPFRun tmpRun = tmpParagraph.createRun();
+                tmpRun.setText("Podaci o igraču:");
+                tmpRun.addBreak();tmpRun.addBreak();tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Ime:");tmpRun.addTab();tmpRun.addTab();tmpRun.addTab();tmpRun.addTab();tmpRun.setText(person.getName());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Prezime:");tmpRun.addTab();tmpRun.addTab();tmpRun.addTab();tmpRun.setText(person.getSurname());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Matični broj:");tmpRun.addTab();tmpRun.addTab();tmpRun.setText(person.getJmb());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Adresa:");tmpRun.addTab();tmpRun.addTab();tmpRun.addTab();tmpRun.setText(person.getAddress());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Broj telefona:");tmpRun.addTab();tmpRun.addTab();tmpRun.setText(person.getPhoneNumber());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Email:");tmpRun.addTab();tmpRun.addTab();tmpRun.addTab();tmpRun.setText(person.getEmail());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Tim:");tmpRun.addTab();tmpRun.addTab();tmpRun.addTab();tmpRun.addTab();tmpRun.setText(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getTeam().getName());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Broj licence:");tmpRun.addTab();tmpRun.addTab();tmpRun.setText(person.getLicenceNumber());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Pozicija u timu:");tmpRun.addTab();tmpRun.setText(FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getPlayerPosition());
+                tmpRun.addBreak();tmpRun.addBreak();
+                tmpRun.setText("Broj dresa:");tmpRun.addTab();tmpRun.addTab();tmpRun.setText("" + FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(person).getJerseyNumber());
+
+                tmpRun.setFontSize(18);
+                File selectedDirectory = directoryChooser.showDialog(alertStage);
+                if(selectedDirectory!=null) {
+                    FileOutputStream fos = new FileOutputStream(new File(selectedDirectory.getPath() + File.separator + person.getName() + person.getSurname() + ".docx"));
+                    document.write(fos);
+                    fos.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         else{
             alertController.setText("Igrač nije izabran.");

@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DTO.Person;
@@ -35,6 +37,8 @@ public class AddEditPlayerController {
     @FXML
     private TextField phoneNumberTextField;
     @FXML
+    private TextField jerseyNumberTextField;
+    @FXML
     private ComboBox<Team> teamSelectComboBox;
     @FXML
     private Button addPlayerButton;
@@ -61,13 +65,14 @@ public class AddEditPlayerController {
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().insert(player);
                 player = FKSvodnaUtilities.getDAOFactory().getPersonDAO().getLastPerson();
-                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),null,"igrac",positionTextField.getText()));
+                FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().insert(new PersonTeam(player,teamSelectComboBox.getSelectionModel().getSelectedItem(),Timestamp.valueOf(dateFrom.getValue().atStartOfDay()),null,"igrac",positionTextField.getText(), Integer.parseInt(jerseyNumberTextField.getText())));
             } else {
                 Person player = new Person(selectedPlayerId,nameTextField.getText(),lastNameTextField.getText(),phoneNumberTextField.getText(),
                         jmbgTextField.getText(),emailTextField.getText(),adressTextField.getText(),licenceNumberTextField.getText());
                 FKSvodnaUtilities.getDAOFactory().getPersonDAO().update(player);
                 PersonTeam personTeam = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(player);
                 personTeam.setPlayerPosition(positionTextField.getText());
+                personTeam.setJerseyNumber(Integer.parseInt(jerseyNumberTextField.getText()));
                 FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(personTeam);
             }
         }else{
@@ -80,16 +85,20 @@ public class AddEditPlayerController {
         quit();
     }
 
+    @FXML
+    void saveByEnter(KeyEvent event){
+        if (event.getCode().equals(KeyCode.ENTER)) save();
+    }
+
     public void quit(){
         ((Stage) addPlayerButton.getScene().getWindow()).close();
     }
 
     private boolean checkFields(){
-        return !(nameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() ||
-                jmbgTextField.getText().isEmpty()|| positionTextField.getText().isEmpty() ||
-                licenceNumberTextField.getText().isEmpty() || adressTextField.getText().isEmpty() ||
-                emailTextField.getText().isEmpty() || phoneNumberTextField.getText().isEmpty() ||
-                teamSelectComboBox.getSelectionModel().getSelectedItem()!=null || dateFrom.getValue() != null);
+        return !nameTextField.getText().isEmpty()&&!lastNameTextField.getText().isEmpty()&&!jmbgTextField.getText().isEmpty()&&!positionTextField.getText().isEmpty()&&
+                !licenceNumberTextField.getText().isEmpty()&&!adressTextField.getText().isEmpty()&&
+                !emailTextField.getText().isEmpty()&&!phoneNumberTextField.getText().isEmpty()&&!jerseyNumberTextField.getText().isEmpty()&&isInt(jerseyNumberTextField.getText())
+                &&teamSelectComboBox.getSelectionModel().getSelectedItem()!=null&&dateFrom.getValue()!=null;
     }
 
     public int getSelectedPlayerId() {
@@ -122,6 +131,11 @@ public class AddEditPlayerController {
         emailTextField.clear();
         dateFrom.setValue(null);
         teamSelectComboBox.getSelectionModel().clearSelection();
+    }
+
+    private boolean isInt(String string){
+        if(string.matches("([0-9]*)")) return true;
+        return false;
     }
 
     public TextField getNameTextField() {
@@ -174,5 +188,13 @@ public class AddEditPlayerController {
 
     public Label getTeamLabel() {
         return teamLabel;
+    }
+
+    public TextField getJerseyNumberTextField() {
+        return jerseyNumberTextField;
+    }
+
+    public void setJerseyNumberTextField(TextField jerseyNumberTextField) {
+        this.jerseyNumberTextField = jerseyNumberTextField;
     }
 }
