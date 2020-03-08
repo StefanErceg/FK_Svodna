@@ -14,6 +14,10 @@ import model.DTO.MedicalExamination;
 import model.DTO.Obligation;
 import model.util.FKSvodnaUtilities;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class HomeController {
@@ -39,7 +43,7 @@ public class HomeController {
         Match firstMatch = FKSvodnaUtilities.getDAOFactory().getMatchDAO().getFirstMatch();
         if(firstMatch!=null&&firstMatch.getIsAway().equals(IsAway.Nije)) {
             obligations = FKSvodnaUtilities.getDAOFactory().getObligationDAO().getObligationsForMatch(firstMatch.getId());
-            obligationLabel.setText("Zaduženja za utakmicu protiv: " + firstMatch.getOpposingTeam());
+            obligationLabel.setText("Zaduženja za utakmicu protiv: " + firstMatch.getOpposingTeam() + " dana " + firstMatch.getDate().toLocalDateTime().toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy.")));
         }
         for (Obligation obligation : obligations) {
             tempCheckBox = new CheckBox();

@@ -13,10 +13,14 @@ import javafx.util.converter.DateTimeStringConverter;
 import model.DTO.*;
 import model.util.FKSvodnaUtilities;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddEditMatchesController {
@@ -63,9 +67,13 @@ public class AddEditMatchesController {
                 else match = new Match(0,matchTime,opponentTeamField.getText(),"", IsAway.Nije);
                 FKSvodnaUtilities.getDAOFactory().getMatchDAO().insert(match);
                 match = FKSvodnaUtilities.getDAOFactory().getMatchDAO().getLastMatch();
-                List<Obligation> obligationList = FKSvodnaUtilities.getDAOFactory().getObligationDAO().obligations();
-                for(Obligation obligation : obligationList) {
-                    FKSvodnaUtilities.getDAOFactory().getObligationDAO().insert(new Obligation(obligation.getId(), obligation.getDescription(), false, match));
+                try {
+                    List<String> obligationsFromFile = Files.readAllLines(Path.of("Zaduženja.txt"));
+                    for(String obligation : obligationsFromFile){
+                        FKSvodnaUtilities.getDAOFactory().getObligationDAO().insert(new Obligation(0, obligation, false, match));
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
             } else {
@@ -78,11 +86,11 @@ public class AddEditMatchesController {
                 Match match = new Match(selectedMatch.getId(),matchTime,opponentTeamField.getText(),"", null);
                 if(awayButton.isSelected()) match.setIsAway(IsAway.Jeste);
                 else match.setIsAway(IsAway.Nije);
-                System.out.println(FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(match));
+                FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(match);
             }
         }else{
             try {
-                displayAlert("Nisu unesena sva polja");
+                displayAlert("Nisu unesena sva polja!");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -111,6 +119,7 @@ public class AddEditMatchesController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.show();
     }
 

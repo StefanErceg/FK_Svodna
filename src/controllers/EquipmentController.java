@@ -67,19 +67,19 @@ public class EquipmentController {
                 equipment=equipmentList.get(0);
                 equipment.setPerson(player);
                 if(!DAOFactory.getDAOFactory().getEquipmentDAO().update(equipment)){
-                    alertController.setText("Desila se greska pri upisu, oprema nije dodana.");
+                    alertController.setText("Desila se greška pri upisu, oprema nije dodana!");
                     alertStage.showAndWait();
                 }
             }
             else if(!DAOFactory.getDAOFactory().getEquipmentDAO().insert(equipment)){
-                alertController.setText("Desila se greska pri upisu, oprema nije dodana.");
+                alertController.setText("Desila se greška pri upisu, oprema nije dodana!");
                 alertStage.showAndWait();
                 DAOFactory.getDAOFactory().getEquipmentDAO().returnEquipment(equipment);
             }
             reloadTable();
         }
         else {
-            alertController.setText("Nisu unesena potrebna polja.");
+            alertController.setText("Nisu unesena sva polja!");
             alertStage.showAndWait();
         }
         equipmentTable.getSelectionModel().clearSelection();
@@ -88,18 +88,18 @@ public class EquipmentController {
     @FXML
     void deleteEquipment(ActionEvent event) { //ukljanja opremu iz tabele
         if(!equipmentTable.getSelectionModel().isEmpty() ){
-            decisionController.getDecisionLabel().setText("Jeste li sigurni da zelite da izbrisete izabranu opremu?");
+            decisionController.getDecisionLabel().setText("Da li želite da obrišete odabranu opremu?");
             decisionStage.showAndWait();
             if(decisionController.returnResult()){
                 Equipment equipment= (Equipment) equipmentTable.getSelectionModel().getSelectedItem();
                 if(!DAOFactory.getDAOFactory().getEquipmentDAO().returnEquipment(equipment)) {
-                    alertController.setText("Desila se greska pri brisanju, oprema nije izbrisana.");
+                    alertController.setText("Desila se greška pri brisanju, oprema nije izbrisana!");
                     alertStage.showAndWait();
                 }
                 reloadTable();
             }
         }else{
-            alertController.setText("Nije izabrana oprema za razduzivanje.");
+            alertController.setText("Nije odabrana oprema za razduživanje!");
             alertStage.showAndWait();
         }
         equipmentTable.getSelectionModel().clearSelection();
@@ -130,7 +130,8 @@ public class EquipmentController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
-
+        decisionStage.setTitle("Potvrda");
+        alertStage.setTitle("Upozorenje");
     }
 
     private void reloadTable(){
@@ -144,7 +145,7 @@ public class EquipmentController {
 
     public void setPlayer(Person player){
         this.player = player;
-        playerLabel.setText(player.getName());
+        playerLabel.setText(player.getName() + " " + player.getSurname());
         reloadTable();
     }
     private void clearFields(){

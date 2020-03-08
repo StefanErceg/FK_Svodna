@@ -19,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -51,8 +52,6 @@ public class MatchController {
     private AlertController alertController;
     private List<Match> matchesList;
     private Match selectedMatch;
-    private DecisionController decisionController;
-    private Stage decisionStage;
     private AddEditMatchesController addEditMatchesController;
     private Stage addEditMatchesStage;
 
@@ -75,7 +74,7 @@ public class MatchController {
             FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(selectedMatch);
         }
         else{
-            alertController.setText("Nije izabrana utakmica.");
+            alertController.setText("Nije odabrana utakmica!");
             alertStage.show();
         }
         displayMatches();
@@ -104,7 +103,7 @@ public class MatchController {
             addEditMatchesStage.showAndWait();
         }
         else{
-            alertController.setText("Nije izabrana utakmica.");
+            alertController.setText("Nije odabrana utakmica!");
             alertStage.show();
         }
         displayMatches();
@@ -114,7 +113,7 @@ public class MatchController {
     @FXML
     void saveMatches(ActionEvent event){
         Workbook workbook = new HSSFWorkbook();
-        Sheet spreadsheet = workbook.createSheet("sample");
+        Sheet spreadsheet = workbook.createSheet("utakmice");
         CellStyle topStyle = workbook.createCellStyle();
         topStyle.setBorderBottom(BorderStyle.MEDIUM);
         topStyle.setBorderLeft(BorderStyle.MEDIUM);
@@ -178,12 +177,15 @@ public class MatchController {
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
         alertStage.initModality(Modality.APPLICATION_MODAL);
+        alertStage.setTitle("Upozorenje");
         loader = new FXMLLoader(this.getClass().getResource("../view/add_edit_matches.fxml"));
         root = loader.load();
         addEditMatchesController = loader.getController();
         addEditMatchesStage = new Stage();
         addEditMatchesStage.setScene(new Scene(root));
         addEditMatchesStage.initModality(Modality.APPLICATION_MODAL);
+        addEditMatchesStage.setTitle("Utakmica");
+        addEditMatchesStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
 
         tableResult.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("date"));
         tableResult.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("opposingTeam"));

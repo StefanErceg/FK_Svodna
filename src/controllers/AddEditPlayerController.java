@@ -73,11 +73,12 @@ public class AddEditPlayerController {
                 PersonTeam personTeam = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(player);
                 personTeam.setPlayerPosition(positionTextField.getText());
                 personTeam.setJerseyNumber(Integer.parseInt(jerseyNumberTextField.getText()));
+                personTeam.setPerson(player);
                 FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(personTeam);
             }
         }else{
             try {
-                displayAlert("Nisu unesena sva polja");
+                displayAlert("Nisu unesena sva polja!");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -117,6 +118,7 @@ public class AddEditPlayerController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.show();
     }
 
@@ -131,6 +133,7 @@ public class AddEditPlayerController {
         emailTextField.clear();
         dateFrom.setValue(null);
         teamSelectComboBox.getSelectionModel().clearSelection();
+        jerseyNumberTextField.clear();
     }
 
     private boolean isInt(String string){

@@ -41,7 +41,6 @@ public class PaymentController {
 
     private Sponsor sponsor;
     private ObservableList<Payment> paymentObservableList;
-    private Stage addEditSponsorStage;
     private Stage alertStage;
     private AlertController alertController;
     private DecisionController decisionController;
@@ -53,12 +52,13 @@ public class PaymentController {
             Payment payment = new Payment();
             loadPayment(payment);
             if (!DAOFactory.getDAOFactory().geTPaymentDAO().insert(payment)) {
-                alertController.setText("Desila se greska pri upisu, upis nije izvrsen.");
+                alertController.setText("Desila se greška pri upisu, upis nije izvršen!");
                 alertStage.showAndWait();
             }
             reloadTable();
+            clearFields();
         }else{
-            alertController.setText("Nisu popunjena sva polja.");
+            alertController.setText("Nisu unesena sva polja!");
             alertStage.show();
         }
     }
@@ -66,7 +66,7 @@ public class PaymentController {
     @FXML
      void updatePayment(ActionEvent event) { //sacuvava trenutno unesene podatke u trenutno selektovanu uplatu
         if(paymentTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabrana uplata za promjenu.");
+            alertController.setText("Nije odabrana uplata!");
             alertStage.showAndWait();
             return;
         }
@@ -74,14 +74,15 @@ public class PaymentController {
             Payment payment = paymentTable.getSelectionModel().getSelectedItem();
             loadPayment(payment);
             if (!DAOFactory.getDAOFactory().geTPaymentDAO().update(payment)) {
-                alertController.setText("Desila se greska pri upisu, nije izvrsen upis.");
+                alertController.setText("Desila se greška pri upisu, nije izvršen upis!");
                 alertStage.show();
             }
         }else{
-            alertController.setText("Nisu popunjena sva polja.");
+            alertController.setText("Nisu unesena sva polja!");
             alertStage.show();
         }
         reloadTable();
+        clearFields();
     }
 
     @FXML
@@ -140,6 +141,13 @@ public class PaymentController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
+        alertStage.setTitle("Upozorenje");
+    }
 
+    private void clearFields(){
+        paymentAmountField.setText("");
+        expirationDatePicker.setValue(null);
+        paymentDatePicker.setValue(null);
     }
 }

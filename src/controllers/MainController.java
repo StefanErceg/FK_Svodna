@@ -7,10 +7,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.DTO.Team;
+import model.util.FKSvodnaUtilities;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
 
 public class MainController {
@@ -149,6 +158,7 @@ public class MainController {
         sponsorsUIController.setSponsorSidebarController(sponsorsSidebarUIController);
         playersUIController.setPlayerSidebarController(playersSidebarUIController);
 
+
     }
 
     public void setUser(String user) {
@@ -162,5 +172,7 @@ public class MainController {
         logInController = loader.getController();
         logInStage = (Stage) this.borderPane.getScene().getWindow();
         logInStage.setScene(new Scene(root));
+        logInStage.setTitle("Prijava");
+        logInStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
     }
 }

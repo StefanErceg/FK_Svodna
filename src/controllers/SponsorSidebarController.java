@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
@@ -62,7 +63,7 @@ public class SponsorSidebarController {
     @FXML
     void showContactPersons(ActionEvent event){
         if(sponsor==null){
-            alertController.setText("Nije izabran sponzor za pregled kontakt osoba.");
+            alertController.setText("Nije odabran sponzor!");
             alertStage.showAndWait();
             return;
         }
@@ -74,6 +75,8 @@ public class SponsorSidebarController {
             Stage secondaryStage=new Stage();
             secondaryStage.initModality(Modality.APPLICATION_MODAL);
             secondaryStage.setScene(new Scene(root));
+            secondaryStage.setTitle("Kontakt osobe");
+            secondaryStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
             secondaryStage.show();
         }catch (Exception e){e.printStackTrace();}
     }
@@ -81,7 +84,7 @@ public class SponsorSidebarController {
     @FXML
     void showPayments(ActionEvent event)  {
         if(sponsor==null){
-            alertController.setText("Nije izabran sponzor za pregled uplata.");
+            alertController.setText("Nije odabran sponzor!");
             alertStage.showAndWait();
             return;
         }
@@ -93,6 +96,8 @@ public class SponsorSidebarController {
             Stage secondaryStage=new Stage();
             secondaryStage.initModality(Modality.APPLICATION_MODAL);
             secondaryStage.setScene(new Scene(root));
+            secondaryStage.setTitle("Uplate");
+            secondaryStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
             secondaryStage.show();
         }catch (Exception e){e.printStackTrace();}
     }
@@ -105,6 +110,7 @@ public class SponsorSidebarController {
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
         alertStage.initModality(Modality.APPLICATION_MODAL);
+        alertStage.setTitle("Upozorenje");
         loader = new FXMLLoader(this.getClass().getResource("../view/decision.fxml"));
         root = loader.load();
 

@@ -44,8 +44,8 @@ public class ContactPersonController {
     private TableView<ContactPerson> contactTable;
     private Sponsor sponsor;
     private ObservableList<ContactPerson> contactPersonObservableList;
-    DecisionController decisionController;
-    Stage decisionStage;
+    private DecisionController decisionController;
+    private Stage decisionStage;
     private Stage alertStage;
     private AlertController alertController;
 
@@ -59,7 +59,7 @@ public class ContactPersonController {
             contactPerson.setPhoneNumber(phoneNumberTextField.getText().trim());
             if(!DAOFactory.getDAOFactory().getContactPersonDAO().insert(contactPerson) ||
             !DAOFactory.getDAOFactory().getsponsorContractPersonDAO().insert(new SponsorContactPerson(sponsor,contactPerson))){
-                alertController.setText("Desila se greska pri upisu, kontakt nije dodan.");
+                alertController.setText("Desila se greska pri upisu, kontakt nije dodan!");
                 alertStage.showAndWait();
                 DAOFactory.getDAOFactory().getContactPersonDAO().delete(contactPerson);
             }
@@ -67,7 +67,7 @@ public class ContactPersonController {
             reloadTable();
         }
         else {
-            alertController.setText("Nisu popunjena sva polja.");
+            alertController.setText("Nisu unesena sva polja!");
             alertStage.show();
         }
         contactTable.getSelectionModel().clearSelection();
@@ -77,18 +77,18 @@ public class ContactPersonController {
     void deleteContact(ActionEvent event) { //brise kontakt osobu iz tabele i baze
 
        if(!contactTable.getSelectionModel().isEmpty() ){
-           decisionController.getDecisionLabel().setText("Jeste li sigurni da zelite izbrisati kontakt osobu.");
+           decisionController.getDecisionLabel().setText("Da li želite da obrišete kontakt osobu?");
            decisionStage.showAndWait();
            if(decisionController.returnResult()){
                ContactPerson contactPerson=contactTable.getSelectionModel().getSelectedItem();
                if(!DAOFactory.getDAOFactory().getContactPersonDAO().delete(contactPerson)) {
-                   alertController.setText("Desila se greska pri brisanju, kontakt nije izbrisan.");
+                   alertController.setText("Desila se greška pri brisanju, kontakt nije izbrisan!");
                    alertStage.showAndWait();
                }
                reloadTable();
            }
        }else{
-           alertController.setText("Nije izabrana kontakt osoba za brisanje.");
+           alertController.setText("Nije odabrana kontakt osoba!");
            alertStage.showAndWait();
        }
        contactTable.getSelectionModel().clearSelection();
@@ -118,6 +118,8 @@ public class ContactPersonController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
+        alertStage.setTitle("Upozorenje");
 
     }
 

@@ -73,7 +73,7 @@ public class LogInController {
                 }
                 else {
                     try {
-                        displayAlert("Nije unesena ispravna lozinka!");
+                        displayAlert("Pogrešna lozinka!");
                     } catch(Exception e) {
 
                     }
@@ -81,7 +81,7 @@ public class LogInController {
             }
             else {
                 try {
-                    displayAlert("Korisničko ime nije odgovarajuće!");
+                    displayAlert("Pogrešno korisničko ime!");
                     usernameTextField.clear();
                     passwordField.clear();
                 }
@@ -112,18 +112,16 @@ public class LogInController {
         Parent root = loader.load();
         accountsController = loader.getController();
         accountsStage = new Stage();
-        //accountsStage.initModality(Modality.APPLICATION_MODAL);
         accountsStage.setScene(new Scene(root));
+        accountsStage.setTitle("Korisnički nalozi");
         accountsStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         loader = new FXMLLoader(this.getClass().getResource("../view/main.fxml"));
         root = loader.load();
         mainController = loader.getController();
         mainStage = new Stage();
-        mainStage.initModality(Modality.APPLICATION_MODAL);
         mainStage.setScene(new Scene(root));
+        mainStage.setTitle("FK Svodna");
         mainStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
-
-
     }
 
     private boolean checkUsername() {
@@ -146,6 +144,7 @@ public class LogInController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.show();
     }
 

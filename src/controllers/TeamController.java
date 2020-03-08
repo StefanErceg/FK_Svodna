@@ -79,6 +79,7 @@ public class TeamController {
         addEditPersonStage = new Stage();
         addEditPersonStage.initModality(Modality.APPLICATION_MODAL);
         addEditPersonStage.setScene(new Scene(root));
+        addEditPersonStage.setTitle("Stručni štab");
         addEditPersonStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
 
         directoryChooser = new DirectoryChooser();
@@ -101,7 +102,7 @@ public class TeamController {
             displayStaff();
         } else {
             try {
-                displayAlert("Nije izabran tim!");
+                displayAlert("Nije odabran tim!");
             } catch(Exception ex) {
                 ex.printStackTrace();
             }
@@ -125,7 +126,7 @@ public class TeamController {
             displayStaff();
         } else {
             try {
-                displayAlert("Nije izabrana osoba stručnog štaba za izmjenu!");
+                displayAlert("Nije odabrana osoba stručnog štaba!");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -136,7 +137,7 @@ public class TeamController {
         selectedPersonTeam = staffTableView.getSelectionModel().getSelectedItem();
         if(selectedPersonTeam == null) {
             try {
-                displayAlert("Nije izabrana osoba stručnog štaba za brisanje!");
+                displayAlert("Nije odabrana osoba stručnog štaba!");
             } catch(Exception ex) {
                 ex.printStackTrace();
             }
@@ -188,6 +189,7 @@ public class TeamController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.showAndWait();
     }
 
@@ -206,6 +208,7 @@ public class TeamController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
         decisionStage.showAndWait();
     }
 
@@ -213,7 +216,7 @@ public class TeamController {
     private void printStaff() {
         if (selectedTeam != null) {
             Workbook workbook = new HSSFWorkbook();
-            Sheet spreadsheet = workbook.createSheet("sample");
+            Sheet spreadsheet = workbook.createSheet("strucni stab");
             spreadsheet.setDefaultColumnWidth(15);
             CellStyle topStyle = workbook.createCellStyle();
             topStyle.setBorderBottom(BorderStyle.MEDIUM);
@@ -258,11 +261,43 @@ public class TeamController {
             spreadsheet.setColumnWidth(1,4000);
             spreadsheet.setColumnWidth(2,4500);
             spreadsheet.setColumnWidth(3,6000);
+            Sheet spreadsheet2 = workbook.createSheet("igraci");
+            Row row2 = spreadsheet2.createRow(0);
+
+            row2.createCell(0).setCellStyle(topStyle);
+            row2.getCell(0).setCellValue("RB");
+            row2.createCell(1).setCellStyle(topStyle);
+            row2.getCell(1).setCellValue("Ime");
+            row2.createCell(2).setCellStyle(topStyle);
+            row2.getCell(2).setCellValue("Prezime");
+            row2.createCell(3).setCellStyle(topStyle);
+            row2.getCell(3).setCellValue("Broj dresa");
+
+            for (int i = 0; i < listOfPlayers.size(); i++) {
+                row2 = spreadsheet2.createRow(i + 1);
+                row2.createCell(0);
+                row2.getCell(0).setCellValue(i + 1 + ".");
+                row2.getCell(0).setCellStyle(style);
+                row2.createCell(1);
+                row2.getCell(1).setCellValue(listOfPlayers.get(i).getPerson().getName());
+                row2.getCell(1).setCellStyle(style);
+                row2.createCell(2);
+                row2.getCell(2).setCellValue(listOfPlayers.get(i).getPerson().getSurname());
+                row2.getCell(2).setCellStyle(style);
+                row2.createCell(3);
+                row2.getCell(3).setCellValue(listOfPlayers.get(i).getJerseyNumber());
+                row2.getCell(3).setCellStyle(style);
+            }
+            spreadsheet2.setColumnWidth(0,1500);
+            spreadsheet2.setColumnWidth(1,3500);
+            spreadsheet2.setColumnWidth(2,4000);
+            spreadsheet2.setColumnWidth(3,3500);
+
             directoryChooser.setTitle("Odabir foldera");
             File selectedDirectory = directoryChooser.showDialog(addEditPersonStage);
             if (selectedDirectory != null)
                 try {
-                    FileOutputStream fileOut = new FileOutputStream(selectedDirectory.getPath() + File.separator + "Stručni štab-" + selectedTeam.getName() + ".xls");
+                    FileOutputStream fileOut = new FileOutputStream(selectedDirectory.getPath() + File.separator + selectedTeam.getName() + ".xls");
                     workbook.write(fileOut);
                     fileOut.close();
                 } catch (Exception e) {
@@ -270,7 +305,7 @@ public class TeamController {
                 }
         }else{
             try {
-                displayAlert("Nije odabran tim");
+                displayAlert("Nije odabran tim!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

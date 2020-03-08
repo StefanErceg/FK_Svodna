@@ -145,6 +145,7 @@ public class AddEditExecutivesController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.show();
     }
 }

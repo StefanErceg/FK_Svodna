@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -67,23 +68,30 @@ public class PlayerSidebarController {
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
         alertStage.initModality(Modality.APPLICATION_MODAL);
+        alertStage.setTitle("Upozorenje");
         loader = new FXMLLoader(this.getClass().getResource("../view/fines.fxml"));
         root = loader.load();
         finesStage = new Stage();
         finesStage.setScene(new Scene(root));
         finesStage.initModality(Modality.APPLICATION_MODAL);
+        finesStage.setTitle("Kazne");
+        finesStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         finesController = loader.getController();
         loader = new FXMLLoader(this.getClass().getResource("../view/medical_examinations.fxml"));
         root = loader.load();
         medicalExaminationStage = new Stage();
         medicalExaminationStage.setScene(new Scene(root));
         medicalExaminationStage.initModality(Modality.APPLICATION_MODAL);
+        medicalExaminationStage.setTitle("Ljekarski pregled");
+        medicalExaminationStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         medicalExaminationController = loader.getController();
         loader=new FXMLLoader(this.getClass().getResource("../view/equipment.fxml"));
         root=loader.load();
         equipmentStage=new Stage();
         equipmentStage.setScene(new Scene(root));
         equipmentStage.initModality(Modality.APPLICATION_MODAL);
+        equipmentStage.setTitle("Oprema");
+        equipmentStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         equipmentController=loader.getController();
 
         directoryChooser = new DirectoryChooser();
@@ -127,7 +135,7 @@ public class PlayerSidebarController {
             finesStage.showAndWait();
         }
         else{
-            alertController.setText("Igrač nije izabran.");
+            alertController.setText("Igrač nije odabran!");
             alertStage.show();
         }
     }
@@ -137,7 +145,7 @@ public class PlayerSidebarController {
             equipmentController.setPlayer(person);
             equipmentStage.showAndWait();
         }else {
-            alertController.setText("Igrač nije izabran.");
+            alertController.setText("Igrač nije odabran!");
             alertStage.showAndWait();
         }
     }
@@ -149,7 +157,7 @@ public class PlayerSidebarController {
             medicalExaminationStage.showAndWait();
         }
         else{
-            alertController.setText("Igrač nije izabran.");
+            alertController.setText("Igrač nije odabran!");
             alertStage.show();
         }
     }
@@ -195,7 +203,7 @@ public class PlayerSidebarController {
             }
         }
         else{
-            alertController.setText("Igrač nije izabran.");
+            alertController.setText("Igrač nije odabran!");
             alertStage.show();
         }
     }

@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -52,7 +53,7 @@ public class PlayerController {
     private Stage addEditPlayerStage;
     private ObservableList<Person> playersList;
     private AlertController alertController;
-    private  DecisionController decisionController;
+    private DecisionController decisionController;
     private Stage alertStage;
     private Stage decisionStage;
 
@@ -74,7 +75,7 @@ public class PlayerController {
         addEditPlayerController.clearFields();
         Person person = playerTable.getSelectionModel().getSelectedItem();
         if (person == null) {
-            alertController.setText("Nije izabran igrač za izmjenu.");
+            alertController.setText("Nije odabran igrač!");
             alertStage.show();
             return;
         }
@@ -103,18 +104,18 @@ public class PlayerController {
     @FXML
     void deletePlayer(ActionEvent event){
         if(playerTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabran igrač za brisanje.");
+            alertController.setText("Nije odabran igrač!");
             alertStage.showAndWait();
             return;
         }
         Person selection=playerTable.getSelectionModel().getSelectedItem();
-        decisionController.getDecisionLabel().setText("Da li ste sigurni da zelite obrisati igraca?");
+        decisionController.getDecisionLabel().setText("Da li ste sigurni da želite obrisati igrača?");
         decisionStage.showAndWait();
         if( selection!= null && decisionController.returnResult()){
             PersonTeam personTeam = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(selection);
             personTeam.setDateTo(new Timestamp(Calendar.getInstance().getTime().getTime()));
             if(!FKSvodnaUtilities.getDAOFactory().getPersonDAO().delete(selection)){
-                alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
+                alertController.setText("Desila se greška pri brisanju, brisanje nije izvrseno!");
                 alertStage.showAndWait();
             }
             playersList=new FilteredList<Person>(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getPersonDAO().persons()));
@@ -141,6 +142,8 @@ public class PlayerController {
         addEditPlayerStage = new Stage();
         addEditPlayerStage.initModality(Modality.APPLICATION_MODAL);
         addEditPlayerStage.setScene(new Scene(root));
+        addEditPlayerStage.setTitle("Igrač");
+        addEditPlayerStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
         VBox alert=loader.load();
         alertController=loader.getController();
@@ -154,6 +157,8 @@ public class PlayerController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
+        alertStage.setTitle("Upozorenje");
 
         directoryChooser = new DirectoryChooser();
 
@@ -174,6 +179,7 @@ public class PlayerController {
                 }
             }
             playerTable.setItems(playersList);
+            playerTable.refresh();
             playerTable.getSelectionModel().clearSelection();
             playerSidebarController.clearPlayer();
 
@@ -195,7 +201,7 @@ public class PlayerController {
     @FXML
     private void printPlayers() {
         Workbook workbook = new HSSFWorkbook();
-        Sheet spreadsheet = workbook.createSheet("sample");
+        Sheet spreadsheet = workbook.createSheet("svi igraci");
         spreadsheet.setDefaultColumnWidth(15);
         CellStyle topStyle = workbook.createCellStyle();
         topStyle.setBorderBottom(BorderStyle.MEDIUM);

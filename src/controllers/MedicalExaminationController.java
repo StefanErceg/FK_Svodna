@@ -35,6 +35,7 @@ public class MedicalExaminationController {
         alertStage=new Stage();
         alertStage.setScene(new Scene(root));
         alertStage.initModality(Modality.APPLICATION_MODAL);
+        alertStage.setTitle("Upozorenje");
     }
     @FXML
     public void save(){
@@ -44,7 +45,7 @@ public class MedicalExaminationController {
         }
         else{
             try {
-                alertController.setText("Nisu unesena sva polja");
+                alertController.setText("Nisu unesena sva polja!");
                 alertStage.show();
             } catch (Exception e) {
                 e.printStackTrace();

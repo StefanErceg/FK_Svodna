@@ -33,7 +33,7 @@ public class AddEditSponsorController {
     @FXML
     private TextField jibField;
     @FXML
-    private TextField typeTextField;
+    private ComboBox<String> typeComboBox;
     @FXML
     private Button editSponsorButton;
     AlertController alertController;
@@ -43,16 +43,16 @@ public class AddEditSponsorController {
     @FXML
     void addSponsor() {
         if(nameField.getText().equals("") || (emailField.getText().equals("") && phonenumberField.getText().equals("") ) ){
-            alertController.setText("Nisu uneseni svi potrebni podaci, sponzor mora imati ime i email ili broj telefona.");
+            alertController.setText("Nisu unesena sva polja!");
             alertStage.showAndWait();
             return;
         }
 
         if(sponsor.getName()==null){
             sponsor=new Sponsor(nameField.getText().trim(),addresField.getText().trim(),
-                emailField.getText().trim(),phonenumberField.getText().trim(),typeTextField.getText().trim(),jibField.getText().trim());
+                emailField.getText().trim(),phonenumberField.getText().trim(),typeComboBox.getSelectionModel().getSelectedItem(),jibField.getText().trim());
         if(!DAOFactory.getDAOFactory().getSponsorDAO().insert(sponsor)){
-            alertController.setText("Desila se greska pri upisu, promjena nije upisana.");
+            alertController.setText("Desila se greska pri upisu, promjena nije upisana!");
             alertStage.showAndWait();
 
         }
@@ -62,9 +62,9 @@ public class AddEditSponsorController {
             sponsor.setEmail(emailField.getText().trim());
             sponsor.setJmbjib(jibField.getText().trim());
             sponsor.setPhoneNumber(phonenumberField.getText().trim());
-            sponsor.setKind(typeTextField.getText().trim());
+            sponsor.setKind(typeComboBox.getSelectionModel().getSelectedItem());
             if(!DAOFactory.getDAOFactory().getSponsorDAO().update(sponsor)) {
-                alertController.setText("Desila se greska pri uspisu, promjena nije upisana.");
+                alertController.setText("Desila se greska pri uspisu, promjena nije upisana!");
                 alertStage.showAndWait();
             }
         }
@@ -87,7 +87,7 @@ public class AddEditSponsorController {
         this.sponsor=sponsor;
         nameField.setText(sponsor.getName()!=null?sponsor.getName():"");
         addresField.setText(sponsor.getAddress()!=null?sponsor.getAddress():"");
-        typeTextField.setText(sponsor.getKind()!=null?sponsor.getKind():"");
+        typeComboBox.getSelectionModel().select(sponsor.getKind());
         phonenumberField.setText(sponsor.getPhoneNumber()!=null?sponsor.getPhoneNumber():"");
         emailField.setText(sponsor.getEmail()!=null?sponsor.getEmail():"");
         jibField.setText(sponsor.getJmbjib()!=null?sponsor.getJmbjib():"");
@@ -99,12 +99,14 @@ public class AddEditSponsorController {
 
     @FXML
     void initialize() throws Exception {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
-            VBox alert = loader.load();
-            alertController = loader.getController();
-            alertStage = new Stage();
-            alertStage.setScene(new Scene(alert));
-            alertStage.initModality(Modality.APPLICATION_MODAL);
+        typeComboBox.getItems().addAll("Pravno lice","Fizičko lice");
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
+        VBox alert = loader.load();
+        alertController = loader.getController();
+        alertStage = new Stage();
+        alertStage.setScene(new Scene(alert));
+        alertStage.initModality(Modality.APPLICATION_MODAL);
+        alertStage.setTitle("Upozorenje");
     }
 
 }

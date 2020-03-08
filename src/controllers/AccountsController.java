@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import model.DTO.UserAccount;
 import model.util.FKSvodnaUtilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class AccountsController {
@@ -37,6 +39,8 @@ public class AccountsController {
     private DecisionController decisionController;
     private Stage decisionStage;
     private UserAccount selectedAccount;
+    private Stage addEditTeamsStage;
+    private AddEditTeamsController addEditTeamsController;
 
     @FXML
     private void initialize() throws Exception {
@@ -46,6 +50,8 @@ public class AccountsController {
         addEditAccountsStage = new Stage();
         addEditAccountsStage.initModality(Modality.APPLICATION_MODAL);
         addEditAccountsStage.setScene(new Scene(root));
+        addEditAccountsStage.setTitle("Korisnički nalog");
+        addEditAccountsStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
 
         accountsTableView.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
         accountsTableView.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("surname"));
@@ -94,7 +100,7 @@ public class AccountsController {
                 displayAccounts();
             }
             else {
-                displayAlert("Nije izabran korisnički nalog za izmjenu!");
+                displayAlert("Nije odabran korisnički nalog!");
             }
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -111,7 +117,7 @@ public class AccountsController {
                 }
                 displayAccounts();
             } else {
-                displayAlert("Nije izabran korisnički nalog za brisanje!");
+                displayAlert("Nije odabran korisnički nalog!");
             }
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -138,6 +144,7 @@ public class AccountsController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.showAndWait();
     }
 
@@ -145,10 +152,11 @@ public class AccountsController {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/decision.fxml"));
         Parent root = loader.load();
         decisionController = loader.getController();
-        decisionController.getDecisionLabel().setText("Da li ste sigurni da želite da obrišete korisnički nalog?");
+        decisionController.getDecisionLabel().setText("Da li želite da obrišete korisnički nalog?");
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
         decisionStage.showAndWait();
     }
 
@@ -175,5 +183,16 @@ public class AccountsController {
             e.printStackTrace();
         }
 
+    }
+
+    public void showTeams(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/add_edit_teams.fxml"));
+        Parent root = loader.load();
+        addEditTeamsController = loader.getController();
+        addEditTeamsStage = new Stage();
+        addEditTeamsStage.initModality(Modality.APPLICATION_MODAL);
+        addEditTeamsStage.setScene(new Scene(root));
+        addEditTeamsStage.setTitle("Timovi");
+        addEditTeamsStage.showAndWait();
     }
 }

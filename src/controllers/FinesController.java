@@ -77,14 +77,14 @@ public class FinesController {
             punishment.setDescription(descriptionTxtField.getText());
             punishment.setPerson(player);
             if (!DAOFactory.getDAOFactory().getPunishmentDAO().insert(punishment)) {
-                alertController.setText("Desila se greska pri upisu, kazna nije dodana.");
+                alertController.setText("Desila se greska pri upisu, kazna nije dodana!");
                 alertStage.showAndWait();
                 clearFields();
             }
             clearFields();
         }
         else{
-            alertController.setText("Nisu unesena potrebna polja.");
+            alertController.setText("Nisu unesena sva polja!");
             alertStage.showAndWait();
             clearFields();
         }
@@ -119,6 +119,8 @@ public class FinesController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
+        alertStage.setTitle("Upozorenje");
     }
 
     private void reloadTable(){
@@ -131,7 +133,7 @@ public class FinesController {
 
     public void setPlayer(Person player){
         this.player = player;
-        playerLabel.setText(player.getName());
+        playerLabel.setText(player.getName() + " " + player.getSurname());
         reloadTable();
     }
 

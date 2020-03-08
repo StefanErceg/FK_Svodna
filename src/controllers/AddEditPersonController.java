@@ -57,7 +57,7 @@ public class AddEditPersonController {
         if(!checkRole()) {
             finished = false;
             try {
-                displayAlert("Nije izabrana uloga!");
+                displayAlert("Nije odabrana uloga!");
                 return;
             } catch(Exception ex) {
                 ex.printStackTrace();
@@ -185,6 +185,7 @@ public class AddEditPersonController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.show();
     }
 

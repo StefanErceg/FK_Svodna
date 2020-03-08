@@ -45,7 +45,7 @@ public class AddEditAccountsController {
     public void save() {
         if (!checkCorrectPasswordFields()) {
             try {
-                displayAlert("Nije uspješno unesena lozinka!");
+                displayAlert("Lozinka nije ispravna!");
                 passwordField.clear();
                 againPasswordField.clear();
             } catch (Exception ex) {
@@ -58,7 +58,7 @@ public class AddEditAccountsController {
             if ("Dodaj nalog".equals(addEditButton.getText())) {
                 if (!checkCorrectUsername()) {
                     try {
-                        displayAlert("Korisničko ime postoji!");
+                        displayAlert("Korisničko ime je zauzeto!");
                         finished = false;
                     } catch (Exception ex) {
                         ex.printStackTrace();
@@ -185,6 +185,7 @@ public class AddEditAccountsController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.show();
     }
 }

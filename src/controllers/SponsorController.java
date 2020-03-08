@@ -3,6 +3,7 @@ package controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
@@ -56,7 +57,7 @@ public class SponsorController {
     @FXML
     void changeSponsor(ActionEvent event)  { //poziva formu za promjenu sponzora i refresuje tabelu
         if(sponsorTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabran sponzor za izmjenu.");
+            alertController.setText("Nije odabran sponzor!");
             alertStage.showAndWait();
             return;
         }
@@ -72,7 +73,7 @@ public class SponsorController {
     void deleteSponsor(ActionEvent event) { //brise sponzora iz baze refresuje tabelu
 
         if(sponsorTable.getSelectionModel().isEmpty()) {
-            alertController.setText("Nije izabran sponzor za brisanje.");
+            alertController.setText("Nije odabran sponzor!");
             alertStage.showAndWait();
             return;
         }
@@ -81,7 +82,7 @@ public class SponsorController {
         decisionStage.showAndWait();
         if( selection!= null && decisionController.returnResult()){
             if(!DAOFactory.getDAOFactory().getSponsorDAO().delete(selection)){
-                alertController.setText("Desila se greska pri brisanju, brisanje nije izvrseno.");
+                alertController.setText("Desila se greška pri brisanju, brisanje nije izvršeno!");
                 alertStage.showAndWait();
             }
             sponsorList=new FilteredList<Sponsor>(FXCollections.observableList(DAOFactory.getDAOFactory().getSponsorDAO().sponsors()));
@@ -108,7 +109,7 @@ public class SponsorController {
         Sponsor sponsor = sponsorTable.getSelectionModel().getSelectedItem();
         if(sponsor!=null){
             sponsorSidebarController.setSponsor(sponsor);
-            if (sponsor.getKind().equals("fizicko lice")){
+            if (sponsor.getKind().equals("Fizičko lice")){
                 sponsorSidebarController.getContactPersonButton().setVisible(false);
                 sponsorSidebarController.getContactPersonLabel().setVisible(false);
             }
@@ -126,14 +127,14 @@ public class SponsorController {
     @FXML
     void initialize() throws Exception  {
         sponsorList= new FilteredList<Sponsor>(FXCollections.observableList(DAOFactory.getDAOFactory().getSponsorDAO().sponsors()));
-        sponsorTable.setItems(sponsorList);
-        sponsorTable.getSelectionModel().clearSelection();
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/add_edit_sponsors.fxml"));
         Parent root = loader.load();
         addEditSponsorController = loader.getController();
         addEditSponsorStage = new Stage();
         addEditSponsorStage.initModality(Modality.APPLICATION_MODAL);
         addEditSponsorStage.setScene(new Scene(root));
+        addEditSponsorStage.setTitle("Sponzor");
+        addEditSponsorStage.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
         loader=new FXMLLoader(this.getClass().getResource("../view/alert.fxml"));
         VBox alert=loader.load();
         alertController=loader.getController();
@@ -143,14 +144,19 @@ public class SponsorController {
         loader = new FXMLLoader(this.getClass().getResource("../view/decision.fxml"));
         root = loader.load();
         decisionController = loader.getController();
-        decisionController.getDecisionLabel().setText("Da li ste sigurni da želite da obrišete rukovodioca?");
+        decisionController.getDecisionLabel().setText("Da li ste sigurni da želite da obrišete sponzora?");
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
+        alertStage.setTitle("Upozorenje");
 
         sponsorTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
         sponsorTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("kind"));
         sponsorTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
+
+        sponsorTable.setItems(sponsorList);
+        sponsorTable.getSelectionModel().clearSelection();
 
         directoryChooser = new DirectoryChooser();
 
@@ -159,7 +165,7 @@ public class SponsorController {
     @FXML
     public void printAllSponsors(ActionEvent actionEvent) {
         Workbook workbook = new HSSFWorkbook();
-        Sheet spreadsheet = workbook.createSheet("sample");
+        Sheet spreadsheet = workbook.createSheet("sponzori");
         CellStyle topStyle = workbook.createCellStyle();
         topStyle.setBorderBottom(BorderStyle.MEDIUM);
         topStyle.setBorderLeft(BorderStyle.MEDIUM);

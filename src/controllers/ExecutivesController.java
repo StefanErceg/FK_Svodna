@@ -48,6 +48,7 @@ public class ExecutivesController {
         addEditExecutives = new Stage();
         addEditExecutives.initModality(Modality.APPLICATION_MODAL);
         addEditExecutives.setScene(new Scene(root));
+        addEditExecutives.setTitle("Rukovodilac");
         addEditExecutives.getIcons().add(new Image("file:" + "src" + File.separator + "view" + File.separator + "icons" + File.separator + "soccer.png"));
 
         executivesTableView.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -103,7 +104,7 @@ public class ExecutivesController {
                 executivesTableView.getSelectionModel().clearSelection();
             }
             else {
-                displayAlert("Nije izabran rukovodilac za izmjenu!");
+                displayAlert("Nije odabran rukovodilac!");
             }
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -121,7 +122,7 @@ public class ExecutivesController {
                 displayExecutives();
                 executivesTableView.getSelectionModel().clearSelection();
             } else {
-                displayAlert("Nije izabran rukovodilac za brisanje!");
+                displayAlert("Nije odabran rukovodilac!");
             }
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -149,6 +150,7 @@ public class ExecutivesController {
         alertStage = new Stage();
         alertStage.initModality(Modality.APPLICATION_MODAL);
         alertStage.setScene(new Scene(root));
+        alertStage.setTitle("Upozorenje");
         alertStage.showAndWait();
     }
 
@@ -160,6 +162,7 @@ public class ExecutivesController {
         decisionStage = new Stage();
         decisionStage.initModality(Modality.APPLICATION_MODAL);
         decisionStage.setScene(new Scene(root));
+        decisionStage.setTitle("Potvrda");
         decisionStage.showAndWait();
     }
 
