@@ -2,37 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/AddEditTeamsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/add_edit_teams.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dokumentacija/podaci.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dokumentacija/podaci.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditAccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditAccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditExecutivesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditExecutivesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditMatchesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditMatchesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditSponsorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditSponsorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/EquipmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/EquipmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ExecutivesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ExecutivesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/FinesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FinesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/LogInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/MedicalExaminationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MedicalExaminationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/SponsorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/TeamController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/accounts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_accounts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_executives.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_executives.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_matches.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_matches.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_person.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_person.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_player.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_player.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/alert.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/alert.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/decision.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/decision.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/equipment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/equipment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/executives.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/executives.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/matches.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/matches.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/medical_examinations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/medical_examinations.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/players.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/players_sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/players_sidebar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/sponsors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/sponsors_sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/sponsors_sidebar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/teams.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/teams.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,9 +147,10 @@
     </state>
     <state x="488" y="53" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1581434254062" />
     <state x="488" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1583659754054" />
-    <state x="577" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582123949130">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="577" y="289" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1584282592233">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state x="577" y="289" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1584282592233" />
     <state x="577" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.768@0.0.1366.768" timestamp="1582123949130" />
     <state x="811" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570836202" />
     <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581454232259">

@@ -11,7 +11,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema FKSvodna
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `FKSvodna`;
 CREATE SCHEMA IF NOT EXISTS `FKSvodna` DEFAULT CHARACTER SET utf8 ;
 USE `FKSvodna` ;
 
@@ -212,7 +211,6 @@ CREATE TABLE IF NOT EXISTS `FKSvodna`.`OsobaTim` (
   `Do` DATETIME NULL,
   `Uloga` VARCHAR(45) NOT NULL,
   `PozicijaIgraca` VARCHAR(45) NULL,
-  `BrojDresa` INT NULL,
   PRIMARY KEY (`OsobaId`, `TimId`),
   INDEX `7_idx` (`TimId` ASC) VISIBLE,
   INDEX `6_idx` (`OsobaId` ASC) VISIBLE,
@@ -262,18 +260,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `FKSvodna`.`OsobaTimUtakmica`
+-- Table `FKSvodna`.`TimUtakmica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `FKSvodna`.`OsobaTimUtakmica` (
-  `OsobaId` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `FKSvodna`.`TimUtakmica` (
   `TimId` INT NOT NULL,
   `UtakmicaId` INT NOT NULL,
-  PRIMARY KEY (`OsobaId`, `TimId`, `UtakmicaId`),
+  PRIMARY KEY (`TimId`, `UtakmicaId`),
   INDEX `10_idx` (`UtakmicaId` ASC) VISIBLE,
-  INDEX `9_idx` (`OsobaId` ASC, `TimId` ASC) VISIBLE,
+  INDEX `9_idx` (`TimId` ASC) VISIBLE,
   CONSTRAINT `9`
-    FOREIGN KEY (`OsobaId` , `TimId`)
-    REFERENCES `FKSvodna`.`OsobaTim` (`OsobaId` , `TimId`)
+    FOREIGN KEY (`TimId`)
+    REFERENCES `FKSvodna`.`Tim` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `10`
