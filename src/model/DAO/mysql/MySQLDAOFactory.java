@@ -50,8 +50,8 @@ public class MySQLDAOFactory extends DAOFactory {
     }
 
     @Override
-    public PersonTeamMatchDAO getPersonTeamMatchDAO() {
-        return new MySQLPersonTeamMatchDAO();
+    public TeamMatchDAO getPersonTeamMatchDAO() {
+        return new MySQLTeamMatchDAO();
     }
 
     @Override

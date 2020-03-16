@@ -2,24 +2,24 @@ package model.DTO;
 
 import java.util.Objects;
 
-public class PersonTeamMatch {
-    protected PersonTeam personTeam;
+public class TeamMatch {
+    protected Team team;
     protected Match match;
 
-    public PersonTeamMatch() {
+    public TeamMatch() {
     }
 
-    public PersonTeamMatch(PersonTeam personTeam, Match match) {
-        this.personTeam = personTeam;
+    public TeamMatch(Team team, Match match) {
+        this.team = team;
         this.match = match;
     }
 
-    public PersonTeam getPersonTeam() {
-        return personTeam;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setPersonTeam(PersonTeam personTeam) {
-        this.personTeam = personTeam;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     public Match getMatch() {
@@ -34,20 +34,20 @@ public class PersonTeamMatch {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonTeamMatch that = (PersonTeamMatch) o;
-        return Objects.equals(personTeam, that.personTeam) &&
+        TeamMatch that = (TeamMatch) o;
+        return Objects.equals(team, that.team) &&
                 Objects.equals(match, that.match);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(personTeam, match);
+        return Objects.hash(team, match);
     }
 
     @Override
     public String toString() {
-        return "PersonTeamMatch{" +
-                "personTeam=" + personTeam +
+        return "TeamMatch{" +
+                "team=" + team +
                 ", match=" + match +
                 '}';
     }
