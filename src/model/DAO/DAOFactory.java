@@ -13,7 +13,7 @@ public abstract class DAOFactory {
     public abstract PaymentDAO geTPaymentDAO();
     public abstract PersonDAO getPersonDAO();
     public abstract PersonTeamDAO getPersonTeamDAO();
-    public abstract PersonTeamMatchDAO getPersonTeamMatchDAO();
+    public abstract TeamMatchDAO getPersonTeamMatchDAO();
     public abstract PunishmentDAO getPunishmentDAO();
     public abstract SponsorContactPersonDAO getsponsorContractPersonDAO();
     public abstract SponsorDAO getSponsorDAO();
