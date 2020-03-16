@@ -2,37 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/AddEditTeamsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/add_edit_teams.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_8_0_15.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dokumentacija/podaci.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dokumentacija/podaci.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditAccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditAccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditExecutivesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditExecutivesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditMatchesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditMatchesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditSponsorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditSponsorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ContactPersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/EquipmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/EquipmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ExecutivesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ExecutivesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/FinesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FinesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/MedicalExaminationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MedicalExaminationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerSidebarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/SponsorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FK_Svodna.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FK_Svodna.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/TeamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/accounts.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/decision.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/decision.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/equipment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/equipment.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,18 +52,18 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1581359768847" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dokumentacija/Apache poi/xmlbeans-3.1.0.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/xmlbeans-3.1.0.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.25172412" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Milica\Documents\GitHub\FK_Svodna\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Korisnik\Documents\GitHub\FK_Svodna\src\view\icons" />
       <recent name="C:\Users\Korisnik\Documents\GitHub\FK_Svodna\src\view" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Milica\Documents\GitHub\FK_Svodna\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -166,31 +139,31 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="132" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.768@0.0.1366.768" timestamp="1583670477119" />
-    <state x="463" y="116" key="FileChooserDialogImpl" timestamp="1583599930361">
+    <state x="463" y="116" key="FileChooserDialogImpl" timestamp="1584342639063">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1581520045615" />
-    <state x="463" y="116" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1583599930361" />
-    <state width="1323" height="82" key="GridCell.Tab.0.bottom" timestamp="1583686042055">
+    <state x="463" y="116" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1584342639063" />
+    <state width="1323" height="158" key="GridCell.Tab.0.bottom" timestamp="1584342981584">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1582991064166" />
-    <state width="1323" height="82" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1583686042055" />
-    <state width="1323" height="82" key="GridCell.Tab.0.center" timestamp="1583686042054">
+    <state width="1323" height="158" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1584342981584" />
+    <state width="1323" height="158" key="GridCell.Tab.0.center" timestamp="1584342981583">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1582991064166" />
-    <state width="1323" height="82" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1583686042054" />
-    <state width="1323" height="82" key="GridCell.Tab.0.left" timestamp="1583686042054">
+    <state width="1323" height="158" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1584342981583" />
+    <state width="1323" height="158" key="GridCell.Tab.0.left" timestamp="1584342981583">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1582991064165" />
-    <state width="1323" height="82" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1583686042054" />
-    <state width="1323" height="82" key="GridCell.Tab.0.right" timestamp="1583686042054">
+    <state width="1323" height="158" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1584342981583" />
+    <state width="1323" height="158" key="GridCell.Tab.0.right" timestamp="1584342981583">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1582991064166" />
-    <state width="1323" height="82" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1583686042054" />
+    <state width="1323" height="158" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1584342981583" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1582990958169">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -211,10 +184,10 @@
     </state>
     <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1582990958169" />
     <state width="1323" height="71" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1582203504775" />
-    <state x="163" y="0" key="SettingsEditor" timestamp="1583599935630">
+    <state x="163" y="0" key="SettingsEditor" timestamp="1584342645003">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1583599935630" />
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1584342645003" />
     <state x="470" y="253" key="com.intellij.ide.util.TipDialog" timestamp="1582980935049">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

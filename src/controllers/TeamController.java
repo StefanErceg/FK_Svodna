@@ -272,6 +272,8 @@ public class TeamController {
             row2.getCell(2).setCellValue("Prezime");
             row2.createCell(3).setCellStyle(topStyle);
             row2.getCell(3).setCellValue("Broj dresa");
+            row2.createCell(4).setCellStyle(topStyle);
+            row2.getCell(4).setCellValue("Pozicija");
 
             for (int i = 0; i < listOfPlayers.size(); i++) {
                 row2 = spreadsheet2.createRow(i + 1);
@@ -287,11 +289,15 @@ public class TeamController {
                 row2.createCell(3);
                 row2.getCell(3).setCellValue(listOfPlayers.get(i).getJerseyNumber());
                 row2.getCell(3).setCellStyle(style);
+                row2.createCell(4);
+                row2.getCell(4).setCellValue(listOfPlayers.get(i).getPlayerPosition());
+                row2.getCell(4).setCellStyle(style);
             }
             spreadsheet2.setColumnWidth(0,1500);
             spreadsheet2.setColumnWidth(1,3500);
             spreadsheet2.setColumnWidth(2,4000);
             spreadsheet2.setColumnWidth(3,3500);
+            spreadsheet2.setColumnWidth(4,3500);
 
             directoryChooser.setTitle("Odabir foldera");
             File selectedDirectory = directoryChooser.showDialog(addEditPersonStage);
