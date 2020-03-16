@@ -76,7 +76,7 @@ public class MySQLTeamMatchDAO implements TeamMatchDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "\"select timId,utakmicaId from timutakmica where timID=?;";
+        String query = "select timId,utakmicaId from timutakmica where timID=?;";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);
@@ -104,7 +104,7 @@ public class MySQLTeamMatchDAO implements TeamMatchDAO {
 
         Connection conn = null;
         PreparedStatement ps = null;
-        String query = "insert into osobatimutakmica values (?, ?)";
+        String query = "insert into timutakmica values (?, ?)";
         try {
             conn = ConnectionPool.getInstance().checkOut();
             ps = conn.prepareStatement(query);

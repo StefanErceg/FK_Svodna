@@ -12,7 +12,16 @@
          <children>
             <VBox>
                <children>
-                  <HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+                     <children>
+                        <ComboBox fx:id="teamsComboBox" prefWidth="168.0" onAction="#selectTeam" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#addMatch" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #01323d; -fx-text-fill: white;" text="Dodaj" HBox.hgrow="ALWAYS">
                            <font>

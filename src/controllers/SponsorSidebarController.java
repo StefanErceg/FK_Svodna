@@ -170,7 +170,7 @@ public class SponsorSidebarController {
                 tmpRun.setText("Broj telefona:");tmpRun.addTab();tmpRun.addTab();
                 tmpRun.setText(sponsor.getPhoneNumber());
                 tmpRun.addBreak();tmpRun.addBreak();
-                if(sponsor.getKind().equals("fizicko lice")){
+                if(sponsor.getKind().equals("Fizičko lice")){
                     tmpRun.setText("Matični broj:");tmpRun.addTab();tmpRun.addTab();
                     tmpRun.setText(sponsor.getJmbjib());
                 }else {

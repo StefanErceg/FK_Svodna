@@ -114,12 +114,12 @@ public class PlayerController {
         if( selection!= null && decisionController.returnResult()){
             PersonTeam personTeam = FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().getTeamForPlayer(selection);
             personTeam.setDateTo(new Timestamp(Calendar.getInstance().getTime().getTime()));
+            FKSvodnaUtilities.getDAOFactory().getPersonTeamDAO().update(personTeam);
             if(!FKSvodnaUtilities.getDAOFactory().getPersonDAO().delete(selection)){
                 alertController.setText("Desila se greška pri brisanju, brisanje nije izvrseno!");
                 alertStage.showAndWait();
             }
-            playersList=new FilteredList<Person>(FXCollections.observableList(FKSvodnaUtilities.getDAOFactory().getPersonDAO().persons()));
-            playerTable.setItems(playersList);
+            displayPlayers();
         }
         playerTable.getSelectionModel().clearSelection();
         playerSidebarController.clearPlayer();

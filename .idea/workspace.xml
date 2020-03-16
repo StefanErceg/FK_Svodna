@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64d8628-ae26-4e5e-9d26-ada954810351" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/DAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/PersonTeamMatchDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/TeamMatchDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLDAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLPersonTeamMatchDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLTeamMatchDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DTO/PersonTeamMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DTO/TeamMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AddEditMatchesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AddEditMatchesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SponsorSidebarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLTeamMatchDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DAO/mysql/MySQLTeamMatchDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_matches.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_matches.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/add_edit_sponsors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/matches.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/matches.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,16 +123,16 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="28" key="#Notifications/0.0.1366.738@0.0.1366.738" timestamp="1581672926013" />
-    <state x="488" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1583659754054">
+    <state x="488" y="55" key="#com.intellij.ide.util.MemberChooser" timestamp="1584367204627">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="53" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1581434254062" />
-    <state x="488" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1583659754054" />
-    <state x="577" y="289" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1584282592233">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="488" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1584367204627" />
+    <state x="577" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1584363879302">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="577" y="289" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1584282592233" />
-    <state x="577" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.768@0.0.1366.768" timestamp="1582123949130" />
+    <state x="577" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.768@0.0.1366.768" timestamp="1584363879302" />
     <state x="811" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580570836202" />
     <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581454232259">
       <screen x="0" y="0" width="1366" height="738" />
@@ -151,26 +155,26 @@
     </state>
     <state x="463" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1581520045615" />
     <state x="463" y="116" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1584342639063" />
-    <state width="1323" height="158" key="GridCell.Tab.0.bottom" timestamp="1584342981584">
+    <state width="1323" height="75" key="GridCell.Tab.0.bottom" timestamp="1584379740893">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1582991064166" />
-    <state width="1323" height="158" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1584342981584" />
-    <state width="1323" height="158" key="GridCell.Tab.0.center" timestamp="1584342981583">
+    <state width="1323" height="75" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1584379740893" />
+    <state width="1323" height="75" key="GridCell.Tab.0.center" timestamp="1584379740892">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1582991064166" />
-    <state width="1323" height="158" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1584342981583" />
-    <state width="1323" height="158" key="GridCell.Tab.0.left" timestamp="1584342981583">
+    <state width="1323" height="75" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1584379740892" />
+    <state width="1323" height="75" key="GridCell.Tab.0.left" timestamp="1584379740892">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1582991064165" />
-    <state width="1323" height="158" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1584342981583" />
-    <state width="1323" height="158" key="GridCell.Tab.0.right" timestamp="1584342981583">
+    <state width="1323" height="75" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1584379740892" />
+    <state width="1323" height="75" key="GridCell.Tab.0.right" timestamp="1584379740892">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="131" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1582991064166" />
-    <state width="1323" height="158" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1584342981583" />
+    <state width="1323" height="75" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1584379740892" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1582990958169">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -208,11 +212,11 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="92" y="92" width="1182" height="584" key="dock-window-2/0.0.1366.768@0.0.1366.768" timestamp="1583668442427" />
-    <state width="429" height="296" key="javadoc.popup.new" timestamp="1584284647250">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="429" height="271" key="javadoc.popup.new" timestamp="1584366483154">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="429" height="296" key="javadoc.popup.new/0.0.1366.738@0.0.1366.738" timestamp="1584284647250" />
-    <state width="429" height="271" key="javadoc.popup.new/0.0.1366.768@0.0.1366.768" timestamp="1583671086016" />
+    <state width="429" height="271" key="javadoc.popup.new/0.0.1366.768@0.0.1366.768" timestamp="1584366483154" />
     <state x="339" y="165" key="run.anything.popup" timestamp="1581594231334">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

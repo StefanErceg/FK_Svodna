@@ -42,13 +42,20 @@ public class AddEditMatchesController {
     private RadioButton awayButton;
     @FXML
     private ToggleGroup whereIsPlayed;
+    @FXML
+    private ComboBox<Team> teamsComboBox;
+    @FXML
+    private Label teamLabel;
 
     private Match selectedMatch;
     private AlertController alertController;
     private Stage alertStage;
+    private Team selectedTeam;
 
     @FXML
     private void initialize() throws ParseException {
+        List<Team> listOfTeams = FKSvodnaUtilities.getDAOFactory().getTeamDAO().teams();
+        teamsComboBox.getItems().addAll(listOfTeams);
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         timeField.setTextFormatter(new TextFormatter<>(new DateTimeStringConverter(format),format.parse("00:00")));
     }
@@ -67,6 +74,8 @@ public class AddEditMatchesController {
                 else match = new Match(0,matchTime,opponentTeamField.getText(),"", IsAway.Nije);
                 FKSvodnaUtilities.getDAOFactory().getMatchDAO().insert(match);
                 match = FKSvodnaUtilities.getDAOFactory().getMatchDAO().getLastMatch();
+                TeamMatch teamMatch = new TeamMatch(selectedTeam,match);
+                System.out.println(FKSvodnaUtilities.getDAOFactory().getPersonTeamMatchDAO().insert(teamMatch));
                 try {
                     List<String> obligationsFromFile = Files.readAllLines(Path.of("Zaduženja.txt"));
                     for(String obligation : obligationsFromFile){
@@ -83,7 +92,7 @@ public class AddEditMatchesController {
                     matchTime.setHours(Integer.parseInt(time[0]));
                     matchTime.setMinutes(Integer.parseInt(time[1]));
                 }
-                Match match = new Match(selectedMatch.getId(),matchTime,opponentTeamField.getText(),"", null);
+                Match match = new Match(selectedMatch.getId(),matchTime,opponentTeamField.getText(),resultField.getText(), null);
                 if(awayButton.isSelected()) match.setIsAway(IsAway.Jeste);
                 else match.setIsAway(IsAway.Nije);
                 FKSvodnaUtilities.getDAOFactory().getMatchDAO().update(match);
@@ -108,7 +117,11 @@ public class AddEditMatchesController {
     }
 
     private boolean checkFields(){
-        return !(timeField.getText().isEmpty()&&dateofMatch.getValue()==null&&opponentTeamField.getText().isEmpty())&&(homeButton.isSelected() || awayButton.isSelected());
+        return !(timeField.getText().isEmpty()&&dateofMatch.getValue()==null&&opponentTeamField.getText().isEmpty())&&(homeButton.isSelected() || awayButton.isSelected())&&selectedTeam!=null;
+    }
+
+    public void selectTeam() {
+        selectedTeam = teamsComboBox.getSelectionModel().getSelectedItem();
     }
 
     private void displayAlert(String content) throws Exception {
@@ -127,6 +140,7 @@ public class AddEditMatchesController {
         timeField.clear();
         opponentTeamField.clear();
         dateofMatch.setValue(null);
+        teamsComboBox.getSelectionModel().clearSelection();
     }
 
     public Match getSelectedMatch() {
@@ -191,5 +205,29 @@ public class AddEditMatchesController {
 
     public void setAwayButton(RadioButton awayButton) {
         this.awayButton = awayButton;
+    }
+
+    public ComboBox<Team> getTeamsComboBox() {
+        return teamsComboBox;
+    }
+
+    public void setTeamsComboBox(ComboBox<Team> teamsComboBox) {
+        this.teamsComboBox = teamsComboBox;
+    }
+
+    public Label getTeamLabel() {
+        return teamLabel;
+    }
+
+    public void setTeamLabel(Label teamLabel) {
+        this.teamLabel = teamLabel;
+    }
+
+    public Team getSelectedTeam() {
+        return selectedTeam;
+    }
+
+    public void setSelectedTeam(Team selectedTeam) {
+        this.selectedTeam = selectedTeam;
     }
 }

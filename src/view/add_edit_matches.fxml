@@ -22,7 +22,7 @@
             </Label>
             <GridPane alignment="CENTER" hgap="4.0" maxHeight="500.0" prefHeight="300.0" prefWidth="600.0" vgap="4.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Protivnički tim" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                  <Label text="Protivnički tim" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -30,7 +30,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label text="Datum utakmice" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="0">
+                  <Label text="Datum utakmice" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -38,7 +38,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label text="Vrijeme početka" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                  <Label text="Vrijeme početka" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -46,18 +46,18 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <DatePicker fx:id="dateofMatch" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                  <TextField fx:id="timeField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <DatePicker fx:id="dateofMatch" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@datePicker.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="timeField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="opponentTeamField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2">
+                  <TextField fx:id="opponentTeamField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="resultLabel" text="Rezultat" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                  <Label fx:id="resultLabel" text="Rezultat" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -65,17 +65,31 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="resultField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3">
+                  <TextField fx:id="resultField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="4">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
+                  <Label fx:id="teamLabel" text="Tim" textFill="WHITE" GridPane.halignment="LEFT">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox fx:id="teamsComboBox" onAction="#selectTeam" promptText="Izaberite tim" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" >
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
+                  <RowConstraints maxHeight="60.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="60.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="60.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="60.0" minHeight="15.0" prefHeight="40.0" vgrow="SOMETIMES" />

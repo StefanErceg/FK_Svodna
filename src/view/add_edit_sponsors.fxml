@@ -75,7 +75,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="typeComboBox" prefHeight="30.0" prefWidth="200.0" promptText="Izaberite ulogu" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="typeComboBox" prefHeight="30.0" prefWidth="200.0" promptText="Izaberite vrstu sponzora" style="-fx-background-color: #01323d;" stylesheets="@comboBox.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="addresField" onKeyPressed="#saveByEnter" style="-fx-background-color: #01323d; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
